@@ -16,7 +16,7 @@ const surveyJson = {
   pages: [
     {
       name: "Start page",
-      navigationTitle: "Start page",
+      navigationTitle: "Start page change test",
       navigationDescription: "Producer Profile",
       elements: [
         {
