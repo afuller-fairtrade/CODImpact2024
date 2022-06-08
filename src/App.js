@@ -7,6 +7,8 @@ import { Survey } from "survey-react-ui";
 
 StylesManager.applyTheme("defaultV2");
 
+
+
 const surveyJson = {
   version: 1,
   logoPosition: "right",
@@ -16,7 +18,7 @@ const surveyJson = {
   pages: [
     {
       name: "Start page",
-      navigationTitle: "Start page change test",
+      navigationTitle: "Start page change 2 test",
       navigationDescription: "Producer Profile",
       elements: [
         {
