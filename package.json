@@ -1,7 +1,7 @@
 {
-  "name": "pilot-survey-v1",
+  "name": "self-reporting-pilot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Version 1",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
