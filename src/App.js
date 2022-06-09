@@ -16,7 +16,7 @@ const surveyJson = {
   pages: [
     {
       name: "Start page",
-      navigationTitle: "Change test",
+      navigationTitle: "Start page",
       navigationDescription: "Producer Profile",
       elements: [
         {
@@ -46,7 +46,7 @@ const surveyJson = {
             },
             {
               type: "radiogroup",
-              name: "organic_prod_logic",
+              name: "organic_logic",
               title:
                 "Were some or all of your products under Fairtrade certification also produced under an organic certification in the last calendar/ production year?",
               choices: [
@@ -82,7 +82,7 @@ const surveyJson = {
             "Please indicate the products that your organization produced according to the Fairtrade standards in the last calendar/ production year. Use the left-hand column to filter for the product(s).",
           columns: [
             {
-              name: "Column 1",
+              name: "product_category_major",
               title: "Major product category",
               cellType: "dropdown",
               choices: [
@@ -102,7 +102,7 @@ const surveyJson = {
               storeOthersAsComment: true
             },
             {
-              name: "Column 2",
+              name: "product_category_minor",
               title: "Minor product category",
               cellType: "dropdown",
               choices: [
@@ -129,7 +129,7 @@ const surveyJson = {
         },
         {
           type: "radiogroup",
-          name: "land_unit",
+          name: "land_area_unit",
           title:
             "What is the unit in which you would like to report your land area?",
           choices: [
@@ -145,27 +145,28 @@ const surveyJson = {
         },
         {
           type: "panel",
-          name: "panel2",
+          name: "land_area_panel",
           elements: [
             {
               type: "text",
-              name: "total_land_area",
+              name: "total_land_managed",
               title:
-                "What is the total land area in {land_unit} under cultivation by all SPO members (land under cultivation of both Fairtrade and non-Fairtrade certified crops)? ",
+                "What is the total land area in {land_area_unit} under cultivation by all SPO members (land under cultivation of both Fairtrade and non-Fairtrade certified crops)? ",
               inputType: "number"
             },
             {
               type: "text",
-              name: "total_FT_land_area",
+              name: "total_area_ft_certification",
               startWithNewLine: false,
               title:
-                "What is the total land area in {land_unit} under cultivation with Fairtrade crops within your organization?",
+                "What is the total land area in {land_area_unit} under cultivation with Fairtrade crops within your organization?",
               validators: [
                 {
                   type: "expression",
                   text:
                     "Fairtrade land area is larger than total land area. Please fix.",
-                  expression: "{total_land_area} >= {total_FT_land_area}"
+                  expression:
+                    "{total_land_managed} >= {total_area_ft_certification}"
                 }
               ],
               inputType: "number"
@@ -174,9 +175,9 @@ const surveyJson = {
         },
         {
           type: "matrixdropdown",
-          name: "question1",
+          name: "land_area_production_matrix",
           title:
-            "Record the land area in {land_unit} under cultivation of Fairtrade crops for each Fairtrade-certified product. If the area is not known, indicate so with the checkboxes. Note, if your organization produces honey, please report the number of beehives instead of land area.",
+            "Record the land area in {land_area_unit} under cultivation of Fairtrade crops for each Fairtrade-certified product. If the area is not known, indicate so with the checkboxes. Note, if your organization produces honey, please report the number of beehives instead of land area.",
           columns: [
             {
               name: "land_area_known",
@@ -190,8 +191,8 @@ const surveyJson = {
               showTitle: true
             },
             {
-              name: "land_area_product",
-              title: "Total land area in {land_unit} by product",
+              name: "land_total_production",
+              title: "Total land area in {land_area_unit} by product",
               cellType: "text",
               minWidth: "150px",
               visibleIf: "{row.land_area_known}=false",
@@ -209,16 +210,17 @@ const surveyJson = {
               showTitle: true
             },
             {
-              name: "land_area_conventional",
-              title: "Land area in {land_unit} under conventional cultivation",
+              name: "land_conventional_production",
+              title:
+                "Land area in {land_area_unit} under conventional cultivation",
               cellType: "text",
               minWidth: "150px",
               visibleIf: "{row.land_area_known_attribute}=false",
               inputType: "number"
             },
             {
-              name: "land_area_organic",
-              title: "Land area in {land_unit} under organic cultivation",
+              name: "land_organic_production",
+              title: "Land area in {land_area_unit} under organic cultivation",
               cellType: "text",
               minWidth: "150px",
               visibleIf: "{row.land_area_known_attribute}=false",
@@ -248,13 +250,13 @@ const surveyJson = {
       elements: [
         {
           type: "matrixdropdown",
-          name: "question3",
+          name: "volumes_produced_matrix",
           title:
             "Record the conventional and organic volumes produced under Fairtrade certification in the last calendar/production year for each product. If production volume is estimated, please specify how you came to this estimate.",
           columns: [
             {
-              name: "product_type_production",
-              title: "Production type",
+              name: "product_form_name",
+              title: "What product form are you reporting your production in?",
               cellType: "dropdown",
               minWidth: "300px",
               choices: [
@@ -278,8 +280,8 @@ const surveyJson = {
               storeOthersAsComment: true
             },
             {
-              name: "production_unit",
-              title: "Unit",
+              name: "volume_produced_unit",
+              title: "What unit are you reporting your production in?",
               cellType: "dropdown",
               minWidth: "180px",
               choices: [
@@ -302,21 +304,21 @@ const surveyJson = {
               ]
             },
             {
-              name: "production_conventional",
+              name: "volume_conventional_produced",
               title: "Volume produced under conventional cultivation",
               cellType: "text",
               minWidth: "180px",
               inputType: "number"
             },
             {
-              name: "production_organic",
+              name: "volume_organic_produced",
               title: "Volume produced under organic cultivation",
               cellType: "text",
               minWidth: "180px",
               inputType: "number"
             },
             {
-              name: "estimate_actual",
+              name: "volume_produced_estimated_or_measured",
               title: "Are the volumes reported actual or estimates?",
               cellType: "boolean",
               minWidth: "150px",
@@ -387,12 +389,12 @@ const surveyJson = {
         },
         {
           type: "matrixdropdown",
-          name: "volumes_on_offer",
+          name: "volumes_forecast_matrix",
           title:
             "How much of the total volume produced this year does your organization have on offer that is of export quality for Fairtrade sales? Record the conventional and organic volumes. If you have already started selling, record the volume your organization had on offer at the beginning of this calendar year.",
           columns: [
             {
-              name: "product_type_offer",
+              name: "product_form_name_forecast",
               title: "Production type",
               cellType: "dropdown",
               minWidth: "300px",
@@ -417,7 +419,7 @@ const surveyJson = {
               storeOthersAsComment: true
             },
             {
-              name: "offer_unit",
+              name: "volume_forecast_unit",
               title: "Unit",
               cellType: "dropdown",
               minWidth: "180px",
@@ -441,14 +443,14 @@ const surveyJson = {
               ]
             },
             {
-              name: "offer_conventional",
+              name: "volume_conventional_forecast",
               title: "Conventional volume on offer",
               cellType: "text",
               minWidth: "180px",
               inputType: "number"
             },
             {
-              name: "offer_organic",
+              name: "volume_organic_forecast",
               title: "Organic volume on offer",
               cellType: "text",
               minWidth: "180px",
