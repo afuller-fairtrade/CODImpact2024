@@ -51,16 +51,16 @@ const surveyJson = {
                 "Were some or all of your products under Fairtrade certification also produced under an organic certification in the last calendar/ production year?",
               choices: [
                 {
-                  value: "item1",
+                  value: "mixed_production",
                   text:
                     "Some products (both organic and conventional production)"
                 },
                 {
-                  value: "item2",
+                  value: "conv_only",
                   text: "None of the products (only conventional production)"
                 },
                 {
-                  value: "item3",
+                  value: "organic_only",
                   text: "All products (only organic production)"
                 }
               ]
@@ -68,7 +68,7 @@ const surveyJson = {
           ]
         }
       ],
-      description: "Producer Profile"
+      description: "Start Page: Producer Profile"
     },
     {
       name: "Land area",
@@ -249,6 +249,110 @@ const surveyJson = {
       navigationDescription: "Volumes produced & forecasts",
       elements: [
         {
+          type: "panel",
+          name: "unit_descriptions_panel",
+          elements: [
+            {
+              type: "expression",
+              name: "unit_descriptions",
+              title:
+                "A note on units: please make sure the unit you select is correct and applicable to the product you are reporting on. Please see here a description of uses for each unit:",
+              hideNumber: true
+            },
+            {
+              type: "panel",
+              name: "panel4",
+              elements: [
+                {
+                  type: "expression",
+                  name: "kg_description",
+                  title: "Kilograms (kg)",
+                  description:
+                    "Use kg when you know the volume of your product in kilograms",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "mt_description",
+                  startWithNewLine: false,
+                  title: "Metric tons (MT)",
+                  description:
+                    "Use MT when you know the volume of your product in metric tons",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "boxes_large_description",
+                  title: "18.14 kg Boxes",
+                  description:
+                    "For bananas only: use 18.14 kg Boxes when you know the number of boxes of bananas",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "boxes_small_description",
+                  startWithNewLine: false,
+                  title: "13.5 kg Boxes",
+                  description:
+                    "For bananas only: use 13.5 kg Boxes when you know the number of boxes of bananas",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "pounds_description",
+                  title: "Pound",
+                  description:
+                    "Use pound when you know the volume of your product in pounds",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "question6",
+                  startWithNewLine: false,
+                  title: "Quintales (46 kg)",
+                  description:
+                    "Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "flowers_description",
+                  title: "Stems of flowers",
+                  description:
+                    "For flowers and plants only: use when you know the number of flowers or plants",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "1000stems_description",
+                  startWithNewLine: false,
+                  title: "1000 stems of flowers",
+                  description:
+                    "For flowers and plants only: use when you know the number of 1,000 flower or plant bunches",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "litres_description",
+                  title: "Litres",
+                  description:
+                    "For argan oil and wine bottles only: use litres when you know the volume of your oil or wine in litres",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "items_description",
+                  startWithNewLine: false,
+                  title: "Items",
+                  description:
+                    "For coconuts and sportsballs only: use items when you know the number of coconuts or sportsballs produced",
+                  hideNumber: true
+                }
+              ]
+            }
+          ]
+        },
+        {
           type: "matrixdropdown",
           name: "volumes_produced_matrix",
           title:
@@ -286,19 +390,43 @@ const surveyJson = {
               minWidth: "180px",
               choices: [
                 {
-                  value: "item1",
+                  value: "kg",
                   text: "kg"
                 },
                 {
-                  value: "item2",
+                  value: "mt",
                   text: "MT"
                 },
                 {
-                  value: "item3",
-                  text: "Boxes 18.14 kg"
+                  value: "boxes_large",
+                  text: "18.14 kg Boxes"
                 },
                 {
-                  value: "item4",
+                  value: "boxes_small",
+                  text: "13.5 kg Boxes"
+                },
+                {
+                  value: "pound",
+                  text: "Pound"
+                },
+                {
+                  value: "quintales",
+                  text: "Quintales (46 kg)"
+                },
+                {
+                  value: "stems",
+                  text: "Stems of flowers"
+                },
+                {
+                  value: "1000stems",
+                  text: "1000 stems of flowers"
+                },
+                {
+                  value: "litres",
+                  text: "Litres"
+                },
+                {
+                  value: "items",
                   text: "Items"
                 }
               ]
@@ -425,19 +553,43 @@ const surveyJson = {
               minWidth: "180px",
               choices: [
                 {
-                  value: "item1",
+                  value: "kg",
                   text: "kg"
                 },
                 {
-                  value: "item2",
+                  value: "mt",
                   text: "MT"
                 },
                 {
-                  value: "item3",
-                  text: "Boxes 18.14 kg"
+                  value: "boxes_large",
+                  text: "18.14 kg Boxes"
                 },
                 {
-                  value: "item4",
+                  value: "boxes_small",
+                  text: "13.5 kg Boxes"
+                },
+                {
+                  value: "pound",
+                  text: "Pound"
+                },
+                {
+                  value: "quintales",
+                  text: "Quintales (46 kg)"
+                },
+                {
+                  value: "stems",
+                  text: "Stems of flowers"
+                },
+                {
+                  value: "1000stems",
+                  text: "1000 stems of flowers"
+                },
+                {
+                  value: "litres",
+                  text: "Litres"
+                },
+                {
+                  value: "items",
                   text: "Items"
                 }
               ]
