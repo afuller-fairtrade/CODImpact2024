@@ -32,6 +32,7 @@ const surveyJson = {
               type: "radiogroup",
               name: "producer_setup",
               title: "Choose your producer setup:",
+              isRequired: true,
               choices: [
                 {
                   value: "spo",
@@ -49,14 +50,15 @@ const surveyJson = {
               name: "organic_logic",
               title:
                 "Were some or all of your products under Fairtrade certification also produced under an organic certification in the last calendar/ production year?",
+              isRequired: true,
               choices: [
                 {
-                  value: "mixed_production",
+                  value: "mixed",
                   text:
                     "Some products (both organic and conventional production)"
                 },
                 {
-                  value: "conv_only",
+                  value: "conventional_only",
                   text: "None of the products (only conventional production)"
                 },
                 {
@@ -132,6 +134,7 @@ const surveyJson = {
           name: "land_area_unit",
           title:
             "What is the unit in which you would like to report your land area?",
+          isRequired: true,
           choices: [
             {
               value: "ha",
@@ -152,9 +155,11 @@ const surveyJson = {
               name: "total_land_managed",
               title:
                 "What is the total land area in {land_area_unit} under cultivation by all SPO members (land under cultivation of both Fairtrade and non-Fairtrade certified crops)? ",
+              visibleIf: "{producer_setup} = 'spo'",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -175,6 +180,7 @@ const surveyJson = {
                 },
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ],
@@ -208,6 +214,7 @@ const surveyJson = {
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -229,10 +236,13 @@ const surveyJson = {
                 "Land area in {land_area_unit} under conventional cultivation",
               cellType: "text",
               minWidth: "150px",
-              visibleIf: "{row.land_area_known_attribute}=false",
+              visibleIf:
+                "{row.land_area_known_attribute}=false" &&
+                "{organic_logic} <> 'organic_only'",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -242,10 +252,13 @@ const surveyJson = {
               title: "Land area in {land_area_unit} under organic cultivation",
               cellType: "text",
               minWidth: "150px",
-              visibleIf: "{row.land_area_known_attribute}=false",
+              visibleIf:
+                "{row.land_area_known_attribute}=false" &&
+                "{organic_logic} <> 'conventional_only'",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -459,10 +472,12 @@ const surveyJson = {
               name: "volume_conventional_produced",
               title: "Volume produced under conventional cultivation",
               cellType: "text",
+              visibleIf: "{organic_logic} <> 'organic_only'",
               minWidth: "180px",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -471,10 +486,12 @@ const surveyJson = {
               name: "volume_organic_produced",
               title: "Volume produced under organic cultivation",
               cellType: "text",
+              visibleIf: "{organic_logic} <> 'conventional_only'",
               minWidth: "180px",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -494,8 +511,7 @@ const surveyJson = {
               title: "Volumes were estimated based on:",
               cellType: "dropdown",
               minWidth: "200px",
-              visibleIf: "{row.estimate_actual}=false",
-              visible: false,
+              visibleIf: "{row.volume_produced_estimated_or_measured}=false",
               choices: [
                 {
                   value: 1,
@@ -504,7 +520,7 @@ const surveyJson = {
                 {
                   value: 2,
                   text: "Purchases from members",
-                  visibleIf: "{producer_setup}=spo"
+                  visibleIf: "{producer_setup}='spo'"
                 },
                 {
                   value: 3,
@@ -516,25 +532,6 @@ const surveyJson = {
                 }
               ],
               storeOthersAsComment: true
-            }
-          ],
-          choices: [
-            {
-              value: 1,
-              text: "Yields"
-            },
-            {
-              value: 2,
-              text: "Purchases from members",
-              visibleIf: "{producer_setup}=spo"
-            },
-            {
-              value: 3,
-              text: "Fairtrade sales"
-            },
-            {
-              value: 4,
-              text: "Total sales"
             }
           ],
           rows: [
@@ -585,6 +582,7 @@ const surveyJson = {
               title: "Unit",
               cellType: "dropdown",
               minWidth: "180px",
+              choicesFromQuestion: "volume_produced_unit",
               choices: [
                 {
                   value: "kg",
@@ -632,10 +630,12 @@ const surveyJson = {
               name: "volume_conventional_forecast",
               title: "Conventional volume on offer",
               cellType: "text",
+              visibleIf: "{organic_logic} <> 'organic_only'",
               minWidth: "180px",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
@@ -644,10 +644,12 @@ const surveyJson = {
               name: "volume_organic_forecast",
               title: "Organic volume on offer",
               cellType: "text",
+              visibleIf: "{organic_logic} <> 'conventional_only'",
               minWidth: "180px",
               validators: [
                 {
                   type: "numeric",
+                  text: "Please enter a number",
                   minValue: 0
                 }
               ]
