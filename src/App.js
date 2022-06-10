@@ -152,7 +152,12 @@ const surveyJson = {
               name: "total_land_managed",
               title:
                 "What is the total land area in {land_area_unit} under cultivation by all SPO members (land under cultivation of both Fairtrade and non-Fairtrade certified crops)? ",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             },
             {
               type: "text",
@@ -167,6 +172,10 @@ const surveyJson = {
                     "Fairtrade land area is larger than total land area. Please fix.",
                   expression:
                     "{total_land_managed} >= {total_area_ft_certification}"
+                },
+                {
+                  type: "numeric",
+                  minValue: 0
                 }
               ],
               inputType: "number"
@@ -196,7 +205,12 @@ const surveyJson = {
               cellType: "text",
               minWidth: "150px",
               visibleIf: "{row.land_area_known}=false",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             },
             {
               name: "land_area_known_attribute",
@@ -216,7 +230,12 @@ const surveyJson = {
               cellType: "text",
               minWidth: "150px",
               visibleIf: "{row.land_area_known_attribute}=false",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             },
             {
               name: "land_organic_production",
@@ -224,7 +243,12 @@ const surveyJson = {
               cellType: "text",
               minWidth: "150px",
               visibleIf: "{row.land_area_known_attribute}=false",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             }
           ],
           horizontalScroll: true,
@@ -436,14 +460,24 @@ const surveyJson = {
               title: "Volume produced under conventional cultivation",
               cellType: "text",
               minWidth: "180px",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             },
             {
               name: "volume_organic_produced",
               title: "Volume produced under organic cultivation",
               cellType: "text",
               minWidth: "180px",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             },
             {
               name: "volume_produced_estimated_or_measured",
@@ -599,14 +633,24 @@ const surveyJson = {
               title: "Conventional volume on offer",
               cellType: "text",
               minWidth: "180px",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             },
             {
               name: "volume_organic_forecast",
               title: "Organic volume on offer",
               cellType: "text",
               minWidth: "180px",
-              inputType: "number"
+              validators: [
+                {
+                  type: "numeric",
+                  minValue: 0
+                }
+              ]
             }
           ],
           rows: [
