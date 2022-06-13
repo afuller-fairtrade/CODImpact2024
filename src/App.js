@@ -179,7 +179,7 @@ const surveyJson = {
             "Do you know the number of your organization's members by gender?",
           hideNumber: true,
           defaultValue: "false",
-          isRequired: true,
+          /*isRequired: true,*/
           labelTrue: "No",
           labelFalse: "Yes"
         },
@@ -336,7 +336,7 @@ const surveyJson = {
             }
           ],
           visibleIf: "{farmers_gender_known} = false",
-          isRequired: true,
+          /*isRequired: true,*/
           requiredErrorText: "Please fix errors"
         },
         {
@@ -352,7 +352,7 @@ const surveyJson = {
             "Do you know the number of your organization's members by age groups?",
           hideNumber: true,
           defaultValue: "false",
-          isRequired: true,
+          /*isRequired: true,*/
           labelTrue: "No",
           labelFalse: "Yes"
         },
@@ -617,83 +617,6 @@ const surveyJson = {
             "Record the number of workers employed by your organization in the last calendar year with the following types of employment contracts."
         },
         {
-          type: "panel",
-          name: "Number of workers",
-          elements: [
-            {
-              type: "expression",
-              name: "permanent_text",
-              title: "Permanent",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "fixedterm_text",
-              startWithNewLine: false,
-              title: "Fixed term",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "subcontracted_text",
-              startWithNewLine: false,
-              title: "Sub-contracted",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "total_text_v2",
-              startWithNewLine: false,
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "workers_permanent",
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_fixed_term",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_subcontractor",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "workers_total",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression:
-                "{workers_permanent}+{workers_fixed_term}+{workers_subcontractor}"
-            }
-          ],
-          isRequired: true
-        },
-        {
           type: "expression",
           name: "info_box1",
           title:
@@ -714,6 +637,177 @@ const surveyJson = {
           title:
             "For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply: /nPermanent workers: A permanent worker is a worker that has an employment relationship with the company/organization for an indefinite period of time. /nFixed-term workers: A fixed-term (or temporary) worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer./n Sub-contracted worker: A sub-contracted worker is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker. /nSeasonal worker: A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted.",
           hideNumber: true
+        },
+        {
+          type: "panel",
+          name: "Number of workers",
+          elements: [
+            {
+              type: "text",
+              name: "workers_permanent",
+              title: "Permanent workers",
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_fixed_term",
+              title: "Fixed-term workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_subcontractor",
+              title: "Sub-contracted workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "expression",
+              name: "workers_total",
+              title: "Total workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              expression:
+                "{workers_permanent}+{workers_fixed_term}+{workers_subcontractor}"
+            }
+          ]
+          /*isRequired: true*/
+        },
+        {
+          type: "boolean",
+          name: "workers_gender_known",
+          title: "Do you know number of workers by gender?",
+          defaultValue: "false",
+          /*isRequired: true,*/
+          labelTrue: "No",
+          labelFalse: "Yes"
+        },
+        {
+          type: "panel",
+          name: "Number of workers by gender",
+          elements: [
+            {
+              type: "expression",
+              name: "q8_text",
+              title:
+                "Record the number of workers employed by your organization in the last calendar year, by gender, with the following types of employment contracts. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded here or in the previous question."
+            },
+            {
+              type: "text",
+              name: "workers_permanent_female",
+              title: "Female permanent workers",
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_fixed_term_female",
+              title: "Female fixed-term workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_subcontractor_female",
+              title: "Female sub-contracted workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "expression",
+              name: "workers_female",
+              title: "Total female workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              expression:
+                "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
+            },
+            {
+              type: "text",
+              name: "workers_permanent_male",
+              title: "Male permanent workers",
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_fixed_term_male",
+              title: "Male fixed-term workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_subcontractor_male",
+              title: "Male sub-contracted workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "expression",
+              name: "workers_male",
+              title: "Total male workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              expression:
+                "{workers_permanent_male}+{workers_fixed_term_male}+{workers_subcontractor_male}"
+            }
+          ],
+          visibleIf: "{workers_gender_known} = false",
+          isRequired: true
         }
       ],
       description: "Workers in your organization"
@@ -725,205 +819,9 @@ const surveyJson = {
       elements: [
         {
           type: "expression",
-          name: "q8_text",
-          title:
-            "Record the number of workers employed by your organization in the last calendar year, by gender, with the following types of employment contracts. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded here or in the previous question."
-        },
-        {
-          type: "boolean",
-          name: "workers_gender_known",
-          title: "Do you know number of workers by gender?",
-          defaultValue: "false",
-          isRequired: true,
-          labelTrue: "No",
-          labelFalse: "Yes"
-        },
-        {
-          type: "panel",
-          name: "Number of workers by gender",
-          elements: [
-            {
-              type: "expression",
-              name: "gender_text",
-              title: "Gender",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "permanent_text_v2",
-              startWithNewLine: false,
-              title: "Permanent",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "fixedterm_text_v2",
-              startWithNewLine: false,
-              title: "Fixed term",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "subcontracted_text_v2",
-              startWithNewLine: false,
-              title: "Sub-contracted",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "total_text_v3",
-              startWithNewLine: false,
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "question26",
-              title: "Female",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "workers_permanent_female",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_fixed_term_female",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_subcontractor_female",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "workers_female",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression:
-                "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
-            },
-            {
-              type: "expression",
-              name: "question32",
-              title: "Male",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "workers_permanent_male",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_fixed_term_male",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_subcontractor_male",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "workers_male",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression:
-                "{workers_permanent_male}+{workers_fixed_term_male}+{workers_subcontractor_male}"
-            },
-            {
-              type: "expression",
-              name: "question37",
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "RO_permanent",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{workers_permanent}"
-            },
-            {
-              type: "expression",
-              name: "RO_fixed_term",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{workers_fixed_term}"
-            },
-            {
-              type: "expression",
-              name: "RO_subcontracted_workers",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{workers_subcontractor}"
-            },
-            {
-              type: "expression",
-              name: "RO_total_workers",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{workers_total}"
-            }
-          ],
-          visibleIf: "{workers_gender_known} = false",
-          isRequired: true
-        }
-      ]
-    },
-    {
-      name: "page7",
-      elements: [
-        {
-          type: "expression",
           name: "q9_text",
           title:
-            "Of the {workers_total} workers hired by your organization, how many are seasonal workers?"
+            "Of the {workers_fixed_term}+{workers_subcontractor} fixed-term and sub-contracted workers hired by your organization, how many are seasonal workers?"
         },
         {
           type: "boolean",
@@ -964,7 +862,7 @@ const surveyJson = {
           title: "Do you know number of seasonal workers by gender?",
           hideNumber: true,
           defaultValue: "false",
-          isRequired: true,
+          /*isRequired: true,*/
           labelTrue: "No",
           labelFalse: "Yes"
         },
@@ -1058,7 +956,7 @@ const surveyJson = {
           title: "Do you know the number of your workers by age groups?",
           hideNumber: true,
           defaultValue: "false",
-          isRequired: true,
+          /*isRequired: true,*/
           labelTrue: "No",
           labelFalse: "Yes"
         },
@@ -1373,7 +1271,7 @@ const surveyJson = {
           name: "land_area_unit",
           title:
             "What is the unit in which you would like to report your land area?",
-          isRequired: true,
+          /*isRequired: true,*/
           choices: [
             {
               value: "ha",
