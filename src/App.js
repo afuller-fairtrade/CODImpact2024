@@ -719,7 +719,9 @@ const surveyJson = {
       description: "Workers in your organization"
     },
     {
-      name: "page6",
+      name: "Workers",
+      navigationTitle: "Workers",
+      navigationDescription: "Gender & Youth",
       elements: [
         {
           type: "expression",
