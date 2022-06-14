@@ -915,145 +915,114 @@ const surveyJson = {
           name: "Number of workers by age",
           elements: [
             {
-              type: "expression",
-              name: "age_group_text",
-              title: "Age group",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "total_text_q11",
-              startWithNewLine: false,
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "gender_breakdown_workers_text",
-              startWithNewLine: false,
-              title: "Gender breakdown known",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "female_workers_text",
-              startWithNewLine: false,
-              title: "Female",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "male_workers_text",
-              startWithNewLine: false,
-              title: "Male",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "16_28_years_old_text",
-              title: "16-28 years old",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "question62",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              validators: [
+              type: "panel",
+              name: "Number of workers age 16 to 28 years old",
+              title: "Number of workers age 16 to 28 years old",
+              elements: [
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
+                  type: "text",
+                  name: "total_workers_16to28",
+                  title: "Total number of workers age 16 to 28",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "boolean",
+                  name: "workers_gender_known_16_28",
+                  title: "Do you know the number of male and female workers?",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  defaultValue: "true",
+                  labelTrue: "No",
+                  labelFalse: "Yes"
+                },
+                {
+                  type: "text",
+                  name: "workers_female_16_28",
+                  title: "Number of female workers",
+                  hideNumber: true,
+                  visibleIf: "{workers_gender_known_16_28} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "workers_male_16_28",
+                  title: "Number of male workers",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  visibleIf: "{workers_gender_known_16_28} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
                 }
               ]
             },
             {
-              type: "boolean",
-              name: "workers_gender_known_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              defaultValue: "false",
-              labelTrue: "No",
-              labelFalse: "Yes"
-            },
-            {
-              type: "text",
-              name: "workers_female_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              enableIf: "{workers_gender_known_16_28} = false",
-              validators: [
+              type: "panel",
+              name: "Number of workers age 29 to 35 years old",
+              title: "Number of workers age 29 to 35 years old",
+              elements: [
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_male_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              enableIf: "{workers_gender_known_16_28} = false",
-              validators: [
+                  type: "text",
+                  name: "workers_29_35",
+                  title: "Total number of workers age 29 to 35",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "29_35_years_old_text",
-              title: "29-35 years old",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "workers_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              validators: [
+                  type: "boolean",
+                  name: "workers_gender_known_29_35",
+                  title: "Do you know the number of male and female workers?",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  defaultValue: "true",
+                  labelTrue: "No",
+                  labelFalse: "Yes"
+                },
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "boolean",
-              name: "workers_gender_known_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              defaultValue: "false",
-              labelTrue: "No",
-              labelFalse: "Yes"
-            },
-            {
-              type: "text",
-              name: "workers_female_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              enableIf: "{workers_gender_known_29_35} = false",
-              validators: [
+                  type: "text",
+                  name: "workers_female_29_35",
+                  title: "Number of female workers",
+                  hideNumber: true,
+                  visibleIf: "{workers_gender_known_29_35} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_male_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              enableIf: "{workers_gender_known_29_35} = false",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
+                  type: "text",
+                  name: "workers_male_29_35",
+                  title: "Number of male workers",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  visibleIf: "{workers_gender_known_29_35} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
                 }
               ]
             },
@@ -1066,8 +1035,8 @@ const surveyJson = {
             {
               type: "text",
               name: "workers_36",
-              startWithNewLine: false,
-              titleLocation: "hidden",
+              title: "Total number of workers 36 years or older",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
@@ -1153,8 +1122,8 @@ const surveyJson = {
                 "{workers_male_16_28}+{workers_male_29_35}+{workers_male_36}"
             }
           ],
-          visibleIf: "{workers_age_known} = false",
-          isRequired: true
+          visibleIf: "{workers_age_known} = false"
+          /*isRequired: true*/
         }
       ],
       description: "Workers: Youth"
