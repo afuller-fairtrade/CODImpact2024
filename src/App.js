@@ -617,25 +617,25 @@ const surveyJson = {
             "Record the number of workers employed by your organization in the last calendar year with the following types of employment contracts."
         },
         {
-          type: "expression",
+          type: "html",
+          name: "info_box_spo_only",
+          visibleIf: "{producer_setup} = 'spo'",
+          html:
+            "This section applies <b>only to those workers hired by your organization directly.</b> Workers hired by individual SPO members that work on farms should <i>not</i> be counted in this section.",
+          hideNumber: true
+        },
+        {
+          type: "html",
           name: "info_box1",
-          title:
+          html:
             "Workers are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers.",
           hideNumber: true
         },
         {
-          type: "expression",
-          name: "info_box_spo_only",
-          visibleIf: "{producer_setup} = 'spo'",
-          title:
-            "This applies only to those workers hired by your organization directly. Workers hired by individual SPO members that work on farms should not be counted in this section.",
-          hideNumber: true
-        },
-        {
-          type: "expression",
+          type: "html",
           name: "info_box2",
-          title:
-            "For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply: /nPermanent workers: A permanent worker is a worker that has an employment relationship with the company/organization for an indefinite period of time. /nFixed-term workers: A fixed-term (or temporary) worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer./n Sub-contracted worker: A sub-contracted worker is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker. /nSeasonal worker: A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted.",
+          html:
+            "For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply:<br><br><b>Permanent workers:</b> A permanent worker is a worker that has an employment relationship with the company/organization for an indefinite period of time.<br><br><b>Fixed-term workers:</b> A fixed-term (or temporary) worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer.<br><br><b>Sub-contracted worker:</b> A sub-contracted worker is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker.<br><br><b>Seasonal worker:</b> A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted.",
           hideNumber: true
         },
         {
@@ -1091,15 +1091,15 @@ const surveyJson = {
                   type: "expression",
                   name: "RO_workers_age_total",
                   title: "Total number of workers reported:",
-                  hideNumber: true,
-                  validators: [
+                  hideNumber: true
+                  /*validators: [
                     {
                       type: "expression",
                       expression: "{workers_age_total} <= '{workers_total}'"
                     }
                   ],
                   expression:
-                    "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"
+                    "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"*/
                 },
                 {
                   type: "expression",
