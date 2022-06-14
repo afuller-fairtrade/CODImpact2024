@@ -658,7 +658,7 @@ const surveyJson = {
               type: "text",
               name: "workers_fixed_term",
               title: "Fixed-term workers",
-              startWithNewLine: false,
+              /*startWithNewLine: false,*/
               hideNumber: true,
               validators: [
                 {
@@ -671,7 +671,7 @@ const surveyJson = {
               type: "text",
               name: "workers_subcontractor",
               title: "Sub-contracted workers",
-              startWithNewLine: false,
+              /*startWithNewLine: false,*/
               hideNumber: true,
               validators: [
                 {
@@ -684,10 +684,19 @@ const surveyJson = {
               type: "expression",
               name: "workers_total",
               title: "Total workers",
-              startWithNewLine: false,
+              /*startWithNewLine: false,*/
               hideNumber: true,
               expression:
                 "{workers_permanent}+{workers_fixed_term}+{workers_subcontractor}"
+            },
+            {
+              type: "expression",
+              name: "workers_seasonal_max_hidden",
+              title: "Max number of seasonal workers",
+              /*startWithNewLine: false,*/
+              hideNumber: true,
+              visible: false,
+              expression: "{workers_fixed_term}+{workers_subcontractor}"
             }
           ]
           /*isRequired: true*/
@@ -725,43 +734,22 @@ const surveyJson = {
             },
             {
               type: "text",
-              name: "workers_fixed_term_female",
-              title: "Female fixed-term workers",
-              startWithNewLine: false,
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "workers_subcontractor_female",
-              title: "Female sub-contracted workers",
-              startWithNewLine: false,
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "workers_female",
-              title: "Total female workers",
-              startWithNewLine: false,
-              hideNumber: true,
-              expression:
-                "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
-            },
-            {
-              type: "text",
               name: "workers_permanent_male",
               title: "Male permanent workers",
+              startWithNewLine: false,
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
+              name: "workers_fixed_term_female",
+              title: "Female fixed-term workers",
+              /*startWithNewLine: false,*/
               hideNumber: true,
               validators: [
                 {
@@ -785,6 +773,19 @@ const surveyJson = {
             },
             {
               type: "text",
+              name: "workers_subcontractor_female",
+              title: "Female sub-contracted workers",
+              /*startWithNewLine: false,*/
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "text",
               name: "workers_subcontractor_male",
               title: "Male sub-contracted workers",
               startWithNewLine: false,
@@ -795,6 +796,15 @@ const surveyJson = {
                   text: "Please enter a valid number"
                 }
               ]
+            },
+            {
+              type: "expression",
+              name: "workers_female",
+              title: "Total female workers",
+              /*startWithNewLine: false,*/
+              hideNumber: true,
+              expression:
+                "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
             },
             {
               type: "expression",
@@ -815,46 +825,19 @@ const surveyJson = {
     {
       name: "Workers",
       navigationTitle: "Workers",
-      navigationDescription: "Gender & Youth",
+      navigationDescription: "Seasonal",
       elements: [
-        {
-          type: "expression",
-          name: "q9_text",
-          title:
-            "Of the {workers_fixed_term}+{workers_subcontractor} fixed-term and sub-contracted workers hired by your organization, how many are seasonal workers?"
-        },
-        {
-          type: "boolean",
-          name: "workers_seasonal_known",
-          title: "Do you know number of seasonal workers?",
-          hideNumber: true,
-          defaultValue: "false",
-          labelTrue: "No",
-          labelFalse: "Yes"
-        },
         {
           type: "text",
           name: "workers_seasonal_total",
-          visibleIf: "{workers_seasonal_known} = false",
-          titleLocation: "hidden",
+          title:
+            "Of the {workers_seasonal_max_hidden} fixed-term and sub-contracted workers hired by your organization, how many are seasonal workers?",
           validators: [
             {
               type: "numeric",
               text: "Please enter a valid number"
             }
           ]
-        }
-      ],
-      visibleIf: "{producer_setup} = 'hlo'"
-    },
-    {
-      name: "page8",
-      elements: [
-        {
-          type: "expression",
-          name: "q10_text",
-          title:
-            "Record the number of seasonal workers employed by your organization in the last calendar year, by gender."
         },
         {
           type: "boolean",
@@ -869,78 +852,45 @@ const surveyJson = {
         {
           type: "panel",
           name: "Number of seasonal workers by gender",
+          title:
+            "Please record the number of female and male seasonal workers hired by your organization",
           elements: [
-            {
-              type: "expression",
-              name: "gender_text_q10",
-              title: "Gender",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "seasonal_text_q10",
-              startWithNewLine: false,
-              title: "Seasonal",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "female_text_q10",
-              title: "Female",
-              hideNumber: true
-            },
             {
               type: "text",
               name: "workers_seasonal_female",
-              startWithNewLine: false,
-              titleLocation: "hidden",
+              title: "Female seasonal workers",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
                   text: "Please enter a valid number"
                 }
               ]
-            },
-            {
-              type: "expression",
-              name: "male_text_q10",
-              title: "Male",
-              hideNumber: true
             },
             {
               type: "text",
               name: "workers_seasonal_male",
+              title: "Male seasonal workers",
               startWithNewLine: false,
-              titleLocation: "hidden",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
                   text: "Please enter a valid number"
                 }
               ]
-            },
-            {
-              type: "expression",
-              name: "total_text_q10",
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "RO_workers_seasonal",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{workers_seasonal_total}"
             }
           ],
-          visibleIf: "{workers_seasonal_gender_known} = false",
-          isRequired: true
+          visibleIf: "{workers_seasonal_gender_known} = false"
+          /*isRequired: true*/
         }
       ],
       visibleIf: "{producer_setup} = 'hlo'"
     },
     {
-      name: "page9",
+      name: "Workers: Youth",
+      navigationTitle: "Workers",
+      navigationDescription: "Youth",
       elements: [
         {
           type: "expression",
@@ -1207,7 +1157,7 @@ const surveyJson = {
           isRequired: true
         }
       ],
-      description: "Workers: Gender & Youth"
+      description: "Workers: Youth"
     },
     {
       name: "Land area",
