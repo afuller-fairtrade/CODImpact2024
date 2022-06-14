@@ -626,16 +626,9 @@ const surveyJson = {
         },
         {
           type: "html",
-          name: "info_box1",
-          html:
-            "Workers are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers.",
-          hideNumber: true
-        },
-        {
-          type: "html",
           name: "info_box2",
           html:
-            "For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply:<br><br><b>Permanent workers:</b> A permanent worker is a worker that has an employment relationship with the company/organization for an indefinite period of time.<br><br><b>Fixed-term workers:</b> A fixed-term (or temporary) worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer.<br><br><b>Sub-contracted worker:</b> A sub-contracted worker is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker.<br><br><b>Seasonal worker:</b> A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted.",
+            "Workers are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers. For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply:<br><br><b>Permanent workers:</b> A permanent worker is a worker that has an employment relationship with the company/organization for an indefinite period of time.<br><br><b>Fixed-term workers:</b> A fixed-term (or temporary) worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer.<br><br><b>Sub-contracted worker:</b> A sub-contracted worker is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker.<br><br><b>Seasonal worker:</b> A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted.",
           hideNumber: true
         },
         {
@@ -683,7 +676,7 @@ const surveyJson = {
             {
               type: "expression",
               name: "workers_total",
-              title: "Total workers",
+              title: "Summary of total workers:",
               /*startWithNewLine: false,*/
               hideNumber: true,
               expression:
@@ -800,7 +793,7 @@ const surveyJson = {
             {
               type: "expression",
               name: "workers_female",
-              title: "Total female workers",
+              title: "Summary of total female workers:",
               /*startWithNewLine: false,*/
               hideNumber: true,
               expression:
@@ -809,7 +802,7 @@ const surveyJson = {
             {
               type: "expression",
               name: "workers_male",
-              title: "Total male workers",
+              title: "Summary of total male workers:",
               startWithNewLine: false,
               hideNumber: true,
               expression:
@@ -1090,21 +1083,21 @@ const surveyJson = {
                 {
                   type: "expression",
                   name: "RO_workers_age_total",
-                  title: "Total number of workers reported:",
-                  hideNumber: true
-                  /*validators: [
-                    {
-                      type: "expression",
-                      expression: "{workers_age_total} <= '{workers_total}'"
-                    }
-                  ],
+                  title: "Summary of total workers reported:",
+                  hideNumber: true,
                   expression:
-                    "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"*/
+                    "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"
+                  /*validators: [
+                      {
+                        type: "expression",
+                        expression: "{workers_age_total} <= '{workers_total}'"
+                      }
+                    ],*/
                 },
                 {
                   type: "expression",
                   name: "RO_workers_age_female_total",
-                  title: "Total number of female workers reported:",
+                  title: "Summary of female workers reported:",
                   hideNumber: true,
                   expression:
                     "{workers_female_16_28}+{workers_female_29_35}+{workers_female_36}"
@@ -1112,7 +1105,7 @@ const surveyJson = {
                 {
                   type: "expression",
                   name: "RO_workers_age_male_total",
-                  title: "Total number of male workers reported:",
+                  title: "Summary of male workers reported:",
                   hideNumber: true,
                   expression:
                     "{workers_male_16_28}+{workers_male_29_35}+{workers_male_36}"
