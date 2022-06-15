@@ -81,51 +81,162 @@ const surveyJson = {
         {
           type: "panel",
           name: "Number of farmers",
+          title:
+            "Record the number of farmers that are members of your organization. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic.",
           elements: [
             {
-              type: "expression",
-              name: "q4_textt",
-              title:
-                "Record the number of farmers that are members of your organization. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic."
-            },
-            {
-              type: "text",
-              name: "farmers_conventional_total",
-              title: "Number of conventional farmers",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              hideNumber: true,
-              validators: [
+              type: "panel",
+              name: "farmers_conventional_panel",
+              elements: [
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number."
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "farmers_organic_total",
-              title: "Number of organic farmers",
-              visibleIf: "{organic_logic} anyof ['organic_only', 'mixed']",
-              startWithNewLine: false,
-              hideNumber: true,
-              validators: [
+                  type: "text",
+                  name: "farmers_conventional_total",
+                  title: "Number of conventional farmers",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number."
+                    }
+                  ]
+                },
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number."
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "farmers_total",
-              title: "Summary of total farmers:",
-              hideNumber: true,
-              validators: [
+                  type: "text",
+                  name: "farmers_conventional_female",
+                  title: "Female conventional farmers",
+                  visibleIf: "{farmers_conventional_gender_not_known} empty",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
                 {
-                  type: "expression"
+                  type: "text",
+                  name: "farmers_conventional_male",
+                  title: "Male conventional farmers",
+                  visibleIf: "{farmers_conventional_gender_not_known} empty",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "checkbox",
+                  name: "farmers_conventional_gender_not_known",
+                  hideNumber: true,
+                  titleLocation: "hidden",
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the number of conventional farmers by gender"
+                    }
+                  ]
                 }
               ],
-              expression: "{farmers_conventional_total}+{farmers_organic_total}"
+              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']"
+            },
+            {
+              type: "panel",
+              name: "farmers_organic_panel",
+              elements: [
+                {
+                  type: "text",
+                  name: "farmers_organic_total",
+                  title: "Number of organic farmers",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number."
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_organic_female",
+                  title: "Female organic farmers",
+                  visibleIf: "{farmers_organic_gender_not_known} empty",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_organic_male",
+                  title: "Male organic farmers",
+                  visibleIf: "{farmers_organic_gender_not_known} empty",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "checkbox",
+                  name: "farmers_organic_gender_not_known",
+                  hideNumber: true,
+                  titleLocation: "hidden",
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the number of organic farmers by gender"
+                    }
+                  ]
+                }
+              ],
+              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
+              startWithNewLine: false
+            },
+            {
+              type: "panel",
+              name: "summary_number_of_farmers",
+              title: "Summary of number of farmers reported",
+              elements: [
+                {
+                  type: "expression",
+                  name: "farmers_total",
+                  title: "Summary of total farmers:",
+                  /*startWithNewLine: false,*/
+                  hideNumber: true,
+                  expression:
+                    "{farmers_conventional_total}+{farmers_organic_total}"
+                },
+                {
+                  type: "expression",
+                  name: "farmers_female",
+                  title: "Summary of total female farmers:",
+                  /*startWithNewLine: false,*/
+                  hideNumber: true,
+                  expression:
+                    "{farmers_conventional_female}+{farmers_organic_female}"
+                },
+                {
+                  type: "expression",
+                  name: "farmers_male",
+                  title: "Summary of total male farmers:",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  expression:
+                    "{farmers_conventional_male}+{farmers_organic_male}"
+                }
+              ]
             }
           ],
           visibleIf: "{producer_setup} = 'spo'"
@@ -134,152 +245,21 @@ const surveyJson = {
       description: "SPO Members: in your organization"
     },
     {
-      name: "SPO Members",
-      navigationTitle: "SPO Members",
-      navigationDescription: "Gender & Youth",
+      name: "Farmers: Youth",
+      navigationTitle: "Farmers",
+      navigationDescription: "Youth",
       elements: [
         {
           type: "expression",
-          name: "q4_text",
+          name: "farmers_by_age_header",
           visibleIf: "{producer_setup} = 'spo'",
           title:
-            "Record the number of farmers that are members of your organization, by gender if known. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded here or in the previous questions."
-        },
-        {
-          type: "boolean",
-          name: "farmers_gender_known",
-          visibleIf: "{producer_setup} = 'spo'",
-          title:
-            "Do you know the number of your organization's members by gender?",
-          hideNumber: true,
-          defaultValue: "false",
-          /*isRequired: true,*/
-          labelTrue: "No",
-          labelFalse: "Yes"
-        },
-        {
-          type: "panel",
-          name: "Number of farmers by gender",
-          elements: [
-            {
-              type: "text",
-              name: "farmers_conventional_female",
-              title: "Female conventional farmers",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "farmers_conventional_male",
-              title: "Male conventional farmers",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              startWithNewLine: false,
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "RO_farmers_conventional_total",
-              title: "Summary of total conventional farmers reported:",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              startWithNewLine: false,
-              hideNumber: true,
-              expression:
-                "{farmers_conventional_female}+{farmers_conventional_male}"
-            },
-            {
-              type: "text",
-              name: "farmers_organic_female",
-              title: "Female organic farmers",
-              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "farmers_organic_male",
-              title: "Male organic farmers",
-              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
-              startWithNewLine: false,
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "RO_farmers_organic_total",
-              title: "Summary of total organic farmers reported:",
-              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
-              hideNumber: true,
-              startWithNewLine: false,
-              expression: "{farmers_organic_female}+{farmers_organic_male}"
-            },
-            {
-              type: "panel",
-              name: "summary_farmers_by_gender",
-              title: "Summary of farmers reported by gender",
-              elements: [
-                {
-                  type: "expression",
-                  name: "RO_farmers_female",
-                  title: "Summary of total female farmers:",
-                  hideNumber: true,
-                  expression:
-                    "{farmers_conventional_female}+{farmers_organic_female}"
-                },
-                {
-                  type: "expression",
-                  name: "RO_farmers_male",
-                  title: "Summary of total male farmers:",
-                  hideNumber: true,
-                  startWithNewLine: false,
-                  expression:
-                    "{farmers_conventional_male}+{farmers_organic_male}"
-                },
-                {
-                  type: "expression",
-                  name: "RO_farmers_total",
-                  title: "Summar of total number of farmers reported:",
-                  hideNumber: true,
-                  expression:
-                    "{RO_farmers_conventional_total}+{RO_farmers_organic_total}"
-                }
-              ]
-            }
-          ],
-          visibleIf: "{farmers_gender_known} = false"
-          /*isRequired: true,*/
-          /*requiredErrorText: "Please fix errors"*/
-        },
-        {
-          type: "expression",
-          name: "q6_text",
-          title:
-            "Record the number of farmers that are members of your SPO by age group, and provide gender breakdown, if known:"
+            "Record the number of farmers that are members of your organization, by age group."
         },
         {
           type: "boolean",
           name: "farmers_age_known",
+          visibleIf: "{producer_setup} = 'spo'",
           title:
             "Do you know the number of your organization's members by age groups?",
           hideNumber: true,
@@ -293,249 +273,217 @@ const surveyJson = {
           name: "Number of farmers by age",
           elements: [
             {
-              type: "expression",
-              name: "age_text",
-              title: "Age group",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "totalage_text",
-              startWithNewLine: false,
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "gender_known_text",
-              startWithNewLine: false,
-              title: "Gender breakdown known",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "female_age_text",
-              startWithNewLine: false,
-              title: "Female",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "male_age_text",
-              startWithNewLine: false,
-              title: "Male",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "age_16_28_text",
-              title: "16-28 years old",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "farmers_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              validators: [
+              type: "panel",
+              name: "Number of farmers age 16 to 28 years old",
+              title: "Number of farmers age 16 to 28 years old",
+              elements: [
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
+                  type: "text",
+                  name: "total_farmers_16_28",
+                  title: "Total number of farmers age 16 to 28",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "boolean",
+                  name: "farmers_gender_known_16_28",
+                  title: "Do you know the number of female and male farmers?",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  defaultValue: "true",
+                  labelTrue: "No",
+                  labelFalse: "Yes"
+                },
+                {
+                  type: "text",
+                  name: "farmers_female_16_28",
+                  title: "Number of female farmers",
+                  hideNumber: true,
+                  visibleIf: "{farmers_gender_known_16_28} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_male_16_28",
+                  title: "Number of male farmers",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  visibleIf: "{farmers_gender_known_16_28} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
                 }
               ]
             },
             {
-              type: "boolean",
-              name: "farmers_gender_known_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              defaultValue: "false",
-              labelTrue: "No",
-              labelFalse: "Yes"
-            },
-            {
-              type: "text",
-              name: "farmers_female_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              visibleIf: "{farmers_gender_known_16_28} = false",
-              validators: [
+              type: "panel",
+              name: "Number of farmers age 29 to 35 years old",
+              title: "Number of farmers age 29 to 35 years old",
+              elements: [
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
+                  type: "text",
+                  name: "total_farmers_29_35",
+                  title: "Total number of farmers age 29 to 35",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "boolean",
+                  name: "farmers_gender_known_29_35",
+                  title: "Do you know the number of female and male farmers?",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  defaultValue: "true",
+                  labelTrue: "No",
+                  labelFalse: "Yes"
+                },
+                {
+                  type: "text",
+                  name: "farmers_female_29_35",
+                  title: "Number of female farmers",
+                  hideNumber: true,
+                  visibleIf: "{farmers_gender_known_29_35} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_male_29_35",
+                  title: "Number of male farmers",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  visibleIf: "{farmers_gender_known_29_35} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
                 }
               ]
             },
             {
-              type: "text",
-              name: "farmers_male_16_28",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              visibleIf: "{farmers_gender_known_16_28} = false",
-              validators: [
+              type: "panel",
+              name: "Number of farmers age 36 years or older",
+              title: "Number of farmers age 36 years or older",
+              elements: [
                 {
-                  type: "numeric",
-                  text: "Please enter a valid number"
+                  type: "text",
+                  name: "total_farmers_36",
+                  title: "Total number of farmers 36 years or older",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "boolean",
+                  name: "farmers_gender_known_36",
+                  title: "Do you know the number of female and male farmers?",
+                  startWithNewLine: false,
+                  titleLocation: "hidden",
+                  defaultValue: "true",
+                  labelTrue: "No",
+                  labelFalse: "Yes"
+                },
+                {
+                  type: "text",
+                  name: "farmers_female_36",
+                  title: "Number of female farmers",
+                  hideNumber: true,
+                  visibleIf: "{farmers_gender_known_36} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_male_36",
+                  title: "Number of male farmers",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  visibleIf: "{farmers_gender_known_36} = false",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
                 }
               ]
             },
             {
-              type: "expression",
-              name: "age_29_35_text",
-              title: "29-35 years old",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "farmers_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "boolean",
-              name: "farmers_gender_known_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              defaultValue: "false",
-              labelTrue: "No",
-              labelFalse: "Yes"
-            },
-            {
-              type: "text",
-              name: "farmers_female_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              visibleIf: "{farmers_gender_known_29_35} = false",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "farmers_male_29_35",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              visibleIf: "{farmers_gender_known_29_35} = false",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "age_36_text",
-              title: "36 years or older",
-              hideNumber: true
-            },
-            {
-              type: "text",
-              name: "farmers_36",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "boolean",
-              name: "farmers_gender_known_36",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              defaultValue: "false",
-              labelTrue: "No",
-              labelFalse: "Yes"
-            },
-            {
-              type: "text",
-              name: "farmers_female_36",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              visibleIf: "{farmers_gender_known_36} = false",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "text",
-              name: "farmers_male_36",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              visibleIf: "{farmers_gender_known_36} = false",
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "total_q6",
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "farmers_total_age",
-              startWithNewLine: false,
-              titleLocation: "hidden"
-              /*validators: [
+              type: "panel",
+              name: "Summary of farmers reported",
+              title: "Summary of farmers reported",
+              elements: [
                 {
                   type: "expression",
-                  expression: "{farmers_total_age} <= '{farmers_total}'"
+                  name: "RO_farmers_age_total",
+                  title: "Summary of total farmers reported:",
+                  hideNumber: true,
+                  expression:
+                    "{total_farmers_16_28}+{total_farmers_29_35}+{total_farmers_36}"
+                  /*validators: [
+                      {
+                        type: "expression",
+                        expression: "{farmers_age_total} <= '{farmers_total}'"
+                      }
+                    ],*/
+                },
+                {
+                  type: "expression",
+                  name: "RO_farmers_age_female_total",
+                  title: "Summary of female farmers reported:",
+                  hideNumber: true,
+                  expression:
+                    "{farmers_female_16_28}+{farmers_female_29_35}+{farmers_female_36}"
+                },
+                {
+                  type: "expression",
+                  name: "RO_farmers_age_male_total",
+                  title: "Summary of male farmers reported:",
+                  hideNumber: true,
+                  expression:
+                    "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
                 }
-              ],
-              expression: "{farmers_16_28}+{farmers_29_35}+{farmers_36}"*/
-            },
-            {
-              type: "expression",
-              name: "na",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "farmers_female_age_total",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression:
-                "{farmers_female_16_28}+{farmers_female_29_35}+{farmers_female_36}"
-            },
-            {
-              type: "expression",
-              name: "RO_total_male_Q5",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression:
-                "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
+              ]
             }
-          ]
+          ],
+          visibleIf: "{farmers_age_known} = false"
           /*isRequired: true*/
         }
       ],
-      description: "SPO Members: Gender & Youth",
-      visibleIf: "{producer_setup} = 'spo'"
+      visibleIf: "{producer_setup} = 'spo'",
+      description: "Farmers: Youth"
     },
     {
       name: "Workers",
@@ -776,28 +724,6 @@ const surveyJson = {
             }
           ]
           /*isRequired: true*/
-        },
-        {
-          type: "boolean",
-          name: "workers_gender_known",
-          title: "Do you know number of workers by gender?",
-          defaultValue: "false",
-          /*isRequired: true,*/
-          labelTrue: "No",
-          labelFalse: "Yes"
-        },
-        {
-          type: "panel",
-          name: "Number of workers by gender",
-          elements: [
-            {
-              type: "expression",
-              name: "q8_text",
-              title:
-                "Record the number of workers employed by your organization in the last calendar year, by gender, with the following types of employment contracts. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded here or in the previous question."
-            }
-          ],
-          visibleIf: "{workers_gender_known} = false"
         },
         {
           type: "panel",
