@@ -124,6 +124,12 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "Totals do not add up",
+                      expression:
+                        "{farmers_conventional_total} >= '{farmers_conventional_female}+{farmers_conventional_male}'"
                     }
                   ]
                 },
