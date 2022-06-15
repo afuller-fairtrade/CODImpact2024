@@ -86,40 +86,14 @@ const surveyJson = {
               type: "expression",
               name: "q4_textt",
               title:
-                "Record the number of farmers that are members of your SPO. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic."
-            },
-            {
-              type: "expression",
-              name: "coventional_text",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              title: "Conventional",
-              hideNumber: true,
-              validators: [
-                {
-                  type: "expression"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "organic_text",
-              visibleIf: "{organic_logic} anyof ['organic_only', 'mixed']",
-              startWithNewLine: false,
-              title: "Organic",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "total_text_q4",
-              startWithNewLine: false,
-              title: "Total",
-              hideNumber: true
+                "Record the number of farmers that are members of your organization. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic."
             },
             {
               type: "text",
               name: "farmers_conventional_total",
+              title: "Number of conventional farmers",
               visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              titleLocation: "hidden",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
@@ -130,9 +104,10 @@ const surveyJson = {
             {
               type: "text",
               name: "farmers_organic_total",
+              title: "Number of organic farmers",
               visibleIf: "{organic_logic} anyof ['organic_only', 'mixed']",
               startWithNewLine: false,
-              titleLocation: "hidden",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
@@ -143,8 +118,8 @@ const surveyJson = {
             {
               type: "expression",
               name: "farmers_total",
-              startWithNewLine: false,
-              titleLocation: "hidden",
+              title: "Summary of total farmers:",
+              hideNumber: true,
               validators: [
                 {
                   type: "expression"
@@ -153,8 +128,7 @@ const surveyJson = {
               expression: "{farmers_conventional_total}+{farmers_organic_total}"
             }
           ],
-          visibleIf: "{producer_setup} = 'spo'",
-          isRequired: true
+          visibleIf: "{producer_setup} = 'spo'"
         }
       ],
       description: "SPO Members: in your organization"
@@ -169,7 +143,7 @@ const surveyJson = {
           name: "q4_text",
           visibleIf: "{producer_setup} = 'spo'",
           title:
-            "Record the number of farmers that are members of your SPO, by gender if known. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded here or in the previous questions."
+            "Record the number of farmers that are members of your organization, by gender if known. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded here or in the previous questions."
         },
         {
           type: "boolean",
@@ -188,51 +162,10 @@ const surveyJson = {
           name: "Number of farmers by gender",
           elements: [
             {
-              type: "expression",
-              name: "gender_text_q5",
-              title: "Gender",
-              titleLocation: "left",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "conventional_text_Q5",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              startWithNewLine: false,
-              title: "Conventional",
-              titleLocation: "left",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "organic_text_q5",
-              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
-              startWithNewLine: false,
-              title: "Organic",
-              titleLocation: "left",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "total_text_q5",
-              startWithNewLine: false,
-              title: "Total",
-              titleLocation: "left",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "female_text_q5",
-              title: "Female",
-              titleLocation: "left",
-              hideNumber: true
-            },
-            {
               type: "text",
               name: "farmers_conventional_female",
+              title: "Female conventional farmers",
               visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              startWithNewLine: false,
-              titleLocation: "hidden",
               hideNumber: true,
               validators: [
                 {
@@ -240,99 +173,98 @@ const surveyJson = {
                   text: "Please enter a valid number"
                 }
               ]
-            },
-            {
-              type: "text",
-              name: "farmers_organic_female",
-              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              hideNumber: true,
-              validators: [
-                {
-                  type: "numeric",
-                  text: "Please enter a valid number"
-                }
-              ]
-            },
-            {
-              type: "expression",
-              name: "farmers_female",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression:
-                "{farmers_conventional_female}+{farmers_organic_female}"
-            },
-            {
-              type: "expression",
-              name: "male_text_q5",
-              title: "Male",
-              titleLocation: "left",
-              hideNumber: true
             },
             {
               type: "text",
               name: "farmers_conventional_male",
+              title: "Male conventional farmers",
               visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
               startWithNewLine: false,
-              titleLocation: "hidden",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
-                  text: "Please enter a valid number",
-                  minValue: 0
+                  text: "Please enter a valid number"
+                }
+              ]
+            },
+            {
+              type: "expression",
+              name: "RO_farmers_conventional_total",
+              title: "Summary of total conventional farmers reported:",
+              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
+              startWithNewLine: false,
+              hideNumber: true,
+              expression:
+                "{farmers_conventional_female}+{farmers_conventional_male}"
+            },
+            {
+              type: "text",
+              name: "farmers_organic_female",
+              title: "Female organic farmers",
+              visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
+              hideNumber: true,
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
                 }
               ]
             },
             {
               type: "text",
               name: "farmers_organic_male",
+              title: "Male organic farmers",
               visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
               startWithNewLine: false,
-              titleLocation: "hidden",
+              hideNumber: true,
               validators: [
                 {
                   type: "numeric",
-                  text: "Please enter a valid number",
-                  minValue: 0
+                  text: "Please enter a valid number"
                 }
               ]
             },
             {
               type: "expression",
-              name: "farmers_male",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{farmers_conventional_male}+{farmers_organic_male}"
-            },
-            {
-              type: "expression",
-              name: "total_text",
-              title: "Total",
-              hideNumber: true
-            },
-            {
-              type: "expression",
-              name: "RO_farmers_conventional_total",
-              visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{farmers_conventional_total}"
-            },
-            {
-              type: "expression",
               name: "RO_farmers_organic_total",
+              title: "Summary of total organic farmers reported:",
               visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
+              hideNumber: true,
               startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{farmers_organic_total}"
+              expression: "{farmers_organic_female}+{farmers_organic_male}"
             },
             {
-              type: "expression",
-              name: "RO_farmers_total",
-              startWithNewLine: false,
-              titleLocation: "hidden",
-              expression: "{farmers_total}"
+              type: "panel",
+              name: "summary_farmers_by_gender",
+              title: "Summary of farmers reported by gender",
+              elements: [
+                {
+                  type: "expression",
+                  name: "RO_farmers_female",
+                  title: "Summary of total female farmers:",
+                  hideNumber: true,
+                  expression:
+                    "{farmers_conventional_female}+{farmers_organic_female}"
+                },
+                {
+                  type: "expression",
+                  name: "RO_farmers_male",
+                  title: "Summary of total male farmers:",
+                  hideNumber: true,
+                  startWithNewLine: false,
+                  expression:
+                    "{farmers_conventional_male}+{farmers_organic_male}"
+                },
+                {
+                  type: "expression",
+                  name: "RO_farmers_total",
+                  title: "Summar of total number of farmers reported:",
+                  hideNumber: true,
+                  expression:
+                    "{RO_farmers_conventional_total}+{RO_farmers_organic_total}"
+                }
+              ]
             }
           ],
           visibleIf: "{farmers_gender_known} = false"
