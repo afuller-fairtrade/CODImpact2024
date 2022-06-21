@@ -793,8 +793,7 @@ const surveyJson = {
               visibleIf: "{workers_seasonal_gender_known} = false"
               /*isRequired: true*/
             }
-          ],
-          visibleIf: "{producer_setup} = 'hlo'"
+          ]
         }
       ],
       description: "Workers in your organization"
