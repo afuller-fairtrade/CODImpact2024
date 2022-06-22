@@ -4,8 +4,35 @@ import "survey-core/defaultV2.min.css";
 // import 'survey-core/survey.min.css';
 import { StylesManager, Model } from "survey-core";
 import { Survey } from "survey-react-ui";
+import ProductTree from "./ProductTree";
 
 StylesManager.applyTheme("defaultV2");
+
+function onAfterRenderQuestion(survey, options) {
+  if (options.question.name === "major_product_category") {
+    ProductTree.loadMajorCategories(options.question);
+  }
+}
+
+function onDynamicPanelItemValueChanged(survey, options) {
+  console.dir(options);
+  switch (options.name) {
+    case "major_product_category":
+      ProductTree.filterMinorCategories(
+        options.panel.getQuestionByName("minor_product_category"),
+        options.value
+      );
+      break;
+    case "minor_product_category":
+      ProductTree.filterProductionTypes(
+        options.panel.getQuestionByName("product_form_name"),
+        options.value
+      );
+      break;
+    default:
+      break;
+  }
+}
 
 const surveyJson = {
   version: 1,
@@ -15,8 +42,8 @@ const surveyJson = {
   showProgressBar: "top",
   pages: [
     {
-      name: "Start page",
       navigationTitle: "Start page",
+      name: "Start page",
       elements: [
         {
           type: "panel",
@@ -25,12 +52,13 @@ const surveyJson = {
             {
               type: "text",
               name: "org_name",
-              title: "[Placeholder for unique ID] Name of the organization:"
+              title:
+                "[PRE-FILLED Placeholder for unique ID] Name of the organization:"
             },
             {
               type: "radiogroup",
               name: "producer_setup",
-              title: "Choose your producer setup:",
+              title: "[PRE-FILLED] Choose your producer setup:",
               isRequired: true,
               choices: [
                 {
@@ -46,23 +74,47 @@ const surveyJson = {
             },
             {
               type: "radiogroup",
+              name: "survey_language",
+              title: "[PRE-FILLED] Choose the language of the survey:",
+              isRequired: true,
+              choices: [
+                {
+                  value: "english",
+                  text: "English"
+                },
+                {
+                  value: "spanish",
+                  text: "Spanish"
+                },
+                {
+                  value: "portuguese",
+                  text: "Portuguese"
+                },
+                {
+                  value: "french",
+                  text: "French"
+                }
+              ]
+            },
+            {
+              type: "radiogroup",
               name: "organic_logic",
               title:
-                "Were some or all of your products under Fairtrade certification also produced under an organic certification in the last calendar/ production year?",
+                "For the last production cycle (2021-2022), was some or all of your production of Fairtrade crops also produced under an organic certification?",
               isRequired: true,
               choices: [
                 {
                   value: "mixed",
                   text:
-                    "Some products (both organic and conventional production)"
-                },
-                {
-                  value: "conventional_only",
-                  text: "None of the products (only conventional production)"
+                    "Yes, some production was organic and some was conventional"
                 },
                 {
                   value: "organic_only",
-                  text: "All products (only organic production)"
+                  text: "Yes, all production was also organic"
+                },
+                {
+                  value: "conventional_only",
+                  text: "No, all production was conventional"
                 }
               ]
             }
@@ -1850,6 +1902,344 @@ const surveyJson = {
       ],
       description:
         "Land area, production volumes and forecast volumes for Fairtrade certified products"
+    },
+
+    {
+      name: "product_page",
+      elements: [
+        {
+          type: "radiogroup",
+          name: "land_area_unit",
+          title:
+            "What is the unit in which you would like to report your land area?",
+          choices: [
+            {
+              value: "ha",
+              text: "hectares"
+            },
+            {
+              value: "acre",
+              text: "acres"
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "land_area_panel",
+          elements: [
+            {
+              type: "text",
+              name: "total_land_managed",
+              title:
+                "What is the total land area in {land_area_unit} under cultivation by all SPO members (land under cultivation of both Fairtrade and non-Fairtrade certified crops)? ",
+              inputType: "number"
+            },
+            {
+              type: "text",
+              name: "total_area_ft_certification",
+              title:
+                "What is the total land area in {land_area_unit} under cultivation with Fairtrade crops within your organization?",
+              validators: [
+                {
+                  type: "expression",
+                  text:
+                    "Fairtrade land area is larger than total land area. Please fix.",
+                  expression:
+                    "{total_land_managed} >= {total_area_ft_certification}"
+                }
+              ],
+              inputType: "number"
+            }
+          ]
+        },
+        {
+          type: "paneldynamic",
+          name: "products_panel",
+          title:
+            "Please indicate the products that your organization produced according to the Fairtrade standards in the last calendar/ production year.",
+          templateElements: [
+            {
+              type: "dropdown",
+              name: "major_product_category",
+              title: "Major product category",
+              choices: ["item1", "item2"]
+            },
+            {
+              type: "dropdown",
+              name: "minor_product_category",
+              visibleIf: "{panel.major_product_category} notempty",
+              title: "Minor product category",
+              choices: ["item1", "item2"]
+            },
+            {
+              type: "panel",
+              name: "lan_area_panel",
+              elements: [
+                {
+                  type: "boolean",
+                  name: "land_area_known",
+                  title:
+                    "Do you know the land area under cultivation for {panel.major_product_category}?",
+                  defaultValue: "true"
+                },
+                {
+                  type: "text",
+                  name: "total_land_area",
+                  visibleIf: "{panel.land_area_known} = true",
+                  title: "Total land area in {land_area_unit} by product:"
+                },
+                {
+                  type: "boolean",
+                  name: "conventional_organic_area_known",
+                  title:
+                    "Do you know the conventional and/or organic land area under cultivation for{panel.major_product_category}?",
+                  defaultValue: "true"
+                },
+                {
+                  type: "text",
+                  name: "conventional_land_area",
+                  visibleIf: "{panel.conventional_organic_area_known} = true",
+                  title:
+                    "Land area in {land_area_unit} under conventional cultivation:"
+                },
+                {
+                  type: "text",
+                  name: "organic_land_area",
+                  visibleIf: "{panel.conventional_organic_area_known} = true",
+                  title:
+                    "Land area in {land_area_unit} under organic cultivation:"
+                }
+              ],
+              visibleIf: "{panel.minor_product_category} notempty",
+              title: "Land area",
+              description: "Under cultivation"
+            },
+            {
+              type: "panel",
+              name: "panel2",
+              elements: [
+                {
+                  type: "panel",
+                  name: "panel_volumes",
+                  elements: [
+                    {
+                      type: "panel",
+                      name: "unit_descriptions_panel",
+                      elements: [
+                        {
+                          type: "expression",
+                          name: "unit_descriptions",
+                          title:
+                            "A note on units: please make sure the unit you select is correct and applicable to the product you are reporting on. Please see here a description of uses for each unit:",
+                          hideNumber: true
+                        },
+                        {
+                          type: "panel",
+                          name: "panel4",
+                          elements: [
+                            {
+                              type: "expression",
+                              name: "kg_description",
+                              title: "Kilograms (kg)",
+                              description:
+                                "Use kg when you know the volume of your product in kilograms",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "mt_description",
+                              startWithNewLine: false,
+                              title: "Metric tons (MT)",
+                              description:
+                                "Use MT when you know the volume of your product in metric tons",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "boxes_large_description",
+                              title: "18.14 kg Boxes",
+                              description:
+                                "For bananas only: use 18.14 kg Boxes when you know the number of boxes of bananas",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "boxes_small_description",
+                              startWithNewLine: false,
+                              title: "13.5 kg Boxes",
+                              description:
+                                "For bananas only: use 13.5 kg Boxes when you know the number of boxes of bananas",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "pounds_description",
+                              title: "Pound",
+                              description:
+                                "Use pound when you know the volume of your product in pounds",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "question6",
+                              startWithNewLine: false,
+                              title: "Quintales (46 kg)",
+                              description:
+                                "Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "flowers_description",
+                              title: "Stems of flowers",
+                              description:
+                                "For flowers and plants only: use when you know the number of flowers or plants",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "1000stems_description",
+                              startWithNewLine: false,
+                              title: "1000 stems of flowers",
+                              description:
+                                "For flowers and plants only: use when you know the number of 1,000 flower or plant bunches",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "litres_description",
+                              title: "Litres",
+                              description:
+                                "For argan oil and wine bottles only: use litres when you know the volume of your oil or wine in litres",
+                              hideNumber: true
+                            },
+                            {
+                              type: "expression",
+                              name: "items_description",
+                              startWithNewLine: false,
+                              title: "Items",
+                              description:
+                                "For coconuts and sportsballs only: use items when you know the number of coconuts or sportsballs produced",
+                              hideNumber: true
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      type: "dropdown",
+                      name: "product_form_name",
+                      title:
+                        "What product form are you reporting the {panel.minor_product_category} production in?",
+                      choices: []
+                    },
+                    {
+                      type: "dropdown",
+                      name: "question1",
+                      title:
+                        "What unit are you reporting {panel.minor_product_category} production in?",
+                      choices: [
+                        "kg",
+                        {
+                          value: "mt",
+                          text: "MT"
+                        },
+                        {
+                          value: "boxes_large",
+                          text: "18.14 kg Boxes"
+                        },
+                        {
+                          value: "boxes_small",
+                          text: "13.5 kg Boxes"
+                        },
+                        {
+                          value: "pound",
+                          text: "Pound"
+                        },
+                        {
+                          value: "quintales",
+                          text: "Quintales (46 kg)"
+                        },
+                        {
+                          value: "stems",
+                          text: "Stems of flowers"
+                        },
+                        {
+                          value: "1000stems",
+                          text: "1000 stems of flowers"
+                        },
+                        {
+                          value: "litres",
+                          text: "Litres"
+                        },
+                        {
+                          value: "items",
+                          text: "Items"
+                        }
+                      ]
+                    },
+                    {
+                      type: "text",
+                      name: "volumes_conventional",
+                      title:
+                        "Volume of {panel.product_form_name} produced under conventional cultivation:"
+                    },
+                    {
+                      type: "text",
+                      name: "volume_organic",
+                      title:
+                        "Volume of {panel.product_form_name} produced under organic cultivation:"
+                    },
+                    {
+                      type: "boolean",
+                      name: "volume_estimates",
+                      title: "Are the volumes reported actual or estimates?",
+                      defaultValue: "true",
+                      labelTrue: "Estimates",
+                      labelFalse: "Actual"
+                    },
+                    {
+                      type: "panel",
+                      name: "panel_volumes_forecast",
+                      elements: [
+                        {
+                          type: "text",
+                          name: "volumes_conventional_offer",
+                          title:
+                            "Conventional volume of {panel.product_form_name} on offer:"
+                        },
+                        {
+                          type: "text",
+                          name: "volume_organic_offer",
+                          title: "Organic {panel.product_form_name} on offer:"
+                        }
+                      ],
+                      title:
+                        "How much of the total volume produced this year does your organization have on offer that is of export quality for Fairtrade sales? Record the conventional and organic volumes. If you have already started selling, record the volume your organization had on offer at the beginning of this calendar year."
+                    }
+                  ],
+                  title:
+                    "Record the conventional and organic volumes produced under Fairtrade certification in the last calendar/production year for each product. If production volume is estimated, please specify how you came to this estimate."
+                }
+              ],
+              visibleIf: "{panel.minor_product_category} notempty",
+              title: "Production",
+              description: "Volumes produced & forecasts"
+            }
+          ],
+          noEntriesText:
+            "You have not entered any products yet.\nClick the button below to start.",
+          confirmDelete: true,
+          confirmDeleteText: "Are you sure you want to delete this product?",
+          panelAddText: "Add Product",
+          panelRemoveText: "Remove this product",
+          panelPrevText: "Previous product",
+          panelNextText: "Next product",
+          showQuestionNumbers: "onPanel",
+          renderMode: "progressTopBottom"
+        }
+      ],
+      navigationTitle: "Products"
     }
   ],
   checkErrorsMode: "onValueChanged"
@@ -1858,6 +2248,9 @@ const surveyJson = {
 function App() {
   const survey = new Model(surveyJson);
   survey.focusFirstQuestionAutomatic = false;
+  console.dir(survey);
+  survey.onAfterRenderQuestion.add(onAfterRenderQuestion);
+  survey.onDynamicPanelItemValueChanged.add(onDynamicPanelItemValueChanged);
 
   const alertResults = useCallback((sender) => {
     const results = JSON.stringify(sender.data);
