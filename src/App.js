@@ -17,7 +17,6 @@ const surveyJson = {
     {
       name: "Start page",
       navigationTitle: "Start page",
-      navigationDescription: "Producer Profile",
       elements: [
         {
           type: "panel",
@@ -70,10 +69,10 @@ const surveyJson = {
           ]
         }
       ],
-      description: "Start Page: Producer Profile"
+      description: "Start Page"
     },
     {
-      name: "SPO Members",
+      name: "Members",
       elements: [
         {
           type: "panel",
@@ -262,13 +261,13 @@ const surveyJson = {
           title: "Summary of number of farmers reported"
         }
       ],
-      description: "SPO Members: in your organization",
-      navigationTitle: "SPO Members",
-      navigationDescription: "in your organization",
+      description: "Number of members of your organization",
+      navigationTitle: "Members",
+      /*navigationDescription: "of your organization",*/
       visibleIf: "{producer_setup} = 'spo'"
     },
     {
-      name: "Farmers: Youth",
+      name: "Young people in your organization",
       elements: [
         {
           type: "panel",
@@ -558,9 +557,9 @@ const surveyJson = {
         }
       ],
       visibleIf: "{producer_setup} = 'spo'",
-      description: "Farmers: Youth",
-      navigationTitle: "Farmers",
-      navigationDescription: "Youth"
+      description: "Number of young people as members of your organization",
+      navigationTitle: "Young people"
+      /*navigationDescription: "in your organization"*/
     },
     {
       name: "Workers",
@@ -859,12 +858,12 @@ const surveyJson = {
           ]
         }
       ],
-      description: "Workers in your organization",
-      navigationTitle: "Workers",
-      navigationDescription: "in your organization"
+      description: "Number of workers employed by your organization",
+      navigationTitle: "Workers"
+      /*navigationDescription: "employed by your organization"*/
     },
     {
-      name: "Workers: Seasonal",
+      name: "Seasonal workers",
       elements: [
         {
           type: "panel",
@@ -962,12 +961,12 @@ const surveyJson = {
           title: "Seasonal workers hired by your organization"
         }
       ],
-      description: "Seasonal workers hired by your organization",
-      navigationTitle: "Workers",
-      navigationDescription: "Seasonal"
+      description: "Number of seasonal workers employed by your organization",
+      navigationTitle: "Seasonal workers"
+      /*navigationDescription: "employed by your organization"*/
     },
     {
-      name: "Workers: Youth",
+      name: "Number of young people hired by your organization",
       elements: [
         {
           type: "expression",
@@ -1250,14 +1249,13 @@ const surveyJson = {
         }
       ],
       visibleIf: "{producer_setup} = 'hlo'",
-      description: "Workers: Youth",
-      navigationTitle: "Workers",
-      navigationDescription: "Youth"
+      description: "Number of young people employed by your organization",
+      navigationTitle: "Young people"
+      /*navigationDescription: "employed by your organization"*/
     },
     {
       name: "Land area",
       navigationTitle: "Land area",
-      navigationDescription: "Under cultivation",
       elements: [
         {
           type: "matrixdynamic",
@@ -1460,12 +1458,12 @@ const surveyJson = {
           rowTitleWidth: "150px"
         }
       ],
-      description: "Land Area Under Cultivation"
+      description: "Total land area under cultivation by your organization"
     },
     {
-      name: "Production",
-      navigationTitle: "Production",
-      navigationDescription: "Volumes produced & forecasts",
+      name: "Products Produced",
+      navigationTitle: "Products Produced",
+      navigationDescription: "Area, production & forecasts",
       elements: [
         {
           type: "panel",
@@ -1850,7 +1848,8 @@ const surveyJson = {
           rowTitleWidth: "200px"
         }
       ],
-      description: "Production"
+      description:
+        "Land area, production volumes and forecast volumes for Fairtrade certified products"
     }
   ],
   checkErrorsMode: "onValueChanged"
