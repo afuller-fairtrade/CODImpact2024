@@ -1306,7 +1306,7 @@ const surveyJson = {
       /*navigationDescription: "employed by your organization"*/
     },
     {
-      name: "total_land_area_page",
+      name: "Total Land Area",
       title: "Land area under cultivation by your organization",
       elements: [
         {
@@ -1371,6 +1371,7 @@ const surveyJson = {
     },
     {
       name: "product_page",
+      navigationTitle: "Products",
       elements: [
         {
           type: "paneldynamic",
@@ -1397,38 +1398,62 @@ const surveyJson = {
               name: "land_area_panel",
               elements: [
                 {
-                  type: "boolean",
-                  name: "land_area_known",
-                  title:
-                    "Do you know the land area under cultivation for {panel.major_product_category}?",
-                  defaultValue: "true"
-                },
-                {
                   type: "text",
                   name: "total_land_area",
-                  visibleIf: "{panel.land_area_known} = true",
-                  title: "Total land area in {land_area_unit} by product:"
+                  visibleIf: "{panel.land_area_known} empty",
+                  hideNumber: true,
+                  title:
+                    "Total land area in {land_area_unit} cultivated with {panel.major_product_category} ({panel.minor_product_category}):",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
                 },
                 {
-                  type: "boolean",
-                  name: "conventional_organic_area_known",
-                  title:
-                    "Do you know the conventional and/or organic land area under cultivation for{panel.major_product_category}?",
-                  defaultValue: "true"
+                  type: "checkbox",
+                  name: "land_area_known",
+                  titleLocation: "hidden",
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the total land area for this product"
+                    }
+                  ]
                 },
                 {
                   type: "text",
                   name: "conventional_land_area",
-                  visibleIf: "{panel.conventional_organic_area_known} = true",
+                  visibleIf:
+                    "{organic_logic} anyof ['mixed', 'conventional_only'] AND {panel.conventional_organic_area_known} empty",
+                  hideNumber: true,
                   title:
                     "Land area in {land_area_unit} under conventional cultivation:"
                 },
                 {
                   type: "text",
                   name: "organic_land_area",
-                  visibleIf: "{panel.conventional_organic_area_known} = true",
+                  visibleIf:
+                    "{organic_logic} anyof ['mixed', 'organic_only'] AND {panel.conventional_organic_area_known} empty",
+                  hideNumber: true,
+                  startWithNewLine: false,
                   title:
                     "Land area in {land_area_unit} under organic cultivation:"
+                },
+                {
+                  type: "checkbox",
+                  name: "conventional_organic_area_known",
+                  titleLocation: "hidden",
+                  visibleIf: "{organic_logic} = 'mixed'",
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the breakdown of organic and conventional land area for this product"
+                    }
+                  ]
                 }
               ],
               visibleIf: "{panel.minor_product_category} notempty",
@@ -1659,8 +1684,7 @@ const surveyJson = {
           showQuestionNumbers: "onPanel",
           renderMode: "progressTopBottom"
         }
-      ],
-      navigationTitle: "Products"
+      ]
     }
   ],
   checkErrorsMode: "onValueChanged"
