@@ -1593,9 +1593,7 @@ const surveyJson = {
                       value: "yields",
                       text: "Yields"
                     }
-                  ],
-                  title:
-                    "Record the conventional and organic volumes produced under Fairtrade certification in the last calendar/production year for each product. If production volume is estimated, please specify how you came to this estimate."
+                  ]
                 }
               ],
               visibleIf: "{panel.minor_product_category} notempty",
