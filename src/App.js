@@ -1437,6 +1437,12 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "Does not match total, please fix.",
+                      expression:
+                        "{panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})"
                     }
                   ]
                 },
@@ -1453,6 +1459,12 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "Does not match total, please fix.",
+                      expression:
+                        "{panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})"
                     }
                   ]
                 },
