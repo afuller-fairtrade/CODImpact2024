@@ -1923,6 +1923,19 @@ const surveyJson = {
           ]
         },
         {
+          type: "panel",
+          name: "products_summary",
+          title: "Products produced by your organization on Fairtrade terms",
+          elements: [
+            {
+              type: "html",
+              name: "products_produced_summary",
+              hideNumber: true,
+              html: "Test {major_product_category} test"
+            }
+          ]
+        },
+        {
           type: "checkbox",
           name: "confirm_report",
           titleLocation: "hidden",
