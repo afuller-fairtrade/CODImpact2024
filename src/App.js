@@ -644,19 +644,14 @@ const surveyJson = {
           name: "Number of workers",
           elements: [
             {
-              type: "expression",
-              name: "q7_text",
-              title:
-                "Record the number of workers employed by your organization in the last calendar year with the following types of employment contracts.",
-              hideNumber: true
-            },
-            {
               type: "panel",
               name: "workers_permanent_panel",
+              title:
+                "Record the number of workers employed by your organization in the last calendar year with the following types of employment contracts.",
               elements: [
                 {
                   type: "text",
-                  name: "workers_permanent",
+                  name: "workers_permanent_total",
                   title:
                     "Number of permanent workers employed by your organization",
                   hideNumber: true,
@@ -729,7 +724,7 @@ const surveyJson = {
               elements: [
                 {
                   type: "text",
-                  name: "workers_fixed_term",
+                  name: "workers_fixed_term_total",
                   title:
                     "Number of fixed-term workers employed by your organization",
                   hideNumber: true,
@@ -802,7 +797,7 @@ const surveyJson = {
               elements: [
                 {
                   type: "text",
-                  name: "workers_subcontractor",
+                  name: "workers_subcontractor_total",
                   title:
                     "Number of sub-contracted workers employed by your organization",
                   hideNumber: true,
@@ -879,7 +874,7 @@ const surveyJson = {
                   title: "Summary of total workers:",
                   hideNumber: true,
                   expression:
-                    "{workers_permanent}+{workers_fixed_term}+{workers_subcontractor}"
+                    "{workers_permanent_total}+{workers_fixed_term_total}+{workers_subcontractor_total}"
                 },
                 {
                   type: "expression",
@@ -1314,8 +1309,7 @@ const surveyJson = {
         {
           type: "radiogroup",
           name: "land_area_unit",
-          title:
-            "What is the unit in which you would like to report your land area?",
+          title: "In what unit would you like to report your land area?",
           hideNumber: true,
           choices: [
             {
@@ -1337,7 +1331,7 @@ const surveyJson = {
               name: "total_land_managed",
               hideNumber: true,
               title:
-                "What is the total land area in {land_area_unit} under cultivation by all SPO members (land under cultivation of both Fairtrade and non-Fairtrade certified crops)? ",
+                "How many {land_area_unit} of land are under cultivation by all SPO members? Please report here land under cultivation of both Fairtrade and non-Fairtrade certified crops. ",
               validators: [
                 {
                   type: "numeric",
@@ -1351,7 +1345,7 @@ const surveyJson = {
               name: "total_area_ft_certification",
               hideNumber: true,
               title:
-                "What is the total land area in {land_area_unit} under cultivation with Fairtrade crops within your organization?",
+                "How many {land_area_unit} of land are under cultivation of Fairtrade crops within your organization?",
               validators: [
                 {
                   type: "numeric",
@@ -1385,15 +1379,17 @@ const surveyJson = {
             {
               type: "dropdown",
               name: "major_product_category",
-              title: "Major product category",
+              title:
+                "Please select the product category from the dropdown that corresponds to your Fairtrade product certification:",
               hideNumber: true,
               choices: ["item1", "item2"]
             },
             {
               type: "dropdown",
               name: "minor_product_category",
+              title:
+                "Please select the product from the dropdown that your organization produced under Fairtrade certification",
               visibleIf: "{panel.major_product_category} notempty",
-              title: "Minor product category",
               hideNumber: true,
               choices: ["item1", "item2"]
             },
@@ -1403,11 +1399,11 @@ const surveyJson = {
               elements: [
                 {
                   type: "text",
-                  name: "total_land_area",
+                  name: "land_total_production",
                   visibleIf: "{panel.land_area_known} empty",
                   hideNumber: true,
                   title:
-                    "Total land area in {land_area_unit} cultivated with {panel.major_product_category} ({panel.minor_product_category}):",
+                    "How many total {land_area_unit} of land was cultivated with {panel.major_product_category} ({panel.minor_product_category})?",
                   validators: [
                     {
                       type: "numeric",
@@ -1430,7 +1426,9 @@ const surveyJson = {
                 },
                 {
                   type: "text",
-                  name: "conventional_land_area",
+                  name: "land_conventional_production",
+                  title:
+                    "How many {land_area_unit} of land was under conventional cultivation?",
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'conventional_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
@@ -1439,13 +1437,13 @@ const surveyJson = {
                       type: "numeric",
                       text: "Please enter a valid number"
                     }
-                  ],
-                  title:
-                    "Land area in {land_area_unit} under conventional cultivation:"
+                  ]
                 },
                 {
                   type: "text",
-                  name: "organic_land_area",
+                  name: "land_organic_production",
+                  title:
+                    "How many {land_area_unit} of land was under cultivation of organic certification?",
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'organic_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
@@ -1455,9 +1453,7 @@ const surveyJson = {
                       type: "numeric",
                       text: "Please enter a valid number"
                     }
-                  ],
-                  title:
-                    "Land area in {land_area_unit} under organic cultivation:"
+                  ]
                 },
                 {
                   type: "checkbox",
@@ -1469,14 +1465,13 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the breakdown of organic and conventional land area for this product"
+                        "Please check here if you do not know the {land_area_unit} of organic and conventional land area for this product"
                     }
                   ]
                 }
               ],
               visibleIf: "{panel.minor_product_category} notempty",
-              title: "Land area",
-              description: "Under cultivation"
+              title: "Land area under Fairtrade cultivation, by product"
             },
             {
               type: "panel",
@@ -1487,16 +1482,16 @@ const surveyJson = {
                   name: "product_form_name",
                   hideNumber: true,
                   title:
-                    "What product form are you reporting the {panel.minor_product_category} production in?",
+                    "In what product form would you like to report your organization's {panel.minor_product_category} production?",
                   choices: []
                 },
                 {
                   type: "dropdown",
-                  name: "production_unit",
+                  name: "volume_produced_unit",
                   hideNumber: true,
                   startWithNewLine: false,
                   title:
-                    "What unit are you reporting {panel.minor_product_category} production in?",
+                    "In what unit would you like to report your organization's {panel.minor_product_category} production?",
                   choices: [
                     "kg",
                     {
@@ -1539,10 +1534,10 @@ const surveyJson = {
                 },
                 {
                   type: "text",
-                  name: "volumes_conventional",
+                  name: "volume_conventional_produced",
                   hideNumber: true,
                   title:
-                    "Volume of {panel.product_form_name} produced under conventional cultivation in {panel.production_unit}:",
+                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under conventional cultivation?",
                   validators: [
                     {
                       type: "numeric",
@@ -1552,11 +1547,11 @@ const surveyJson = {
                 },
                 {
                   type: "text",
-                  name: "volume_organic",
+                  name: "volume_organic_produced",
                   startWithNewLine: false,
                   hideNumber: true,
                   title:
-                    "Volume of {panel.product_form_name} produced under organic cultivation in {panel.production_unit}:",
+                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under organic certification?",
                   validators: [
                     {
                       type: "numeric",
@@ -1566,7 +1561,7 @@ const surveyJson = {
                 },
                 {
                   type: "boolean",
-                  name: "volume_estimates",
+                  name: "volume_produced_estimated_or_measured",
                   title: "Are the volumes reported actual or estimates?",
                   hideNumber: true,
                   defaultValue: "true",
@@ -1575,12 +1570,17 @@ const surveyJson = {
                 },
                 {
                   type: "dropdown",
-                  name: "how_volumes_estimated",
-                  title: "How were the volumes estimated?",
+                  name: "volume_produced_estimated_how",
+                  title: "What was the estimated volume based on?",
                   startWithNewLine: false,
                   hideNumber: true,
-                  visibleIf: "{panel.volume_estimates} = true",
+                  visibleIf:
+                    "{panel.volume_produced_estimated_or_measured} = true",
                   choices: [
+                    {
+                      value: "yields",
+                      text: "Yields"
+                    },
                     {
                       value: "FT_sales",
                       text: "Fairtrade Sales"
@@ -1590,14 +1590,14 @@ const surveyJson = {
                       text: "Total sales"
                     },
                     {
-                      value: "yields",
-                      text: "Yields"
+                      value: "other",
+                      text: "Other (specify in comments)"
                     }
                   ]
                 }
               ],
               visibleIf: "{panel.minor_product_category} notempty",
-              title: "Volumes Produced"
+              title: "Volumes Produced on Fairtrade terms"
             },
             {
               type: "panel",
@@ -1605,11 +1605,11 @@ const surveyJson = {
               elements: [
                 {
                   type: "dropdown",
-                  name: "forecast_unit",
+                  name: "volume_forecast_unit",
                   hideNumber: true,
                   startWithNewLine: false,
                   title:
-                    "What unit are you reporting {panel.minor_product_category} forecast in?",
+                    "In what unit would you like to report your organization's {panel.minor_product_category} volume on offer/ forecast?",
                   choices: [
                     "kg",
                     {
@@ -1649,40 +1649,40 @@ const surveyJson = {
                       text: "Items"
                     }
                   ],
-                  visibleIf: "{panel.forecast_volume_known} empty"
+                  visibleIf: "{panel.volume_forecast_known} empty"
                 },
                 {
                   type: "text",
-                  name: "volumes_conventional_offer",
+                  name: "volume_conventional_forecast",
                   hideNumber: true,
                   title:
-                    "Conventional volume of {panel.product_form_name} on offer in {panel.forecast_unit}:",
+                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under conventional cultivation does your organization forecast will be of export quality?",
                   validators: [
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
                     }
                   ],
-                  visibleIf: "{panel.forecast_volume_known} empty"
+                  visibleIf: "{panel.volume_forecast_known} empty"
                 },
                 {
                   type: "text",
-                  name: "volume_organic_offer",
+                  name: "volume_organic_forecast",
                   hideNumber: true,
                   startWithNewLine: false,
                   title:
-                    "Organic {panel.product_form_name} on offer in {panel.forecast_unit}:",
+                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under organic certification does your organization forecast will be of export quality?",
                   validators: [
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
                     }
                   ],
-                  visibleIf: "{panel.forecast_volume_known} empty"
+                  visibleIf: "{panel.volume_forecast_known} empty"
                 },
                 {
                   type: "checkbox",
-                  name: "forecast_volume_known",
+                  name: "volume_forecast_known",
                   titleLocation: "hidden",
                   hideNumber: true,
                   choices: [
@@ -1696,7 +1696,7 @@ const surveyJson = {
               ],
               visibleIf: "{panel.minor_product_category} notempty",
               title:
-                "How much of the total volume produced this year does your organization have on offer that is of export quality for Fairtrade sales? Record the conventional and organic volumes. If you have already started selling, record the volume your organization had on offer at the beginning of this calendar year."
+                "Volumes produced on Fairtrade terms on offer (that are of export quality for Fairtrade sales)"
             }
           ],
           noEntriesText:
