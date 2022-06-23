@@ -1480,146 +1480,118 @@ const surveyJson = {
             },
             {
               type: "panel",
-              name: "panel2",
+              name: "panel_volumes_produced",
               elements: [
                 {
-                  type: "panel",
-                  name: "panel_volumes",
-                  elements: [
+                  type: "dropdown",
+                  name: "product_form_name",
+                  hideNumber: true,
+                  title:
+                    "What product form are you reporting the {panel.minor_product_category} production in?",
+                  choices: []
+                },
+                {
+                  type: "dropdown",
+                  name: "production_unit",
+                  hideNumber: true,
+                  startWithNewLine: false,
+                  title:
+                    "What unit are you reporting {panel.minor_product_category} production in?",
+                  choices: [
+                    "kg",
                     {
-                      type: "dropdown",
-                      name: "product_form_name",
-                      hideNumber: true,
-                      title:
-                        "What product form are you reporting the {panel.minor_product_category} production in?",
-                      choices: []
+                      value: "mt",
+                      text: "MT"
                     },
                     {
-                      type: "dropdown",
-                      name: "production_unit",
-                      hideNumber: true,
-                      startWithNewLine: false,
-                      title:
-                        "What unit are you reporting {panel.minor_product_category} production in?",
-                      choices: [
-                        "kg",
-                        {
-                          value: "mt",
-                          text: "MT"
-                        },
-                        {
-                          value: "boxes_large",
-                          text: "18.14 kg Boxes"
-                        },
-                        {
-                          value: "boxes_small",
-                          text: "13.5 kg Boxes"
-                        },
-                        {
-                          value: "pound",
-                          text: "Pound"
-                        },
-                        {
-                          value: "quintales",
-                          text: "Quintales (46 kg)"
-                        },
-                        {
-                          value: "stems",
-                          text: "Stems of flowers"
-                        },
-                        {
-                          value: "1000stems",
-                          text: "1000 stems of flowers"
-                        },
-                        {
-                          value: "litres",
-                          text: "Litres"
-                        },
-                        {
-                          value: "items",
-                          text: "Items"
-                        }
-                      ]
+                      value: "boxes_large",
+                      text: "18.14 kg Boxes"
                     },
                     {
-                      type: "text",
-                      name: "volumes_conventional",
-                      hideNumber: true,
-                      title:
-                        "Volume of {panel.product_form_name} produced under conventional cultivation in {panel.production_unit}:",
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        }
-                      ]
+                      value: "boxes_small",
+                      text: "13.5 kg Boxes"
                     },
                     {
-                      type: "text",
-                      name: "volume_organic",
-                      startWithNewLine: false,
-                      hideNumber: true,
-                      title:
-                        "Volume of {panel.product_form_name} produced under organic cultivation in {panel.production_unit}:",
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        }
-                      ]
+                      value: "pound",
+                      text: "Pound"
                     },
                     {
-                      type: "boolean",
-                      name: "volume_estimates",
-                      title: "Are the volumes reported actual or estimates?",
-                      hideNumber: true,
-                      defaultValue: "true",
-                      labelTrue: "Estimates",
-                      labelFalse: "Actual"
+                      value: "quintales",
+                      text: "Quintales (46 kg)"
                     },
                     {
-                      type: "dropdown",
-                      name: "how_volumes_estimated",
-                      title: "How were the volumes estimated?",
-                      startWithNewLine: false,
-                      hideNumber: true,
-                      visibleIf: "{panel.volume_estimates} = true",
-                      choices: [
-                        {
-                          value: "FT_sales",
-                          text: "Fairtrade Sales"
-                        },
-                        {
-                          value: "total_sales",
-                          text: "Total sales"
-                        },
-                        {
-                          value: "yields",
-                          text: "Yields"
-                        }
-                      ]
+                      value: "stems",
+                      text: "Stems of flowers"
                     },
                     {
-                      type: "panel",
-                      name: "panel_volumes_forecast",
-                      elements: [
-                        {
-                          type: "text",
-                          name: "volumes_conventional_offer",
-                          hideNumber: true,
-                          title:
-                            "Conventional volume of {panel.product_form_name} on offer:"
-                        },
-                        {
-                          type: "text",
-                          name: "volume_organic_offer",
-                          hideNumber: true,
-                          startWithNewLine: false,
-                          title: "Organic {panel.product_form_name} on offer:"
-                        }
-                      ],
-                      title:
-                        "How much of the total volume produced this year does your organization have on offer that is of export quality for Fairtrade sales? Record the conventional and organic volumes. If you have already started selling, record the volume your organization had on offer at the beginning of this calendar year."
+                      value: "1000stems",
+                      text: "1000 stems of flowers"
+                    },
+                    {
+                      value: "litres",
+                      text: "Litres"
+                    },
+                    {
+                      value: "items",
+                      text: "Items"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "volumes_conventional",
+                  hideNumber: true,
+                  title:
+                    "Volume of {panel.product_form_name} produced under conventional cultivation in {panel.production_unit}:",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "volume_organic",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  title:
+                    "Volume of {panel.product_form_name} produced under organic cultivation in {panel.production_unit}:",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ]
+                },
+                {
+                  type: "boolean",
+                  name: "volume_estimates",
+                  title: "Are the volumes reported actual or estimates?",
+                  hideNumber: true,
+                  defaultValue: "true",
+                  labelTrue: "Estimates",
+                  labelFalse: "Actual"
+                },
+                {
+                  type: "dropdown",
+                  name: "how_volumes_estimated",
+                  title: "How were the volumes estimated?",
+                  startWithNewLine: false,
+                  hideNumber: true,
+                  visibleIf: "{panel.volume_estimates} = true",
+                  choices: [
+                    {
+                      value: "FT_sales",
+                      text: "Fairtrade Sales"
+                    },
+                    {
+                      value: "total_sales",
+                      text: "Total sales"
+                    },
+                    {
+                      value: "yields",
+                      text: "Yields"
                     }
                   ],
                   title:
@@ -1627,8 +1599,106 @@ const surveyJson = {
                 }
               ],
               visibleIf: "{panel.minor_product_category} notempty",
-              title: "Production",
-              description: "Volumes produced & forecasts"
+              title: "Volumes Produced"
+            },
+            {
+              type: "panel",
+              name: "panel_volumes_forecast",
+              elements: [
+                {
+                  type: "dropdown",
+                  name: "forecast_unit",
+                  hideNumber: true,
+                  startWithNewLine: false,
+                  title:
+                    "What unit are you reporting {panel.minor_product_category} forecast in?",
+                  choices: [
+                    "kg",
+                    {
+                      value: "mt",
+                      text: "MT"
+                    },
+                    {
+                      value: "boxes_large",
+                      text: "18.14 kg Boxes"
+                    },
+                    {
+                      value: "boxes_small",
+                      text: "13.5 kg Boxes"
+                    },
+                    {
+                      value: "pound",
+                      text: "Pound"
+                    },
+                    {
+                      value: "quintales",
+                      text: "Quintales (46 kg)"
+                    },
+                    {
+                      value: "stems",
+                      text: "Stems of flowers"
+                    },
+                    {
+                      value: "1000stems",
+                      text: "1000 stems of flowers"
+                    },
+                    {
+                      value: "litres",
+                      text: "Litres"
+                    },
+                    {
+                      value: "items",
+                      text: "Items"
+                    }
+                  ],
+                  visibleIf: "{panel.forecast_volume_known} empty"
+                },
+                {
+                  type: "text",
+                  name: "volumes_conventional_offer",
+                  hideNumber: true,
+                  title:
+                    "Conventional volume of {panel.product_form_name} on offer in {panel.forecast_unit}:",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ],
+                  visibleIf: "{panel.forecast_volume_known} empty"
+                },
+                {
+                  type: "text",
+                  name: "volume_organic_offer",
+                  hideNumber: true,
+                  startWithNewLine: false,
+                  title:
+                    "Organic {panel.product_form_name} on offer in {panel.forecast_unit}:",
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ],
+                  visibleIf: "{panel.forecast_volume_known} empty"
+                },
+                {
+                  type: "checkbox",
+                  name: "forecast_volume_known",
+                  titleLocation: "hidden",
+                  hideNumber: true,
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the forecast volume for this product or this question is not applicable"
+                    }
+                  ]
+                }
+              ],
+              visibleIf: "{panel.minor_product_category} notempty",
+              title:
+                "How much of the total volume produced this year does your organization have on offer that is of export quality for Fairtrade sales? Record the conventional and organic volumes. If you have already started selling, record the volume your organization had on offer at the beginning of this calendar year."
             }
           ],
           noEntriesText:
