@@ -94,7 +94,8 @@ const surveyJson = {
                   value: "french",
                   text: "French"
                 }
-              ]
+              ],
+              defaultValue: "english"
             },
             {
               type: "radiogroup",
@@ -116,7 +117,8 @@ const surveyJson = {
                   value: "conventional_only",
                   text: "No, all production was conventional"
                 }
-              ]
+              ],
+              defaultValue: "mixed"
             }
           ]
         }
@@ -1377,13 +1379,14 @@ const surveyJson = {
           type: "paneldynamic",
           name: "products_panel",
           title:
-            "Please indicate the products that your organization produced according to the Fairtrade standards in the last calendar/ production year.",
+            "In this section, please report on the products that your organization produced according to the Fairtrade standards in the most recent production cycle (2021-2022). For each product, you will be asked to report the land area under cultivation by your organization and the volume produced. In addition, you will be asked to report the forecast volumes for the upcoming production cycle (2022-2023) if applicable.",
           hideNumber: true,
           templateElements: [
             {
               type: "dropdown",
               name: "major_product_category",
               title: "Major product category",
+              hideNumber: true,
               choices: ["item1", "item2"]
             },
             {
@@ -1391,6 +1394,7 @@ const surveyJson = {
               name: "minor_product_category",
               visibleIf: "{panel.major_product_category} notempty",
               title: "Minor product category",
+              hideNumber: true,
               choices: ["item1", "item2"]
             },
             {
@@ -1415,6 +1419,7 @@ const surveyJson = {
                   type: "checkbox",
                   name: "land_area_known",
                   titleLocation: "hidden",
+                  hideNumber: true,
                   choices: [
                     {
                       value: "not_known",
@@ -1429,6 +1434,12 @@ const surveyJson = {
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'conventional_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ],
                   title:
                     "Land area in {land_area_unit} under conventional cultivation:"
                 },
@@ -1439,6 +1450,12 @@ const surveyJson = {
                     "{organic_logic} anyof ['mixed', 'organic_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
                   startWithNewLine: false,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    }
+                  ],
                   title:
                     "Land area in {land_area_unit} under organic cultivation:"
                 },
@@ -1446,6 +1463,7 @@ const surveyJson = {
                   type: "checkbox",
                   name: "conventional_organic_area_known",
                   titleLocation: "hidden",
+                  hideNumber: true,
                   visibleIf: "{organic_logic} = 'mixed'",
                   choices: [
                     {
@@ -1469,119 +1487,18 @@ const surveyJson = {
                   name: "panel_volumes",
                   elements: [
                     {
-                      type: "panel",
-                      name: "unit_descriptions_panel",
-                      elements: [
-                        {
-                          type: "expression",
-                          name: "unit_descriptions",
-                          title:
-                            "A note on units: please make sure the unit you select is correct and applicable to the product you are reporting on. Please see here a description of uses for each unit:",
-                          hideNumber: true
-                        },
-                        {
-                          type: "panel",
-                          name: "panel4",
-                          elements: [
-                            {
-                              type: "expression",
-                              name: "kg_description",
-                              title: "Kilograms (kg)",
-                              description:
-                                "Use kg when you know the volume of your product in kilograms",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "mt_description",
-                              startWithNewLine: false,
-                              title: "Metric tons (MT)",
-                              description:
-                                "Use MT when you know the volume of your product in metric tons",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "boxes_large_description",
-                              title: "18.14 kg Boxes",
-                              description:
-                                "For bananas only: use 18.14 kg Boxes when you know the number of boxes of bananas",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "boxes_small_description",
-                              startWithNewLine: false,
-                              title: "13.5 kg Boxes",
-                              description:
-                                "For bananas only: use 13.5 kg Boxes when you know the number of boxes of bananas",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "pounds_description",
-                              title: "Pound",
-                              description:
-                                "Use pound when you know the volume of your product in pounds",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "question6",
-                              startWithNewLine: false,
-                              title: "Quintales (46 kg)",
-                              description:
-                                "Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "flowers_description",
-                              title: "Stems of flowers",
-                              description:
-                                "For flowers and plants only: use when you know the number of flowers or plants",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "1000stems_description",
-                              startWithNewLine: false,
-                              title: "1000 stems of flowers",
-                              description:
-                                "For flowers and plants only: use when you know the number of 1,000 flower or plant bunches",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "litres_description",
-                              title: "Litres",
-                              description:
-                                "For argan oil and wine bottles only: use litres when you know the volume of your oil or wine in litres",
-                              hideNumber: true
-                            },
-                            {
-                              type: "expression",
-                              name: "items_description",
-                              startWithNewLine: false,
-                              title: "Items",
-                              description:
-                                "For coconuts and sportsballs only: use items when you know the number of coconuts or sportsballs produced",
-                              hideNumber: true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
                       type: "dropdown",
                       name: "product_form_name",
+                      hideNumber: true,
                       title:
                         "What product form are you reporting the {panel.minor_product_category} production in?",
                       choices: []
                     },
                     {
                       type: "dropdown",
-                      name: "question1",
+                      name: "production_unit",
+                      hideNumber: true,
+                      startWithNewLine: false,
                       title:
                         "What unit are you reporting {panel.minor_product_category} production in?",
                       choices: [
@@ -1627,22 +1544,60 @@ const surveyJson = {
                     {
                       type: "text",
                       name: "volumes_conventional",
+                      hideNumber: true,
                       title:
-                        "Volume of {panel.product_form_name} produced under conventional cultivation:"
+                        "Volume of {panel.product_form_name} produced under conventional cultivation in {panel.production_unit}:",
+                      validators: [
+                        {
+                          type: "numeric",
+                          text: "Please enter a valid number"
+                        }
+                      ]
                     },
                     {
                       type: "text",
                       name: "volume_organic",
+                      startWithNewLine: false,
+                      hideNumber: true,
                       title:
-                        "Volume of {panel.product_form_name} produced under organic cultivation:"
+                        "Volume of {panel.product_form_name} produced under organic cultivation in {panel.production_unit}:",
+                      validators: [
+                        {
+                          type: "numeric",
+                          text: "Please enter a valid number"
+                        }
+                      ]
                     },
                     {
                       type: "boolean",
                       name: "volume_estimates",
                       title: "Are the volumes reported actual or estimates?",
+                      hideNumber: true,
                       defaultValue: "true",
                       labelTrue: "Estimates",
                       labelFalse: "Actual"
+                    },
+                    {
+                      type: "dropdown",
+                      name: "how_volumes_estimated",
+                      title: "How were the volumes estimated?",
+                      startWithNewLine: false,
+                      hideNumber: true,
+                      visibleIf: "{panel.volume_estimates} = true",
+                      choices: [
+                        {
+                          value: "FT_sales",
+                          text: "Fairtrade Sales"
+                        },
+                        {
+                          value: "total_sales",
+                          text: "Total sales"
+                        },
+                        {
+                          value: "yields",
+                          text: "Yields"
+                        }
+                      ]
                     },
                     {
                       type: "panel",
@@ -1651,12 +1606,15 @@ const surveyJson = {
                         {
                           type: "text",
                           name: "volumes_conventional_offer",
+                          hideNumber: true,
                           title:
                             "Conventional volume of {panel.product_form_name} on offer:"
                         },
                         {
                           type: "text",
                           name: "volume_organic_offer",
+                          hideNumber: true,
+                          startWithNewLine: false,
                           title: "Organic {panel.product_form_name} on offer:"
                         }
                       ],
@@ -1683,6 +1641,110 @@ const surveyJson = {
           panelNextText: "Next product",
           showQuestionNumbers: "onPanel",
           renderMode: "progressTopBottom"
+        },
+        {
+          type: "panel",
+          name: "unit_descriptions_panel",
+          elements: [
+            {
+              type: "expression",
+              name: "unit_descriptions",
+              title:
+                "A note on units: please make sure the unit you select is correct and applicable to the product you are reporting on. Please see here a description of uses for each unit:",
+              hideNumber: true
+            },
+            {
+              type: "panel",
+              name: "panel4",
+              elements: [
+                {
+                  type: "expression",
+                  name: "kg_description",
+                  title: "Kilograms (kg)",
+                  description:
+                    "Use kg when you know the volume of your product in kilograms",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "mt_description",
+                  startWithNewLine: false,
+                  title: "Metric tons (MT)",
+                  description:
+                    "Use MT when you know the volume of your product in metric tons",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "boxes_large_description",
+                  title: "18.14 kg Boxes",
+                  description:
+                    "For bananas only: use 18.14 kg Boxes when you know the number of boxes of bananas",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "boxes_small_description",
+                  startWithNewLine: false,
+                  title: "13.5 kg Boxes",
+                  description:
+                    "For bananas only: use 13.5 kg Boxes when you know the number of boxes of bananas",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "pounds_description",
+                  title: "Pound",
+                  description:
+                    "Use pound when you know the volume of your product in pounds",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "question6",
+                  startWithNewLine: false,
+                  title: "Quintales (46 kg)",
+                  description:
+                    "Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "flowers_description",
+                  title: "Stems of flowers",
+                  description:
+                    "For flowers and plants only: use when you know the number of flowers or plants",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "1000stems_description",
+                  startWithNewLine: false,
+                  title: "1000 stems of flowers",
+                  description:
+                    "For flowers and plants only: use when you know the number of 1,000 flower or plant bunches",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "litres_description",
+                  title: "Litres",
+                  description:
+                    "For argan oil and wine bottles only: use litres when you know the volume of your oil or wine in litres",
+                  hideNumber: true
+                },
+                {
+                  type: "expression",
+                  name: "items_description",
+                  startWithNewLine: false,
+                  title: "Items",
+                  description:
+                    "For coconuts and sportsballs only: use items when you know the number of coconuts or sportsballs produced",
+                  hideNumber: true
+                }
+              ]
+            }
+          ]
         }
       ]
     }
