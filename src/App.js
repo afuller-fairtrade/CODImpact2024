@@ -307,6 +307,7 @@ const surveyJson = {
               name: "farmers_total",
               title: "Summary of total farmers:",
               hideNumber: true,
+              displayStyle: "decimal",
               expression: "{farmers_conventional_total}+{farmers_organic_total}"
             },
             {
@@ -314,6 +315,7 @@ const surveyJson = {
               name: "farmers_female",
               title: "Summary of total female farmers:",
               hideNumber: true,
+              displayStyle: "decimal",
               expression:
                 "{farmers_conventional_female}+{farmers_organic_female}"
             },
@@ -323,6 +325,7 @@ const surveyJson = {
               startWithNewLine: false,
               title: "Summary of total male farmers:",
               hideNumber: true,
+              displayStyle: "decimal",
               expression: "{farmers_conventional_male}+{farmers_organic_male}"
             }
           ],
@@ -677,6 +680,7 @@ const surveyJson = {
                       name: "RO_farmers_age_total",
                       title: "Summary of total farmers reported:",
                       hideNumber: true,
+                      displayStyle: "decimal",
                       expression:
                         "{total_farmers_16_28}+{total_farmers_29_35}+{total_farmers_36}"
                       /* validators: [
@@ -692,6 +696,7 @@ const surveyJson = {
                       name: "RO_farmers_age_female_total",
                       title: "Summary of female farmers reported:",
                       hideNumber: true,
+                      displayStyle: "decimal",
                       expression:
                         "{farmers_female_16_28}+{farmers_female_29_35}+{farmers_female_36}"
                       /*validators: [
@@ -708,6 +713,7 @@ const surveyJson = {
                       title: "Summary of male farmers reported:",
                       hideNumber: true,
                       startWithNewLine: false,
+                      displayStyle: "decimal",
                       expression:
                         "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
                       /* validators: [
@@ -1013,6 +1019,7 @@ const surveyJson = {
                   name: "workers_total",
                   title: "Summary of total workers:",
                   hideNumber: true,
+                  displayStyle: "decimal",
                   expression:
                     "{workers_permanent_total}+{workers_fixed_term_total}+{workers_subcontractor_total}"
                 },
@@ -1021,6 +1028,7 @@ const surveyJson = {
                   name: "workers_female",
                   title: "Summary of total female workers:",
                   hideNumber: true,
+                  displayStyle: "decimal",
                   expression:
                     "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
                 },
@@ -1030,6 +1038,7 @@ const surveyJson = {
                   startWithNewLine: false,
                   title: "Summary of total male workers:",
                   hideNumber: true,
+                  displayStyle: "decimal",
                   expression:
                     "{workers_permanent_male}+{workers_fixed_term_male}+{workers_subcontractor_male}"
                 },
@@ -1501,6 +1510,7 @@ const surveyJson = {
                   name: "RO_workers_age_total",
                   title: "Summary of total workers reported:",
                   hideNumber: true,
+                  displayStyle: "decimal",
                   expression:
                     "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"
                   /* validators: [
@@ -1516,6 +1526,7 @@ const surveyJson = {
                   name: "RO_workers_age_female_total",
                   title: "Summary of female workers reported:",
                   hideNumber: true,
+                  displayStyle: "decimal",
                   expression:
                     "{workers_female_16_28}+{workers_female_29_35}+{workers_female_36}"
                   /* validators: [
@@ -1532,6 +1543,7 @@ const surveyJson = {
                   title: "Summary of male workers reported:",
                   hideNumber: true,
                   startWithNewLine: false,
+                  displayStyle: "decimal",
                   expression:
                     "{workers_male_16_28}+{workers_male_29_35}+{workers_male_36}"
                   /* validators: [
@@ -1654,6 +1666,14 @@ const surveyJson = {
               hideNumber: true,
               isRequired: true,
               choices: ["item1", "item2"]
+            },
+            {
+              type: "text",
+              name: "minor_category_other",
+              hideNumber: true,
+              title:
+                "If your product was not listed and you selected 'Other' please specify here the product for which your organization produced under Fairtrade certification:",
+              visibleIf: "{panel.minor_product_category} contains 'Other'"
             },
             {
               type: "panel",
@@ -1807,6 +1827,14 @@ const surveyJson = {
                       text: "Items"
                     }
                   ]
+                },
+                {
+                  type: "text",
+                  name: "product_form_other",
+                  hideNumber: true,
+                  title:
+                    "If your product was not listed and you selected 'Other' please specify here the product form for which you are reporting production:",
+                  visibleIf: "{panel.minor_product_category} contains 'Other'"
                 },
                 {
                   type: "text",
