@@ -44,6 +44,7 @@ const surveyJson = {
     {
       navigationTitle: "Start page",
       name: "Start page",
+      title: "Start Page",
       elements: [
         {
           type: "panel",
@@ -123,8 +124,7 @@ const surveyJson = {
             }
           ]
         }
-      ],
-      title: "Start Page"
+      ]
     },
     {
       name: "Members",
@@ -137,6 +137,13 @@ const surveyJson = {
           type: "panel",
           name: "Number of farmers info box",
           elements: [
+            {
+              type: "html",
+              name: "info_box_placeholder",
+              hideNumber: true,
+              html:
+                "<br><b><u>PLACEHOLDER:</u> Information like this will either go on each individual page, OR in an introduction/ consent to share info page."
+            },
             {
               type: "html",
               name: "info_box_memberspage",
@@ -155,7 +162,7 @@ const surveyJson = {
         },
         {
           type: "panel",
-          name: "Number of farmers",
+          name: "instructions_farmers",
           elements: [
             {
               type: "html",
@@ -163,7 +170,13 @@ const surveyJson = {
               hideNumber: true,
               html:
                 "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization. Please also enter the number of women and men in your organization, if this information is known.<br><br><i>Count each member of your organization only once. If some members are in the process of transitioning from conventional to organic production, please count them as organic farmers.</i>"
-            },
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "Number of farmers",
+          elements: [
             {
               type: "panel",
               name: "farmers_conventional_panel",
@@ -383,7 +396,24 @@ const surveyJson = {
     },
     {
       name: "Young people (SPOs)",
+      visibleIf: "{producer_setup} = 'spo'",
+      title: "Number of young people as members of your organization",
+      navigationTitle: "Young people",
+      /*navigationDescription: "in your organization"*/
       elements: [
+        {
+          type: "panel",
+          name: "instructions_farmers_by_age",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_numberfarmers_byage",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<br><b>16 to 28 years old<br>29 to 35 years old<br>36 years or older</b><br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+            }
+          ]
+        },
         {
           type: "checkbox",
           name: "farmers_age_not_known",
@@ -403,13 +433,6 @@ const surveyJson = {
           type: "panel",
           name: "Number of farmers by age",
           elements: [
-            {
-              type: "html",
-              name: "info_box_numberfarmers_byage",
-              hideNumber: true,
-              html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<br><i>16 to 28 years old<br>29 to 35 years old<br>36 years or older</i><br><br>Please also enter the number of women and men in each age group, if this information is known."
-            },
             {
               type: "panel",
               name: "panel_farmers_16_28",
@@ -736,6 +759,7 @@ const surveyJson = {
         {
           type: "text",
           name: "farmers_age_page_comments",
+          visibleIf: "{farmers_age_not_known} empty",
           title: "Optional space for comments:",
           hideNumber: true
         },
@@ -798,14 +822,13 @@ const surveyJson = {
             }
           ]
         }
-      ],
-      visibleIf: "{producer_setup} = 'spo'",
-      title: "Number of young people as members of your organization",
-      navigationTitle: "Young people"
-      /*navigationDescription: "in your organization"*/
+      ]
     },
     {
       name: "Workers",
+      title: "Number of workers employed by your organization",
+      navigationTitle: "Workers",
+      /*navigationDescription: "employed by your organization"*/
       elements: [
         {
           type: "panel",
@@ -813,18 +836,25 @@ const surveyJson = {
           elements: [
             {
               type: "html",
+              name: "info_box_numberworkers",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of workers hired by your organization according to the following types of employment contract types: <b>permanent, fixed-term</b> and <b>sub-contracted</b>. Definitions for each contract type are provided in the corresponding section of the page. Please also enter the number of women and men your organization employs, if this information is known."
+            },
+            {
+              type: "html",
               name: "info_box_spo_only",
               visibleIf: "{producer_setup} = 'spo'",
               hideNumber: true,
               html:
-                "<br>This section applies <b>only to those workers hired by your organization directly.</b> Workers hired by individual SPO members that work on farms should <i>not</i> be counted in this section."
+                "<br>This section applies <b>only to those workers hired by your organization directly.</b> Workers hired by individual members that work on farms should <i>not</i> be counted in this section."
             },
             {
               type: "html",
-              name: "info_box2",
+              name: "info_workerdefinition",
               hideNumber: true,
               html:
-                "<br>Workers are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers. For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply:<br><br><b>Permanent workers:</b> A permanent worker is a worker that has an employment relationship with the company/organization for an indefinite period of time.<br><br><b>Fixed-term workers:</b> A fixed-term (or temporary) worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer.<br><br><b>Sub-contracted worker:</b> A sub-contracted worker is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker.<br><br><b>Seasonal worker:</b> A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted."
+                "<br><i><b>Workers</b> are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers. For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.</i>"
             }
           ]
         },
@@ -835,14 +865,19 @@ const surveyJson = {
             {
               type: "panel",
               name: "workers_permanent_panel",
-              title:
-                "Record the number of workers employed by your organization in the last calendar year with the following types of employment contracts.",
+              title: "Workers employed under a permanent contract",
               elements: [
+                {
+                  type: "html",
+                  name: "info_box_permanent_worker",
+                  hideNumber: true,
+                  html:
+                    "<br>A <b>permanent worker</b> is a worker that has an employment relationship with the company/organization for an indefinite period of time"
+                },
                 {
                   type: "text",
                   name: "workers_permanent_total",
-                  title:
-                    "Number of permanent workers employed by your organization",
+                  title: "Total permanent workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -854,7 +889,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_permanent} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_total} empty"
+                        "{workers_permanent_total} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_total} empty"
                     }
                   ]
                 },
@@ -862,7 +897,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_permanent_female",
                   visibleIf: "{permanent_gender_not_known} empty",
-                  title: "Female permanent workers",
+                  title: "Permanent workers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -874,7 +909,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_permanent} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_female} empty"
+                        "{workers_permanent_total} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_female} empty"
                     }
                   ]
                 },
@@ -883,7 +918,7 @@ const surveyJson = {
                   name: "workers_permanent_male",
                   visibleIf: "{permanent_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Male permanent workers",
+                  title: "Permanent workers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -895,7 +930,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_permanent} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_male} empty"
+                        "{workers_permanent_total} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_male} empty"
                     }
                   ]
                 },
@@ -908,7 +943,7 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of permanent workers by gender"
+                        "Please check here if you do not know the number of women and men employed under a permanent contract"
                     }
                   ]
                 }
@@ -917,12 +952,19 @@ const surveyJson = {
             {
               type: "panel",
               name: "workers_fixedterm_panel",
+              title: "Workers employed under a fixed-term contract",
               elements: [
+                {
+                  type: "html",
+                  name: "info_box_fixedterm_worker",
+                  hideNumber: true,
+                  html:
+                    "<br>A <b>fixed-term worker (or temporary)</b> worker is a worker that has an employment relationship with the company/organization that automatically ends or may be extended after a certain duration previously agreed with the employer"
+                },
                 {
                   type: "text",
                   name: "workers_fixed_term_total",
-                  title:
-                    "Number of fixed-term workers employed by your organization",
+                  title: "Total fixed-term workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -934,7 +976,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_fixed_term} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_total} empty"
+                        "{workers_fixed_term_total} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_total} empty"
                     }
                   ]
                 },
@@ -942,7 +984,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_fixed_term_female",
                   visibleIf: "{workers_fixedterm_gender_not_known} empty",
-                  title: "Female fixed-term workers",
+                  title: "Fixed-term workers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -954,7 +996,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_fixed_term} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_female} empty"
+                        "{workers_fixed_term_total} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_female} empty"
                     }
                   ]
                 },
@@ -963,7 +1005,7 @@ const surveyJson = {
                   name: "workers_fixed_term_male",
                   visibleIf: "{workers_fixedterm_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Male fixed-term workers",
+                  title: "Fixed-term workers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -975,7 +1017,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_fixed_term} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_male} empty"
+                        "{workers_fixed_term_total} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_male} empty"
                     }
                   ]
                 },
@@ -988,7 +1030,7 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of fixed-term workers by gender"
+                        "Please check here if you do not know the number of women and men employed under a fixed-term contract"
                     }
                   ]
                 }
@@ -997,12 +1039,19 @@ const surveyJson = {
             {
               type: "panel",
               name: "workers_subcontractor_panel",
+              title: "Sub-contracted workers employed by a third party",
               elements: [
+                {
+                  type: "html",
+                  name: "info_box_subcontractor_worker",
+                  hideNumber: true,
+                  html:
+                    "<br>A <b>sub-contracted worker</b> is a worker employed and paid by a third party, usually a labour broker, to provide labour to a third party in exchange for a fee that is collected by the broker"
+                },
                 {
                   type: "text",
                   name: "workers_subcontractor_total",
-                  title:
-                    "Number of sub-contracted workers employed by your organization",
+                  title: "Total sub-contracted workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1014,7 +1063,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_subcontractor} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_total} empty"
+                        "{workers_subcontractor_total} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_total} empty"
                     }
                   ]
                 },
@@ -1022,7 +1071,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_subcontractor_female",
                   visibleIf: "{workers_subcontractor_gender_not_known} empty",
-                  title: "Female sub-contracted workers",
+                  title: "Sub-contracted workers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1034,7 +1083,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_subcontractor} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_female} empty"
+                        "{workers_subcontractor_total} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_female} empty"
                     }
                   ]
                 },
@@ -1043,7 +1092,7 @@ const surveyJson = {
                   name: "workers_subcontractor_male",
                   visibleIf: "{workers_subcontractor_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Male sub-contracted workers",
+                  title: "Sub-contracted workers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1055,7 +1104,7 @@ const surveyJson = {
                       text:
                         "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{workers_subcontractor} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_male} empty"
+                        "{workers_subcontractor_total} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_male} empty"
                     }
                   ]
                 },
@@ -1068,95 +1117,117 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of sub-contracted workers by gender"
+                        "Please check here if you do not know the number of women and men sub-contracted by a third party"
                     }
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          type: "text",
+          name: "workers_page_comments",
+          title: "Optional space for comments:",
+          hideNumber: true
+        },
+        {
+          type: "panel",
+          name: "summary_number_of_workers",
+          title: "Summary: number of workers in your organization",
+          elements: [
+            {
+              type: "expression",
+              name: "workers_total",
+              title: "Total number of workers employed by your organization:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{workers_permanent_total}+{workers_fixed_term_total}+{workers_subcontractor_total}"
             },
             {
-              type: "panel",
-              name: "summary_number_of_workers",
-              elements: [
-                {
-                  type: "expression",
-                  name: "workers_total",
-                  title: "Summary of total workers:",
-                  hideNumber: true,
-                  displayStyle: "decimal",
-                  expression:
-                    "{workers_permanent_total}+{workers_fixed_term_total}+{workers_subcontractor_total}"
-                },
-                {
-                  type: "expression",
-                  name: "workers_female",
-                  title: "Summary of total female workers:",
-                  hideNumber: true,
-                  displayStyle: "decimal",
-                  expression:
-                    "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
-                },
-                {
-                  type: "expression",
-                  name: "workers_male",
-                  startWithNewLine: false,
-                  title: "Summary of total male workers:",
-                  hideNumber: true,
-                  displayStyle: "decimal",
-                  expression:
-                    "{workers_permanent_male}+{workers_fixed_term_male}+{workers_subcontractor_male}"
-                },
-                {
-                  type: "expression",
-                  name: "workers_seasonal_max_hidden",
-                  visible: false,
-                  title: "Max number of seasonal workers",
-                  hideNumber: true,
-                  expression: "{workers_fixed_term}+{workers_subcontractor}"
-                }
-              ],
-              title: "Summary of number of workers reported"
+              type: "expression",
+              name: "workers_female",
+              title: "Number of workers that are women:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{workers_permanent_female}+{workers_fixed_term_female}+{workers_subcontractor_female}"
+            },
+            {
+              type: "expression",
+              name: "workers_male",
+              startWithNewLine: false,
+              title: "Number of workers that are men:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{workers_permanent_male}+{workers_fixed_term_male}+{workers_subcontractor_male}"
+            },
+            {
+              type: "expression",
+              name: "workers_seasonal_max_hidden",
+              visible: false,
+              title: "Max number of seasonal workers",
+              displayStyle: "decimal",
+              hideNumber: true,
+              expression:
+                "{workers_fixed_term_total}+{workers_subcontractor_total}"
             }
           ]
         }
-      ],
-      title: "Number of workers employed by your organization",
-      navigationTitle: "Workers"
-      /*navigationDescription: "employed by your organization"*/
+      ]
     },
     {
       name: "Seasonal workers",
+      title: "Seasonal workers hired by your organization",
+      navigationTitle: "Seasonal workers",
+      /*navigationDescription: "employed by your organization"*/
       elements: [
         {
           type: "panel",
-          name: "Info box workers",
+          name: "Info box seasonal workers",
           elements: [
+            {
+              type: "html",
+              name: "info_box_seasonalworkers",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of fixed-term and sub-contracted workers hired by your organization that are also seasonal workers. A <b>seasonal worker</b> is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted. Please also enter the number of seasonal women and men your organization employs, if this information is known."
+            },
             {
               type: "html",
               name: "info_box_spo_only",
               visibleIf: "{producer_setup} = 'spo'",
               hideNumber: true,
               html:
-                "<br>This section applies <b>only to those workers hired by your organization directly.</b> Workers hired by individual SPO members that work on farms should <i>not</i> be counted in this section."
+                "<br>This section applies <b>only to those workers hired by your organization directly.</b> Workers hired by individual members that work on farms should <i>not</i> be counted in this section."
             },
             {
               type: "html",
-              name: "info_box2",
+              name: "info_workerdefinition",
               hideNumber: true,
               html:
-                "<br>Workers are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers. For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.The following definitions of types of workers apply:<br><br><b>Seasonal worker:</b> A seasonal worker is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted."
+                "<br><i><b>Workers</b> are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers. For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.</i>"
             }
           ]
         },
         {
           type: "panel",
           name: "workers_seasonal_panel",
+          title: "Seasonal workers employed by your organization",
           elements: [
+            {
+              type: "html",
+              name: "workers_seasonal_max_html",
+              hideNumber: true,
+              html:
+                "<br>You entered that your organization employs <b>{workers_seasonal_max_hidden}</b> fixed-term and sub-contracted workers. Of these how many are seasonally employed?"
+            },
             {
               type: "text",
               name: "workers_seasonal_total",
-              title:
-                "Of the {workers_seasonal_max_hidden} fixed-term and sub-contracted workers hired by your organization, how many are seasonal workers?",
+              title: "Total seasonal workers:",
               hideNumber: true,
               validators: [
                 {
@@ -1176,7 +1247,7 @@ const surveyJson = {
               type: "text",
               name: "workers_seasonal_female",
               visibleIf: "{workers_seasonal_gender_not_known} empty",
-              title: "Female seasonal workers",
+              title: "Seasonal workers that are women:",
               hideNumber: true,
               validators: [
                 {
@@ -1197,7 +1268,7 @@ const surveyJson = {
               name: "workers_seasonal_male",
               visibleIf: "{workers_seasonal_gender_not_known} empty",
               startWithNewLine: false,
-              title: "Male seasonal workers",
+              title: "Seasonal workers that are men:",
               hideNumber: true,
               validators: [
                 {
@@ -1226,13 +1297,15 @@ const surveyJson = {
                 }
               ]
             }
-          ],
-          title: "Seasonal workers hired by your organization"
+          ]
+        },
+        {
+          type: "text",
+          name: "seasonal_workers_page_comments",
+          title: "Optional space for comments:",
+          hideNumber: true
         }
-      ],
-      title: "Number of seasonal workers employed by your organization",
-      navigationTitle: "Seasonal workers"
-      /*navigationDescription: "employed by your organization"*/
+      ]
     },
     {
       name: "Young people (HL)",
