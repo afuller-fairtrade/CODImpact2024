@@ -142,14 +142,14 @@ const surveyJson = {
               name: "info_box_memberspage",
               hideNumber: true,
               html:
-                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification.<br><i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
+                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. <i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
             },
             {
               type: "html",
               name: "info_box_memberspage_gender",
               hideNumber: true,
               html:
-                "<br>A key element of this relates to representation of women in Fairtrade.<br><i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
+                "<br>A key element of this relates to representation of women in Fairtrade. <i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
             }
           ]
         },
@@ -385,398 +385,418 @@ const surveyJson = {
       name: "Young people (SPOs)",
       elements: [
         {
+          type: "checkbox",
+          name: "farmers_age_not_known",
+          title:
+            "Do you know the number of your organization's members by age groups?",
+          titleLocation: "hidden",
+          hideNumber: true,
+          choices: [
+            {
+              value: "not_known",
+              text:
+                "Please check here if you do not know the number of your organization's members for the specified age groups"
+            }
+          ]
+        },
+        {
           type: "panel",
           name: "Number of farmers by age",
           elements: [
             {
-              type: "checkbox",
-              name: "farmers_age_not_known",
-              title:
-                "Do you know the number of your organization's members by age groups?",
-              titleLocation: "hidden",
+              type: "html",
+              name: "info_box_numberfarmers_byage",
               hideNumber: true,
-              choices: [
+              html:
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<br><i>16 to 28 years old<br>29 to 35 years old<br>36 years or older</i><br><br>Please also enter the number of women and men in each age group, if this information is known."
+            },
+            {
+              type: "panel",
+              name: "panel_farmers_16_28",
+              elements: [
                 {
-                  value: "not_known",
-                  text:
-                    "Please check here if you do not know the number of your organization's members by age groups"
+                  type: "html",
+                  name: "info_box_farmers_16_28",
+                  hideNumber: true,
+                  html: "<br><b>16 to 28 year old members</b>"
+                },
+                {
+                  type: "text",
+                  name: "total_farmers_16_28",
+                  title: "Total farmers:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {total_farmers_16_28} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_16_28} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_female_16_28",
+                  visibleIf: "{farmers_gender_not_known_16_28} empty",
+                  title: "Farmers that are women:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {farmers_female_16_28} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_16_28} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_male_16_28",
+                  visibleIf: "{farmers_gender_not_known_16_28} empty",
+                  startWithNewLine: false,
+                  title: "Farmers that are men:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {farmers_male_16_28} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_16_28} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "checkbox",
+                  name: "farmers_gender_not_known_16_28",
+                  title: "Do you know the number of female and male farmers?",
+                  titleLocation: "hidden",
+                  hideNumber: true,
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the number of farmers age 16 to 28 years by gender"
+                    }
+                  ]
                 }
               ]
             },
             {
               type: "panel",
-              name: "report_number_farmers_panel",
+              name: "panel_farmers_29_35",
               elements: [
                 {
-                  type: "panel",
-                  name: "Number of farmers age 16 to 28 years old",
-                  elements: [
-                    {
-                      type: "text",
-                      name: "total_farmers_16_28",
-                      title: "Total number of farmers age 16 to 28",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {total_farmers_16_28} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_16_28} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "text",
-                      name: "farmers_female_16_28",
-                      visibleIf: "{farmers_gender_not_known_16_28} empty",
-                      title: "Number of female farmers",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {farmers_female_16_28} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_16_28} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "text",
-                      name: "farmers_male_16_28",
-                      visibleIf: "{farmers_gender_not_known_16_28} empty",
-                      startWithNewLine: false,
-                      title: "Number of male farmers",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {farmers_male_16_28} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_16_28} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "checkbox",
-                      name: "farmers_gender_not_known_16_28",
-                      title:
-                        "Do you know the number of female and male farmers?",
-                      titleLocation: "hidden",
-                      hideNumber: true,
-                      choices: [
-                        {
-                          value: "not_known",
-                          text:
-                            "Please check here if you do not know the number of female and male farmers 16 to 28 years old"
-                        }
-                      ]
-                    }
-                  ],
-                  title: "Number of farmers age 16 to 28 years old"
+                  type: "html",
+                  name: "info_box_farmers_29_35",
+                  hideNumber: true,
+                  html: "<br><b>29 to 35 year old members</b>"
                 },
                 {
-                  type: "panel",
-                  name: "Number of farmers age 29 to 35 years old",
-                  elements: [
+                  type: "text",
+                  name: "total_farmers_29_35",
+                  title: "Total farmers:",
+                  hideNumber: true,
+                  validators: [
                     {
-                      type: "text",
-                      name: "total_farmers_29_35",
-                      title: "Total number of farmers age 29 to 35",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {total_farmers_29_35} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_29_35} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "text",
-                      name: "farmers_female_29_35",
-                      visibleIf: "{farmers_gender_not_known_29_35} empty",
-                      title: "Number of female farmers",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {farmers_female_29_35} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_29_35} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "text",
-                      name: "farmers_male_29_35",
-                      visibleIf: "{farmers_gender_not_known_29_35} empty",
-                      startWithNewLine: false,
-                      title: "Number of male farmers",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {farmers_male_29_35} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_29_35} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "checkbox",
-                      name: "farmers_gender_not_known_29_35",
-                      title:
-                        "Do you know the number of female and male farmers?",
-                      titleLocation: "hidden",
-                      hideNumber: true,
-                      choices: [
-                        {
-                          value: "not_known",
-                          text:
-                            "Please check here if you do not know the number of female and male farmers 29 to 35 years old"
-                        }
-                      ]
-                    }
-                  ],
-                  title: "Number of farmers age 29 to 35 years old"
-                },
-                {
-                  type: "panel",
-                  name: "Number of farmers age 36 years or older",
-                  elements: [
-                    {
-                      type: "text",
-                      name: "total_farmers_36",
-                      title: "Total number of farmers 36 years or older",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {total_farmers_36} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_36} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "text",
-                      name: "farmers_female_36",
-                      visibleIf: "{farmers_gender_not_known_36} empty",
-                      title: "Number of female farmers",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {farmers_female_36} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_36} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "text",
-                      name: "farmers_male_36",
-                      visibleIf: "{farmers_gender_not_known_36} empty",
-                      startWithNewLine: false,
-                      title: "Number of male farmers",
-                      hideNumber: true,
-                      validators: [
-                        {
-                          type: "numeric",
-                          text: "Please enter a valid number"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
-                          expression:
-                            "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {farmers_male_36} empty"
-                        },
-                        {
-                          type: "expression",
-                          text:
-                            "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
-                          expression:
-                            "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_36} empty"
-                        }
-                      ]
-                    },
-                    {
-                      type: "checkbox",
-                      name: "farmers_gender_not_known_36",
-                      title:
-                        "Do you know the number of female and male farmers?",
-                      titleLocation: "hidden",
-                      choices: [
-                        {
-                          value: "not_known",
-                          text:
-                            "Please check here if you do not know the number of female and male farmers 36 years or old"
-                        }
-                      ]
-                    }
-                  ],
-                  title: "Number of farmers age 36 years or older"
-                },
-                {
-                  type: "panel",
-                  name: "Summary of farmers reported",
-                  elements: [
-                    {
-                      type: "expression",
-                      name: "RO_farmers_age_total",
-                      title: "Summary of total farmers reported:",
-                      hideNumber: true,
-                      displayStyle: "decimal",
-                      expression:
-                        "{total_farmers_16_28}+{total_farmers_29_35}+{total_farmers_36}"
-                      /* validators: [
-                          {
-                            type: "expression",
-                            text: "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
-                            expression: "{RO_farmers_age_total} <= {farmers_total}"
-                          }
-                        ]*/
+                      type: "numeric",
+                      text: "Please enter a valid number"
                     },
                     {
                       type: "expression",
-                      name: "RO_farmers_age_female_total",
-                      title: "Summary of female farmers reported:",
-                      hideNumber: true,
-                      displayStyle: "decimal",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
                       expression:
-                        "{farmers_female_16_28}+{farmers_female_29_35}+{farmers_female_36}"
-                      /*validators: [
-                          {
-                            type: "expression",
-                            text: "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
-                            expression: "{RO_farmers_age_female_total} <= {farmers_female}"
-                          }
-                        ]*/
+                        "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {total_farmers_29_35} empty"
                     },
                     {
                       type: "expression",
-                      name: "RO_farmers_age_male_total",
-                      title: "Summary of male farmers reported:",
-                      hideNumber: true,
-                      startWithNewLine: false,
-                      displayStyle: "decimal",
+                      text:
+                        "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
                       expression:
-                        "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
-                      /* validators: [
-                          {
-                            type: "expression",
-                            text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
-                            expression: "{RO_farmers_age_male_total} <= {farmers_male}"
-                          }
-                        ]*/
+                        "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_29_35} empty"
                     }
-                  ],
-                  title: "Summary of farmers reported"
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_female_29_35",
+                  visibleIf: "{farmers_gender_not_known_29_35} empty",
+                  title: "Farmers that are women:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {farmers_female_29_35} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_29_35} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_male_29_35",
+                  visibleIf: "{farmers_gender_not_known_29_35} empty",
+                  startWithNewLine: false,
+                  title: "Farmers that are men:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {farmers_male_29_35} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_29_35} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "checkbox",
+                  name: "farmers_gender_not_known_29_35",
+                  title: "Do you know the number of female and male farmers?",
+                  titleLocation: "hidden",
+                  hideNumber: true,
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the number of farmers age 29 to 35 years by gender"
+                    }
+                  ]
                 }
-              ],
-              visibleIf: "{farmers_age_not_known} empty"
+              ]
+            },
+            {
+              type: "panel",
+              name: "panel_farmers_36",
+              elements: [
+                {
+                  type: "html",
+                  name: "info_box_farmers_29_35",
+                  hideNumber: true,
+                  html: "<br><b>36 years and older members</b>"
+                },
+                {
+                  type: "text",
+                  name: "total_farmers_36",
+                  title: "Total farmers:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {total_farmers_36} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_36} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_female_36",
+                  visibleIf: "{farmers_gender_not_known_36} empty",
+                  title: "Farmers that are women:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {farmers_female_36} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_36} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "text",
+                  name: "farmers_male_36",
+                  visibleIf: "{farmers_gender_not_known_36} empty",
+                  startWithNewLine: false,
+                  title: "Farmers that are men:",
+                  hideNumber: true,
+                  validators: [
+                    {
+                      type: "numeric",
+                      text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                      expression:
+                        "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {farmers_male_36} empty"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
+                      expression:
+                        "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_36} empty"
+                    }
+                  ]
+                },
+                {
+                  type: "checkbox",
+                  name: "farmers_gender_not_known_36",
+                  title: "Do you know the number of female and male farmers?",
+                  titleLocation: "hidden",
+                  choices: [
+                    {
+                      value: "not_known",
+                      text:
+                        "Please check here if you do not know the number of farmers 36 years or older by gender"
+                    }
+                  ]
+                }
+              ]
             }
           ],
+          visibleIf: "{farmers_age_not_known} empty"
+        },
+        {
+          type: "text",
+          name: "farmers_age_page_comments",
+          title: "Optional space for comments:",
+          hideNumber: true
+        },
+        {
+          type: "panel",
+          name: "Summary of farmers reported",
           title:
-            "Record the number of farmers that are members of your organization, by age group."
+            "Summary: number of members in your organization reported by age group",
+          visibleIf: "{farmers_age_not_known} empty",
+          elements: [
+            {
+              type: "expression",
+              name: "RO_farmers_age_total",
+              title:
+                "Total number of farmers reported that are members of your organization:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{total_farmers_16_28}+{total_farmers_29_35}+{total_farmers_36}"
+              /* validators: [
+              {
+                type: "expression",
+                text: "The number of farmers reported by age is more than the number of farmers reported on the previous page. Please fix.",
+                expression: "{RO_farmers_age_total} <= {farmers_total}"
+              }
+            ]*/
+            },
+            {
+              type: "expression",
+              name: "RO_farmers_age_female_total",
+              title: "Number of farmers reported that are women:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{farmers_female_16_28}+{farmers_female_29_35}+{farmers_female_36}"
+              /*validators: [
+              {
+                type: "expression",
+                text: "The number of female farmers reported by age is more than the number of female farmers reported on the previous page. Please fix.",
+                expression: "{RO_farmers_age_female_total} <= {farmers_female}"
+              }
+            ]*/
+            },
+            {
+              type: "expression",
+              name: "RO_farmers_age_male_total",
+              title: "Number of farmers reported that are men:",
+              hideNumber: true,
+              startWithNewLine: false,
+              displayStyle: "decimal",
+              expression:
+                "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
+              /* validators: [
+              {
+                type: "expression",
+                text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page. Please fix.",
+                expression: "{RO_farmers_age_male_total} <= {farmers_male}"
+              }
+            ]*/
+            }
+          ]
         }
       ],
       visibleIf: "{producer_setup} = 'spo'",
