@@ -48,7 +48,34 @@ const surveyJson = {
       elements: [
         {
           type: "panel",
-          name: "panel1",
+          name: "Number of farmers info box",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_placeholder",
+              hideNumber: true,
+              html:
+                "<br><b><u>PLACEHOLDER for information about survey, data points, consent to share, etc.:</u> Information like this will either go on each individual page, OR in an introduction/ consent to share info page."
+            },
+            {
+              type: "html",
+              name: "info_box_memberspage",
+              hideNumber: true,
+              html:
+                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. <i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
+            },
+            {
+              type: "html",
+              name: "info_box_memberspage_gender",
+              hideNumber: true,
+              html:
+                "<br>A key element of this relates to representation of women in Fairtrade. <i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "startpage_panel",
           elements: [
             {
               type: "text",
@@ -133,33 +160,6 @@ const surveyJson = {
       /*navigationDescription: "of your organization",*/
       visibleIf: "{producer_setup} = 'spo'",
       elements: [
-        {
-          type: "panel",
-          name: "Number of farmers info box",
-          elements: [
-            {
-              type: "html",
-              name: "info_box_placeholder",
-              hideNumber: true,
-              html:
-                "<br><b><u>PLACEHOLDER:</u> Information like this will either go on each individual page, OR in an introduction/ consent to share info page."
-            },
-            {
-              type: "html",
-              name: "info_box_memberspage",
-              hideNumber: true,
-              html:
-                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. <i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
-            },
-            {
-              type: "html",
-              name: "info_box_memberspage_gender",
-              hideNumber: true,
-              html:
-                "<br>A key element of this relates to representation of women in Fairtrade. <i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
-            }
-          ]
-        },
         {
           type: "panel",
           name: "instructions_farmers",
