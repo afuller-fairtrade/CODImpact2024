@@ -58,7 +58,7 @@ const surveyJson = {
             {
               type: "radiogroup",
               name: "producer_setup",
-              title: "[PRE-FILLED] Choose your producer setup:",
+              title: "[PRE-FILLED Placeholder] Choose your producer setup:",
               isRequired: true,
               choices: [
                 {
@@ -75,7 +75,8 @@ const surveyJson = {
             {
               type: "radiogroup",
               name: "survey_language",
-              title: "[PRE-FILLED] Choose the language of the survey:",
+              title:
+                "[PRE-FILLED Placeholder] Choose the language of the survey:",
               isRequired: true,
               choices: [
                 {
@@ -127,19 +128,56 @@ const surveyJson = {
     },
     {
       name: "Members",
+      title: "Members of your organization",
+      navigationTitle: "Members",
+      /*navigationDescription: "of your organization",*/
+      visibleIf: "{producer_setup} = 'spo'",
       elements: [
+        {
+          type: "panel",
+          name: "Number of farmers info box",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_memberspage",
+              hideNumber: true,
+              html:
+                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification.<br><i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
+            },
+            {
+              type: "html",
+              name: "info_box_memberspage_gender",
+              hideNumber: true,
+              html:
+                "<br>A key element of this relates to representation of women in Fairtrade.<br><i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
+            }
+          ]
+        },
         {
           type: "panel",
           name: "Number of farmers",
           elements: [
             {
+              type: "html",
+              name: "info_box_numberfarmers",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization. Please also enter the number of women and men in your organization, if this information is known.<br><br><i>Count each member of your organization only once. If some members are in the process of transitioning from conventional to organic production, please count them as organic farmers.</i>"
+            },
+            {
               type: "panel",
               name: "farmers_conventional_panel",
               elements: [
                 {
+                  type: "html",
+                  name: "info_box_conventional_farmers",
+                  hideNumber: true,
+                  html: "<br><b>Conventional Farmers</b>"
+                },
+                {
                   type: "text",
                   name: "farmers_conventional_total",
-                  title: "Number of conventional farmers",
+                  title: "Total farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -159,7 +197,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_conventional_female",
                   visibleIf: "{farmers_conventional_gender_not_known} empty",
-                  title: "Female conventional farmers",
+                  title: "Farmers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -180,7 +218,7 @@ const surveyJson = {
                   name: "farmers_conventional_male",
                   visibleIf: "{farmers_conventional_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Male conventional farmers",
+                  title: "Farmers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -217,10 +255,15 @@ const surveyJson = {
               name: "farmers_organic_panel",
               elements: [
                 {
+                  type: "html",
+                  name: "info_box_organic_farmers",
+                  hideNumber: true,
+                  html: "<br><b>Organic Farmers</b>"
+                },
+                {
                   type: "text",
                   name: "farmers_organic_total",
-                  startWithNewLine: false,
-                  title: "Number of organic farmers",
+                  title: "Total farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -240,7 +283,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_organic_female",
                   visibleIf: "{farmers_organic_gender_not_known} empty",
-                  title: "Female organic farmers",
+                  title: "Farmers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -261,7 +304,7 @@ const surveyJson = {
                   name: "farmers_organic_male",
                   visibleIf: "{farmers_organic_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Male organic farmers",
+                  title: "Farmers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -294,18 +337,24 @@ const surveyJson = {
               visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
               startWithNewLine: false
             }
-          ],
-          title:
-            "Record the number of farmers that are members of your organization. Count each member only once. Consider members in transition, or members that produce both conventional and organic, as organic."
+          ]
+        },
+        {
+          type: "text",
+          name: "farmers_page_comments",
+          title: "Optional space for comments:",
+          hideNumber: true
         },
         {
           type: "panel",
           name: "summary_number_of_farmers",
+          title: "Summary: number of members in your organization",
           elements: [
             {
               type: "expression",
               name: "farmers_total",
-              title: "Summary of total farmers:",
+              title:
+                "Total number of farmers that are members of your organization:",
               hideNumber: true,
               displayStyle: "decimal",
               expression: "{farmers_conventional_total}+{farmers_organic_total}"
@@ -313,7 +362,7 @@ const surveyJson = {
             {
               type: "expression",
               name: "farmers_female",
-              title: "Summary of total female farmers:",
+              title: "Number of farmers that are women:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -323,19 +372,14 @@ const surveyJson = {
               type: "expression",
               name: "farmers_male",
               startWithNewLine: false,
-              title: "Summary of total male farmers:",
+              title: "Number of farmers that are men:",
               hideNumber: true,
               displayStyle: "decimal",
               expression: "{farmers_conventional_male}+{farmers_organic_male}"
             }
-          ],
-          title: "Summary of number of farmers reported"
+          ]
         }
-      ],
-      title: "Number of members of your organization",
-      navigationTitle: "Members",
-      /*navigationDescription: "of your organization",*/
-      visibleIf: "{producer_setup} = 'spo'"
+      ]
     },
     {
       name: "Young people (SPOs)",
