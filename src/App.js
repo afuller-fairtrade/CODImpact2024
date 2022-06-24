@@ -2319,7 +2319,7 @@ const surveyJson = {
     {
       navigationTitle: "Summary",
       name: "Summary report",
-      title: "Summary report",
+      title: "Summary report (PLACEHOLDER - SPO only)",
       elements: [
         {
           type: "html",
@@ -2418,19 +2418,6 @@ const surveyJson = {
               startWithNewLine: false,
               html:
                 "<br><b>You have reported the age groups for {RO_farmers_age_total} total members,</b><br>Of which {RO_farmers_age_female_total} are female and {RO_farmers_age_male_total} are male"
-            }
-          ]
-        },
-        {
-          type: "panel",
-          name: "products_summary",
-          title: "Products produced by your organization on Fairtrade terms",
-          elements: [
-            {
-              type: "html",
-              name: "products_produced_summary",
-              hideNumber: true,
-              html: "Test {major_product_category} test"
             }
           ]
         },
