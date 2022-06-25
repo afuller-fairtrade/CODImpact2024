@@ -1899,8 +1899,9 @@ const surveyJson = {
               name: "minor_category_other",
               hideNumber: true,
               title:
-                "If your product was not listed and you selected 'Other' please specify here the product for which your organization produced under Fairtrade certification:",
-              visibleIf: "{panel.minor_product_category} contains 'Other'"
+                "If your product was not listed and you selected 'other' please specify here the product for which your organization produced under Fairtrade certification:",
+              visibleIf:
+                "{panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other'"
             },
             {
               type: "panel",
@@ -2073,7 +2074,8 @@ const surveyJson = {
                   hideNumber: true,
                   title:
                     "If your product was not listed and you selected 'Other' please specify here the product form for which you are reporting production:",
-                  visibleIf: "{panel.minor_product_category} contains 'Other'"
+                  visibleIf:
+                    "({panel.minor_product_category} contains 'Other' or {panel.minor_product_category] contains 'other')"
                 },
                 {
                   type: "text",
@@ -2154,7 +2156,7 @@ const surveyJson = {
               elements: [
                 {
                   type: "expression",
-                  name: "volume_produced_total__calc",
+                  name: "volume_produced_total_calc",
                   title: "Total volume produced:",
                   hideNumber: true,
                   expression:
