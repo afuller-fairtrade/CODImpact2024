@@ -57,7 +57,7 @@ const surveyJson = {
               name: "info_box_placeholder",
               hideNumber: true,
               html:
-                "<br><b><u>PLACEHOLDER for information about survey, data points, consent to share, etc.:</u> Information like this will either go on each individual page, OR in an introduction/ consent to share info page."
+                "<br><b><u>PLACEHOLDER for information about survey, data points, consent to share, etc.:</u> Information like this will either go on each individual page, OR in an introduction/ consent to share info page.<hr>"
             },
             {
               type: "html",
@@ -171,7 +171,7 @@ const surveyJson = {
               name: "info_box_numberfarmers",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization. Please also enter the number of women and men in your organization, if this information is known.<br><br><i>Count each member of your organization only once. If some members are in the process of transitioning from conventional to organic production, please count them as organic farmers.</i>"
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of farmers that are members of your organization. Please also enter the number of women and men in your organization, if this information is known.<br><br><i>Count each member of your organization only once. If some members are in the process of transitioning from conventional to organic production, please count them as organic farmers.</i>"
             }
           ]
         },
@@ -364,6 +364,7 @@ const surveyJson = {
           type: "panel",
           name: "summary_number_of_farmers",
           title: "Summary: number of members in your organization",
+          visibleIf: "{organic_logic} = 'mixed'",
           elements: [
             {
               type: "expression",
@@ -412,7 +413,7 @@ const surveyJson = {
               name: "info_box_numberfarmers_byage",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<br><b>16 to 28 years old<br>29 to 35 years old<br>36 years and older</b><br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<ul><li>16 to 28 years old</li><li>29 to 35 years old</li><li>36 years and older</li></ul><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
             }
           ]
         },
@@ -838,7 +839,7 @@ const surveyJson = {
               name: "info_box_numberworkers",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of workers hired by your organization according to the following types of employment contract types: <b>permanent, fixed-term</b> and <b>sub-contracted</b>. Definitions for each contract type are provided in the corresponding section of the page. Please also enter the number of women and men your organization employs, if this information is known."
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of workers hired by your organization according to the following types of employment contract types: <b>permanent, fixed-term</b> and <b>sub-contracted</b>. Definitions for each contract type are provided in the corresponding section of the page. Please also enter the number of women and men your organization employs, if this information is known."
             },
             {
               type: "html",
@@ -1192,7 +1193,7 @@ const surveyJson = {
               name: "info_box_seasonalworkers",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of fixed-term and sub-contracted workers hired by your organization that are also seasonal workers. A <b>seasonal worker</b> is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted. Please also enter the number of seasonal women and men your organization employs, if this information is known."
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of fixed-term and sub-contracted workers hired by your organization that are also seasonal workers. A <b>seasonal worker</b> is a worker that provides labour during certain seasons, usually during harvesting. Seasonal workers may be directly employed (usually as a fixed-term worker) or sub-contracted. Please also enter the number of seasonal women and men your organization employs, if this information is known."
             },
             {
               type: "html",
@@ -1322,7 +1323,7 @@ const surveyJson = {
               name: "info_box_numberworkers_byage",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of workers employed by your organization, according to the following age groups:<br><b>16 to 28 years old<br>29 to 35 years old<br>36 years and older</b><br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of workers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of workers employed by your organization, according to the following age groups:<ul><li>16 to 28 years old</li><li>29 to 35 years old</li><li>36 years and older</li></ul><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of workers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
             }
           ]
         },
@@ -1738,19 +1739,30 @@ const surveyJson = {
       title: "Land area under cultivation by your organization",
       elements: [
         {
-          type: "radiogroup",
-          name: "land_area_unit",
-          title: "In what unit would you like to report your land area?",
-          hideNumber: true,
-          isRequired: true,
-          choices: [
+          type: "panel",
+          name: "instructions_landarea",
+          elements: [
             {
-              value: "ha",
-              text: "hectares"
+              type: "html",
+              name: "info_box_landarea",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><hr>In this section, please enter the land area managed by your organization."
             },
             {
-              value: "acre",
-              text: "acres"
+              type: "html",
+              name: "info_box_totalarea_SPO",
+              visibleIf: "{producer_setup} = 'spo'",
+              hideNumber: true,
+              html:
+                "<br><i>The <b>Total land area managed</b> refers to all land area managed by members of your organization and under agricultural cultivation, whether Fairtrade certified or not.</i>"
+            },
+            {
+              type: "html",
+              name: "info_box_fairtrade_area",
+              hideNumber: true,
+              html:
+                "<br><i>The <b>Fairtrade certified land area</b> refers to only the area of land within your organization that is under cultivation of Fairtrade certified crops.</i>"
             }
           ]
         },
@@ -1759,11 +1771,27 @@ const surveyJson = {
           name: "land_area_panel",
           elements: [
             {
+              type: "radiogroup",
+              name: "land_area_unit",
+              title: "In what unit would you like to report your land area?",
+              hideNumber: true,
+              isRequired: true,
+              choices: [
+                {
+                  value: "ha",
+                  text: "hectares"
+                },
+                {
+                  value: "acre",
+                  text: "acres"
+                }
+              ]
+            },
+            {
               type: "text",
               name: "total_land_managed",
               hideNumber: true,
-              title:
-                "How many {land_area_unit} of land are under cultivation by all SPO members? Please report here land under cultivation of both Fairtrade and non-Fairtrade certified crops. ",
+              title: "Total land area managed (in {land_area_unit}):",
               validators: [
                 {
                   type: "numeric",
@@ -1783,8 +1811,8 @@ const surveyJson = {
               type: "text",
               name: "total_area_ft_certification",
               hideNumber: true,
-              title:
-                "How many {land_area_unit} of land are under cultivation of Fairtrade crops within your organization?",
+              startWithNewLine: false,
+              title: "Fairtrade certified land area (in {land_area_unit}):",
               validators: [
                 {
                   type: "numeric",
@@ -1800,6 +1828,12 @@ const surveyJson = {
               ]
             }
           ]
+        },
+        {
+          type: "text",
+          name: "landarea_page_comments",
+          title: "Optional space for comments:",
+          hideNumber: true
         }
       ]
     },
@@ -1809,10 +1843,28 @@ const surveyJson = {
       title: "Products produced by your organization on Fairtrade terms",
       elements: [
         {
+          type: "panel",
+          name: "instructions_products_page",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_products_page",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><hr>In this section, please enter the land area under cultivation and volumes produced in the most recent production cycle (2021-2022) by your organization for each Fairtrade certified product. If your organization also has a forecast of the volume that will be of export quality for sale on Fairtrade terms for the upcoming production cycle (2022-2023), please also enter this information."
+            },
+            {
+              type: "html",
+              name: "info_box_navigation",
+              hideNumber: true,
+              html:
+                "<br>How to enter information about your organization's Fairtrade certified products:<i><ul><li>Select 'Add product.' From the dropdown list, select the product and proceed to enter the land area, volumes produced, and forecast volumes.</li><li>To add a second product, scroll to the bottom of the page and select 'Add product.' You can add as many Fairtrade products as needed.</li><li>Go back to the previous or next product by using the navigation buttons at the botom of the page.</li><li>To remove all information about a product, select 'Remove this product' at the bottom of the page.</li></ul></i>"
+            }
+          ]
+        },
+        {
           type: "paneldynamic",
           name: "products_panel",
-          title:
-            "In this section, please report on the products that your organization produced according to the Fairtrade standards in the most recent production cycle (2021-2022). For each product, you will be asked to report the land area under cultivation by your organization and the volume produced. In addition, you will be asked to report the forecast volumes for the upcoming production cycle (2022-2023) if applicable.",
           hideNumber: true,
           templateElements: [
             {
