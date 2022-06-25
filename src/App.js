@@ -40,6 +40,8 @@ const surveyJson = {
   focusOnFirstError: false,
   progressBarType: "buttons",
   showProgressBar: "top",
+  title: "Self-reporting pilot test title",
+  description: "This is where the short description of the survey would go",
   pages: [
     {
       navigationTitle: "Start page",
@@ -410,7 +412,7 @@ const surveyJson = {
               name: "info_box_numberfarmers_byage",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<br><b>16 to 28 years old<br>29 to 35 years old<br>36 years or older</b><br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<br><b>16 to 28 years old<br>29 to 35 years old<br>36 years and older</b><br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
             }
           ]
         },
@@ -432,6 +434,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "Number of farmers by age",
+          visibleIf: "{farmers_age_not_known} empty",
           elements: [
             {
               type: "panel",
@@ -441,7 +444,7 @@ const surveyJson = {
                   type: "html",
                   name: "info_box_farmers_16_28",
                   hideNumber: true,
-                  html: "<br><b>16 to 28 year old members</b>"
+                  html: "<br><b>Members 16 to 28 years old</b>"
                 },
                 {
                   type: "text",
@@ -527,7 +530,6 @@ const surveyJson = {
                 {
                   type: "checkbox",
                   name: "farmers_gender_not_known_16_28",
-                  title: "Do you know the number of female and male farmers?",
                   titleLocation: "hidden",
                   hideNumber: true,
                   choices: [
@@ -548,7 +550,7 @@ const surveyJson = {
                   type: "html",
                   name: "info_box_farmers_29_35",
                   hideNumber: true,
-                  html: "<br><b>29 to 35 year old members</b>"
+                  html: "<br><b>Members 29 to 35 years old</b>"
                 },
                 {
                   type: "text",
@@ -634,7 +636,6 @@ const surveyJson = {
                 {
                   type: "checkbox",
                   name: "farmers_gender_not_known_29_35",
-                  title: "Do you know the number of female and male farmers?",
                   titleLocation: "hidden",
                   hideNumber: true,
                   choices: [
@@ -653,9 +654,9 @@ const surveyJson = {
               elements: [
                 {
                   type: "html",
-                  name: "info_box_farmers_29_35",
+                  name: "info_box_farmers_36",
                   hideNumber: true,
-                  html: "<br><b>36 years and older members</b>"
+                  html: "<br><b>Members 36 years and older</b>"
                 },
                 {
                   type: "text",
@@ -741,20 +742,18 @@ const surveyJson = {
                 {
                   type: "checkbox",
                   name: "farmers_gender_not_known_36",
-                  title: "Do you know the number of female and male farmers?",
                   titleLocation: "hidden",
                   choices: [
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of farmers 36 years or older by gender"
+                        "Please check here if you do not know the number of farmers 36 years and older by gender"
                     }
                   ]
                 }
               ]
             }
-          ],
-          visibleIf: "{farmers_age_not_known} empty"
+          ]
         },
         {
           type: "text",
@@ -1309,41 +1308,58 @@ const surveyJson = {
     },
     {
       name: "Young people (HL)",
+      visibleIf: "{producer_setup} = 'hlo'",
+      title: "Number of young people employed by your organization",
+      navigationTitle: "Young people",
+      /*navigationDescription: "employed by your organization"*/
       elements: [
         {
-          type: "expression",
-          name: "question54",
-          visibleIf: "{producer_setup} = 'hlo'",
-          title:
-            "Record the number of workers hired by your organization, by age group.",
-          hideNumber: true
+          type: "panel",
+          name: "instructions_workers_by_age",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_numberworkers_byage",
+              hideNumber: true,
+              html:
+                "<br><b>Instructions:</b><br><br>In this section, please enter the number of workers employed by your organization, according to the following age groups:<br><b>16 to 28 years old<br>29 to 35 years old<br>36 years and older</b><br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of workers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+            }
+          ]
         },
         {
           type: "checkbox",
           name: "workers_age_not_known",
-          visibleIf: "{producer_setup} = 'hlo'",
+          title:
+            "Do you know the number of workers hired by your organization by age groups?",
           titleLocation: "hidden",
           hideNumber: true,
           choices: [
             {
               value: "not_known",
               text:
-                "Please check here if you do not know the number of workers by age groups"
+                "Please check here if you do not know the number of workers employed by your organization for the specified age groups"
             }
           ]
         },
         {
           type: "panel",
           name: "Number of workers by age",
+          visibleIf: "{workers_age_not_known} empty",
           elements: [
             {
               type: "panel",
-              name: "Number of workers age 16 to 28 years old",
+              name: "panel_workers_16_28",
               elements: [
+                {
+                  type: "html",
+                  name: "info_box_workers_16_28",
+                  hideNumber: true,
+                  html: "<br><b>Workers 16 to 28 years old</b>"
+                },
                 {
                   type: "text",
                   name: "total_workers_16_28",
-                  title: "Total number of workers age 16 to 28",
+                  title: "Total workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1353,7 +1369,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_16_28} >= {workers_female_16_28}+{workers_male_16_28} OR {total_workers_16_28} empty"
                     },
@@ -1370,7 +1386,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_female_16_28",
                   visibleIf: "{workers_gender_not_known_16_28} empty",
-                  title: "Number of female workers",
+                  title: "Workers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1380,7 +1396,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_16_28} >= {workers_female_16_28}+{workers_male_16_28} OR {workers_female_16_28} empty"
                     },
@@ -1398,7 +1414,7 @@ const surveyJson = {
                   name: "workers_male_16_28",
                   visibleIf: "{workers_gender_not_known_16_28} empty",
                   startWithNewLine: false,
-                  title: "Number of male workers",
+                  title: "Workers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1408,7 +1424,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_16_28} >= {workers_female_16_28}+{workers_male_16_28} OR {workers_male_16_28} empty"
                     },
@@ -1430,21 +1446,26 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of female and male workers 16 to 28 years old"
+                        "Please check here if you do not know the number of workers age 16 to 28 years by gender"
                     }
                   ]
                 }
-              ],
-              title: "Number of workers age 16 to 28 years old"
+              ]
             },
             {
               type: "panel",
-              name: "Number of workers age 29 to 35 years old",
+              name: "panel_workers_29_35",
               elements: [
+                {
+                  type: "html",
+                  name: "info_box_workers_29_35",
+                  hideNumber: true,
+                  html: "<br><b>Workers 29 to 35 years old</b>"
+                },
                 {
                   type: "text",
                   name: "total_workers_29_35",
-                  title: "Total number of workers age 29 to 35",
+                  title: "Total workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1454,7 +1475,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_29_35} >= {workers_female_29_35}+{workers_male_29_35} OR {total_workers_29_35} empty"
                     },
@@ -1471,7 +1492,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_female_29_35",
                   visibleIf: "{workers_gender_not_known_29_35} empty",
-                  title: "Number of female workers",
+                  title: "Workers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1481,7 +1502,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_29_35} >= {workers_female_29_35}+{workers_male_29_35} OR {workers_female_29_35} empty"
                     },
@@ -1499,7 +1520,7 @@ const surveyJson = {
                   name: "workers_male_29_35",
                   visibleIf: "{workers_gender_not_known_29_35} empty",
                   startWithNewLine: false,
-                  title: "Number of male workers",
+                  title: "Workers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1509,7 +1530,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{workers_seasonal_total} >= {workers_seasonal_female}+{workers_seasonal_male} OR {workers_male_29_35} empty"
                     },
@@ -1531,21 +1552,26 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of female and male workers 29 to 35 years old"
+                        "Please check here if you do not know the number of workers age 29 to 35 years by gender"
                     }
                   ]
                 }
-              ],
-              title: "Number of workers age 29 to 35 years old"
+              ]
             },
             {
               type: "panel",
-              name: "Number of workers age 36 years or older",
+              name: "panel_workers_36",
               elements: [
+                {
+                  type: "html",
+                  name: "info_box_workers_36",
+                  hideNumber: true,
+                  html: "<br><b>Workers 36 years and older</b>"
+                },
                 {
                   type: "text",
                   name: "total_workers_36",
-                  title: "Total number of workers 36 years or older",
+                  title: "Total workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1555,7 +1581,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_36} >= {workers_female_36}+{workers_male_36} OR {total_workers_36} empty"
                     },
@@ -1572,7 +1598,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_female_36",
                   visibleIf: "{workers_gender_not_known_36} empty",
-                  title: "Number of female workers",
+                  title: "Workers that are women:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1582,7 +1608,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_36} >= {workers_female_36}+{workers_male_36} OR {workers_female_36} empty"
                     },
@@ -1600,7 +1626,7 @@ const surveyJson = {
                   name: "workers_male_36",
                   visibleIf: "{workers_gender_not_known_36} empty",
                   startWithNewLine: false,
-                  title: "Number of male workers",
+                  title: "Workers that are men:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1610,7 +1636,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct. If not, please adjust the numbers you recorded.",
+                        "Totals do not add up. Please check that the total number of female and male workers is correct. If not, please adjust the numbers you recorded.",
                       expression:
                         "{total_workers_36} >= {workers_female_36}+{workers_male_36} OR {workers_male_36} empty"
                     },
@@ -1631,77 +1657,81 @@ const surveyJson = {
                     {
                       value: "not_known",
                       text:
-                        "Please check here if you do not know the number of female and male workers 36 years or older"
+                        "Please check here if you do not know the number of workers 36 years and older by gender"
                     }
                   ]
                 }
-              ],
-              title: "Number of workers age 36 years or older"
-            },
+              ]
+            }
+          ]
+        },
+        {
+          type: "text",
+          name: "workers_age_page_comments",
+          visibleIf: "{workers_age_not_known} empty",
+          title: "Optional space for comments:",
+          hideNumber: true
+        },
+        {
+          type: "panel",
+          name: "Summary of workers reported",
+          title:
+            "Summary number of workers employed by your organization reported by age group",
+          visibleIf: "{workers_age_not_known} empty",
+          elements: [
             {
-              type: "panel",
-              name: "Summary of workers reported",
-              elements: [
-                {
-                  type: "expression",
-                  name: "RO_workers_age_total",
-                  title: "Summary of total workers reported:",
-                  hideNumber: true,
-                  displayStyle: "decimal",
-                  expression:
-                    "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"
-                  /* validators: [
+              type: "expression",
+              name: "RO_workers_age_total",
+              title:
+                "Total number of workers reported that are employed by your organization:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"
+              /* validators: [
                        {
                          type: "expression",
                         text: "The number of workers reported by age is more than the number of workers reported on the previous page. Please fix.",
                         expression: "{RO_workers_age_total} <= {workers_total}"
                        }
                      ]*/
-                },
-                {
-                  type: "expression",
-                  name: "RO_workers_age_female_total",
-                  title: "Summary of female workers reported:",
-                  hideNumber: true,
-                  displayStyle: "decimal",
-                  expression:
-                    "{workers_female_16_28}+{workers_female_29_35}+{workers_female_36}"
-                  /* validators: [
+            },
+            {
+              type: "expression",
+              name: "RO_workers_age_female_total",
+              title: "Number of workers reported that are women:",
+              hideNumber: true,
+              displayStyle: "decimal",
+              expression:
+                "{workers_female_16_28}+{workers_female_29_35}+{workers_female_36}"
+              /* validators: [
                        {
                          type: "expression",
                         text: "The number of female workers reported by age is more than the number of female workers reported on the previous page. Please fix.",
                         expression: "{RO_workers_age_female_total} <= {workers_female}"
                        }
                      ]*/
-                },
-                {
-                  type: "expression",
-                  name: "RO_workers_age_male_total",
-                  title: "Summary of male workers reported:",
-                  hideNumber: true,
-                  startWithNewLine: false,
-                  displayStyle: "decimal",
-                  expression:
-                    "{workers_male_16_28}+{workers_male_29_35}+{workers_male_36}"
-                  /* validators: [
+            },
+            {
+              type: "expression",
+              name: "RO_workers_age_male_total",
+              title: "Number of workers reported that are men:",
+              hideNumber: true,
+              startWithNewLine: false,
+              displayStyle: "decimal",
+              expression:
+                "{workers_male_16_28}+{workers_male_29_35}+{workers_male_36}"
+              /* validators: [
                        {
                          type: "expression",
                         text: "The number of male workers reported by age is more than the number of male workers reported on the previous page. Please fix.",
                         expression: "{RO_workers_age_male_total} <= {workers_male}"
                        }
                      ]*/
-                }
-              ],
-              title: "Summary of workers reported"
             }
-          ],
-          visibleIf: "{workers_age_not_known} empty"
+          ]
         }
-      ],
-      visibleIf: "{producer_setup} = 'hlo'",
-      title: "Number of young people employed by your organization",
-      navigationTitle: "Young people"
-      /*navigationDescription: "employed by your organization"*/
+      ]
     },
     {
       name: "Total Land Area",
