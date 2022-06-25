@@ -2329,7 +2329,7 @@ const surveyJson = {
               name: "kg_description",
               hideNumber: true,
               html:
-                "<br><b>Kilograms (kg):</b> Use kg when you know the volume of your product in kilograms."
+                "<hr><b>Kilograms (kg):</b> Use kg when you know the volume of your product in kilograms."
             },
             {
               type: "html",
@@ -2337,7 +2337,7 @@ const surveyJson = {
               startWithNewLine: false,
               hideNumber: true,
               html:
-                "<br><b>Metric tons (MT):</b> Use MT when you know the volume of your product in metric tons."
+                "<hr><b>Metric tons (MT):</b> Use MT when you know the volume of your product in metric tons."
             },
             {
               type: "html",
