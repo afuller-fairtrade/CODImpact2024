@@ -1,138 +1,113 @@
 ﻿product_code,major category,minor category,production type,multiplication_factor
-pp003,Banana,Baby banana,Baby banana,1
+pp002,Banana,Baby banana,Baby banana: Coastal (<800m above sea level),1
+pp003,Banana,Baby banana,Baby banana: Mountain (?800m above sea level),1
 pp001,Banana,Banana (fresh),Banana (fresh),1
-pp005,Banana,Other [Specify],Other [Specify],1
+pp005,Banana,Banana (other),Other [Specify],1
 pp004,Banana,Plantain (fresh),Plantain (fresh),1
 pp007,Cane sugar,Cane sugar,Other [Specify],1
 pp321,Cane sugar,Cane sugar,Sugar,1
 pp006,Cane sugar,Cane sugar,Sugarcane,0.1
-pp311,Cereals,Millet,Millet,1
-pp243,Cereals,Other [Specify],Other [Specify],1
-pp329,Cereals,Qañiwa,Qañiwa,1
-pp242,Cereals,Quinoa,Quinoa,1
-pp636,Cereals,Sorghum,Sorghum,1
+pp311,Cereals and rice,Millet,Millet,1
+pp243,Cereals and rice,Cereals (other),Other [Specify],1
+pp329,Cereals and rice,Qañiwa,Qañiwa,1
+pp242,Cereals and rice,Quinoa,Quinoa,1
+pp244,Cereals and rice,Rice,Basmati: Pusa,1
+pp245,Cereals and rice,Rice,Basmati: Traditional,1
+pp246,Cereals and rice,Rice,Black petit poussin & White petit poussin,1
+pp604,Cereals and rice,Rice,Brazilian long grain,1
+pp605,Cereals and rice,Rice,Burmese aromatic long grain,1
+pp606,Cereals and rice,Rice,Cambodian aromatic long grain,1
+pp607,Cereals and rice,Rice,Giza,1
+pp247,Cereals and rice,Rice,Glutinous rice: black or violet,1
+pp248,Cereals and rice,Rice,Glutinous rice: white,1
+pp608,Cereals and rice,Rice,Hsin Thu Kha,1
+pp249,Cereals and rice,Rice,Jasmine Rice & Red Jasmine Rice,1
+pp609,Cereals and rice,Rice,Ma Naw Thu Kha,1
+pp610,Cereals and rice,Rice,Mandarin,1
+pp611,Cereals and rice,Rice,Non-Basmati and Non-Sarbati rice,1
+pp612,Cereals and rice,Rice,Non-Glutinous black,1
+pp613,Cereals and rice,Rice,Non-Glutinous red,1
+pp250,Cereals and rice,Rice,Normal longgrain rice,1
+pp253,Cereals and rice,Rice,Other [Specify],1
+pp614,Cereals and rice,Rice,Paw San,1
+pp251,Cereals and rice,Rice,Sarbati,1
+pp616,Cereals and rice,Rice,Shwe Thwe Lay,1
+pp617,Cereals and rice,Rice,Thai long grain,1
+pp252,Cereals and rice,Rice,Traditional varieties from Sri Lanka,1
+pp636,Cereals and rice,Sorghum,Sorghum,1
 pp008,Cocoa,Cocoa,Cocoa beans (raw),1
 pp009,Cocoa,Cocoa,Other [Specify],1
 pp011,Coffee,Arabica,Arabica: Dry cherry,0.5
 pp010,Coffee,Arabica,Arabica: Unprocessed cherry,0.5
 pp012,Coffee,Arabica,Arabica: Unwashed parchment,0.8
 pp013,Coffee,Arabica,Arabica: Washed parchment,0.8
-pp018,Coffee,Other [Specify],Other [Specify],1
+pp018,Coffee,Coffee (other),Other [Specify],1
 pp015,Coffee,Robusta,Robusta: Dry cherry,0.5
 pp014,Coffee,Robusta,Robusta: Unprocessed cherry,0.5
 pp016,Coffee,Robusta,Robusta: Unwashed parchment,0.8
 pp017,Coffee,Robusta,Robusta: Washed parchment,0.8
-pp348,Flowers and Plants,Bulbs,Bulbs,1
-pp044,Flowers and Plants,Cut Flowers,Cut Flowers,1
+pp348,Flowers and Plants,Plants,Bulbs,1
+pp044,Flowers and Plants,Cut Flowers and Cut Foliage,Cut Flowers,1
 pp046,Flowers and Plants,Cut Flowers and Cut Foliage,Cut Flowers and Cut Foliage,1
-pp045,Flowers and Plants,Cut Foliage,Cut Foliage,1
-pp047,Flowers and Plants,Ornamental Plants,Ornamental Plants,1
-pp048,Flowers and Plants,Other [Specify],Other [Specify],1
-pp350,Flowers and Plants,Young Plant Material,Young Plant Material,1
+pp045,Flowers and Plants,Cut Flowers and Cut Foliage,Cut Foliage,1
+pp047,Flowers and Plants,Plants,Ornamental Plants,1
+pp350,Flowers and Plants,Plants,Young Plant Material,1
+pp048,Flowers and Plants,Flowers and Plants (other),Other [Specify],1
 pp049,Fonio,Fonio,Fonio,1
-pp050,Fonio,Other [Specify],Other [Specify],1
-pp019,Fruit,Acai,Acai (dried),1
-pp020,Fruit,Apples,Apples (dried),1
-pp021,Fruit,Apricot,Apricot (dried),1
-pp022,Fruit,Banana,Banana (dried),1
-pp023,Fruit,Blueberry,Blueberry (dried),1
-pp024,Fruit,Cherry,Cherry (dried),1
-pp025,Fruit,Coconut,Coconut (dried),1
-pp026,Fruit,Date,Date (dried),1
-pp027,Fruit,Limes,Limes (dried),1
-pp028,Fruit,Mango,Mango (dried),1
-pp029,Fruit,Melon (Cucumis melo),Melon (Cucumis melo) (dried),1
-pp041,Fruit,Other [Specify],Other [Specify] (dried),1
-pp030,Fruit,Papaya,Papaya (dried),1
-pp031,Fruit,Pears,Pears (dried),1
-pp327,Fruit,Persimmon,Persimmon (dried),1
-pp032,Fruit,Physalis,Physalis (dried),1
-pp033,Fruit,Pineapple,Pineapple (dried),1
-pp034,Fruit,Plums,Plums (dried),1
-pp035,Fruit,Pomegranate,Pomegranate (dried),1
-pp036,Fruit,Raisin,Raisin (dried),1
-pp037,Fruit,Raspberries,Raspberries (dried),1
-pp038,Fruit,Sultana,Sultana (dried),1
-pp039,Fruit,Watermelon,Watermelon (dried),1
-pp040,Fruit,Wild Apricot,Wild Apricot (dried),1
-pp051,Fruit,Acai,Acai (fresh),1
-pp052,Fruit,Apples,Apples (fresh),1
-pp053,Fruit,Apricot,Apricot (fresh),1
-pp054,Fruit,Avocados,Avocados (fresh),1
-pp055,Fruit,Baobab,Baobab (fresh),1
-pp056,Fruit,Blackcurrant,Blackcurrant (fresh),1
-pp057,Fruit,Blueberry,Blueberry (fresh),1
-pp058,Fruit,Cherry,Cherry (fresh),1
-pp059,Fruit,Dates,Dates (fresh),1
-pp060,Fruit,Dragon fruit,Dragon fruit (fresh),1
-pp061,Fruit,Grapefruit,Grapefruit (fresh),1
-pp634,Fruit,Jackfruit,Jackfruit (fresh),1
-pp631,Fruit,Langsat,Langsat (fresh),1
-pp062,Fruit,Lemons,Lemons (fresh),1
-pp063,Fruit,Limes,Limes (fresh),1
-pp064,Fruit,Lychees,Lychees (fresh),1
-pp065,Fruit,Mangoes,Mangoes (fresh),1
-pp632,Fruit,Mangosteen,Mangosteen (fresh),1
-pp066,Fruit,Marula,Marula (fresh),1
-pp067,Fruit,Melon (Cumumis melo),Melon (Cumumis melo) (fresh),1
-pp068,Fruit,Mini watermelon,Mini watermelon (fresh),1
-pp069,Fruit,Nectarines,Nectarines (fresh),1
-pp070,Fruit,Oranges,Oranges (fresh),1
-pp071,Fruit,Oranges: Navel,Oranges: Navel (fresh),1
-pp072,Fruit,Oranges: Valencia,Oranges: Valencia (fresh),1
-pp092,Fruit,Other [Specify],Other [Specify] (fresh),1
-pp073,Fruit,Papaya,Papaya (fresh),1
-pp074,Fruit,Passion Fruit,Passion Fruit (fresh),1
-pp075,Fruit,Peaches and Nectarines,Peaches and Nectarines (fresh),1
-pp076,Fruit,Pears,Pears (fresh),1
-pp312,Fruit,Persimmon,Persimmon (fresh),1
-pp077,Fruit,Physalis,Physalis (fresh),1
-pp078,Fruit,Pineapples,Pineapples (fresh),1
-pp079,Fruit,Plums,Plums (fresh),1
-pp080,Fruit,Pomegranate,Pomegranate (fresh),1
-pp639,Fruit,Pomelo,Pomelo (fresh),1
-pp081,Fruit,Prickly pear,Prickly pear (fresh),1
-pp630,Fruit,Rambutan,Rambutan (fresh),1
-pp082,Fruit,Raspberries,Raspberries (fresh),1
-pp083,Fruit,Redcurrant,Redcurrant (fresh),1
-pp629,Fruit,Snake fruit,Snake fruit (fresh),1
-pp084,Fruit,Soft citrus: Clementines,Soft citrus: Clementines (fresh),1
-pp085,Fruit,Soft citrus: Mandarines,Soft citrus: Mandarines (fresh),1
-pp086,Fruit,Soft Citrus: Satsumas,Soft Citrus: Satsumas (fresh),1
-pp087,Fruit,Soft Citrus: Tangerines,Soft Citrus: Tangerines (fresh),1
-pp314,Fruit,Soursop,Soursop (fresh),1
-pp088,Fruit,Strawberries,Strawberries (fresh),1
-pp089,Fruit,Table Grapes: Seeded,Table Grapes: Seeded (fresh),1
-pp090,Fruit,Table Grapes: Seedless,Table Grapes: Seedless (fresh),1
-pp091,Fruit,Watermelon,Watermelon (fresh),1
-pp357,Fruit,Acai,Acai (juice),1
-pp093,Fruit,Apple,Apple (juice),1
-pp358,Fruit,Blueberry,Blueberry (juice),1
-pp359,Fruit,Cherry,Cherry (juice),1
-pp094,Fruit,Grapefruit,Grapefruit (juice),1
-pp095,Fruit,Guava,Guava (juice),1
-pp096,Fruit,Lemon,Lemon (juice),1
-pp097,Fruit,Lime,Lime (juice),1
-pp098,Fruit,Mandarin,Mandarin (juice),1
-pp368,Fruit,Mango,Mango (juice),1
-pp099,Fruit,Orange,Orange (juice),1
-pp102,Fruit,Other [Specify],Other [Specify] (juice),1
-pp369,Fruit,Papaya,Papaya (juice),1
-pp100,Fruit,Passion fruit,Passion fruit (juice),1
-pp370,Fruit,Pears,Pears (juice),1
-pp101,Fruit,Pineapple,Pineapple (juice),1
-pp371,Fruit,Raspberries,Raspberries (juice),1
-pp234,Fruit,Acai,Acai (pulp),1
-pp235,Fruit,Araza,Araza (pulp),1
-pp236,Fruit,Banana,Banana (pulp),1
-pp237,Fruit,Carambola,Carambola (pulp),1
-pp238,Fruit,Guava,Guava (pulp),1
-pp239,Fruit,Lychee,Lychee (pulp),1
-pp240,Fruit,Mango,Mango (pulp),1
-pp241,Fruit,Other [Specify],Other [Specify] (pulp),1
+pp050,Fonio,Fonio,Other [Specify],1
+pp051,Fresh fruit,Acai,Acai (fresh),1
+pp052,Fresh fruit,Apples,Apples (fresh),1
+pp053,Fresh fruit,Apricot,Apricot (fresh),1
+pp054,Fresh fruit,Avocados,Avocados (fresh),1
+pp055,Fresh fruit,Baobab,Baobab (fresh),1
+pp056,Fresh fruit,Blackcurrant,Blackcurrant (fresh),1
+pp057,Fresh fruit,Blueberry,Blueberry (fresh),1
+pp058,Fresh fruit,Cherry,Cherry (fresh),1
+pp059,Fresh fruit,Dates,Dates (fresh),1
+pp060,Fresh fruit,Dragon fruit,Dragon fruit (fresh),1
+pp061,Fresh fruit,Grapefruit,Grapefruit (fresh),1
+pp634,Fresh fruit,Jackfruit,Jackfruit (fresh),1
+pp631,Fresh fruit,Langsat,Langsat (fresh),1
+pp062,Fresh fruit,Lemons,Lemons (fresh),1
+pp063,Fresh fruit,Limes,Limes (fresh),1
+pp064,Fresh fruit,Lychees,Lychees (fresh),1
+pp065,Fresh fruit,Mangoes,Mangoes (fresh),1
+pp632,Fresh fruit,Mangosteen,Mangosteen (fresh),1
+pp066,Fresh fruit,Marula,Marula (fresh),1
+pp067,Fresh fruit,Melon (Cumumis melo),Melon (Cumumis melo) (fresh),1
+pp068,Fresh fruit,Mini watermelon,Mini watermelon (fresh),1
+pp069,Fresh fruit,Nectarines,Nectarines (fresh),1
+pp070,Fresh fruit,Oranges,Oranges (fresh),1
+pp071,Fresh fruit,Oranges: Navel,Oranges: Navel (fresh),1
+pp072,Fresh fruit,Oranges: Valencia,Oranges: Valencia (fresh),1
+pp092,Fresh fruit,Fresh fruit (other),Other [Specify],1
+pp073,Fresh fruit,Papaya,Papaya (fresh),1
+pp074,Fresh fruit,Passion Fruit,Passion Fruit (fresh),1
+pp075,Fresh fruit,Peaches and Nectarines,Peaches and Nectarines (fresh),1
+pp076,Fresh fruit,Pears,Pears (fresh),1
+pp312,Fresh fruit,Persimmon,Persimmon (fresh),1
+pp077,Fresh fruit,Physalis,Physalis (fresh),1
+pp078,Fresh fruit,Pineapples,Pineapples (fresh),1
+pp079,Fresh fruit,Plums,Plums (fresh),1
+pp080,Fresh fruit,Pomegranate,Pomegranate (fresh),1
+pp639,Fresh fruit,Pomelo,Pomelo (fresh),1
+pp081,Fresh fruit,Prickly pear,Prickly pear (fresh),1
+pp630,Fresh fruit,Rambutan,Rambutan (fresh),1
+pp082,Fresh fruit,Raspberries,Raspberries (fresh),1
+pp083,Fresh fruit,Redcurrant,Redcurrant (fresh),1
+pp629,Fresh fruit,Snake fruit,Snake fruit (fresh),1
+pp084,Fresh fruit,Soft citrus: Clementines,Soft citrus: Clementines (fresh),1
+pp085,Fresh fruit,Soft citrus: Mandarines,Soft citrus: Mandarines (fresh),1
+pp086,Fresh fruit,Soft Citrus: Satsumas,Soft Citrus: Satsumas (fresh),1
+pp087,Fresh fruit,Soft Citrus: Tangerines,Soft Citrus: Tangerines (fresh),1
+pp314,Fresh fruit,Soursop,Soursop (fresh),1
+pp088,Fresh fruit,Strawberries,Strawberries (fresh),1
+pp089,Fresh fruit,Table Grapes: Seeded,Table Grapes: Seeded (fresh),1
+pp090,Fresh fruit,Table Grapes: Seedless,Table Grapes: Seedless (fresh),1
+pp091,Fresh fruit,Watermelon,Watermelon (fresh),1
 pp103,Gold & associated Precious Metals,Gold,Gold: Conventional,1
 pp104,Gold & associated Precious Metals,Gold,Gold: Ecological,1
-pp109,Gold & associated Precious Metals,Other [Specify],Other [Specify],1
+pp109,Gold & associated Precious Metals,Gold & associated Precious Metals (other),Other [Specify],1
 pp107,Gold & associated Precious Metals,Platinum,Platinum: Conventional,1
 pp108,Gold & associated Precious Metals,Platinum,Platinum: Ecological,1
 pp105,Gold & associated Precious Metals,Silver,Silver: Conventional,1
@@ -147,8 +122,8 @@ pp115,"Herbs, herbal teas & spices",Aloe ,"Aloe (Aloe vera, A. barbadensis)",1
 pp373,"Herbs, herbal teas & spices",Altimisa ,Altimisa (Ambrosia arborescens),1
 pp374,"Herbs, herbal teas & spices",Amaranth ,"Amaranth (Amaranthus caudatus, A. cruentus, A. tricolor)",1
 pp375,"Herbs, herbal teas & spices",Angelica ,"Angelica (Angelica sylvestris, A. archangelica)",1
-pp376,"Herbs, herbal teas & spices",Angelica root ,"Angelica root (Angelica sylvestris, A. archangelica)",1
-pp377,"Herbs, herbal teas & spices",Angelica stem ,"Angelica stem (Angelica sylvestris, A. archangelica)",1
+pp376,"Herbs, herbal teas & spices",Angelica ,"Angelica root (Angelica sylvestris, A. archangelica)",1
+pp377,"Herbs, herbal teas & spices",Angelica ,"Angelica stem (Angelica sylvestris, A. archangelica)",1
 pp116,"Herbs, herbal teas & spices",Anis myrtle ,Anis myrtle (Syzygium anisatum),1
 pp117,"Herbs, herbal teas & spices",Anise ,Anise (Pimpinella anisum),1
 pp378,"Herbs, herbal teas & spices",Annato seed ,Annato seed (Bixa orellana),1
@@ -156,16 +131,16 @@ pp118,"Herbs, herbal teas & spices",Apricot seed ,Apricot seed (Prunus armeniaca
 pp627,"Herbs, herbal teas & spices",Arenga palm sugar/nectar,Arenga palm sugar/nectar,1
 pp119,"Herbs, herbal teas & spices",Asafoetida ,Asafoetida (Ferula assa-foetida),1
 pp315,"Herbs, herbal teas & spices",Asian palmyra palm sugar,Asian palmyra palm sugar,1
-pp379,"Herbs, herbal teas & spices",Asian palmyra palm sugar shoots sap,Asian palmyra palm sugar (Borassus flabellifer): Shoots sap,1
-pp380,"Herbs, herbal teas & spices",Asian palmyra palm sugar spadix,Asian palmyra palm sugar (Borassus flabellifer): Spadix,1
+pp379,"Herbs, herbal teas & spices",Asian palmyra palm sugar,Asian palmyra palm sugar (Borassus flabellifer): Shoots sap,1
+pp380,"Herbs, herbal teas & spices",Asian palmyra palm sugar,Asian palmyra palm sugar (Borassus flabellifer): Spadix,1
 pp381,"Herbs, herbal teas & spices",Astragalus root ,Astragalus root (Astragalus spec.),1
 pp382,"Herbs, herbal teas & spices",Barberry fruit ,Barberry fruit (Berberis vulgaris),1
 pp120,"Herbs, herbal teas & spices",Basil ,"Basil (Ocimum basilicum, O. gratissimum)",1
 pp383,"Herbs, herbal teas & spices",Bay leaves ,Bay leaves (Laurus nobilis),1
 pp384,"Herbs, herbal teas & spices",Bee balm flower ,Bee balm flower (Monarda didyma),1
-pp385,"Herbs, herbal teas & spices",Bengal quince fruit ,Bengal quince fruit (Aegle marmelos),1
-pp386,"Herbs, herbal teas & spices",Bengal quince leaves ,Bengal quince leaves (Aegle marmelos),1
-pp387,"Herbs, herbal teas & spices",Bengal quince roots ,Bengal quince roots (Aegle marmelos),1
+pp385,"Herbs, herbal teas & spices",Bengal quince,Bengal quince fruit (Aegle marmelos),1
+pp386,"Herbs, herbal teas & spices",Bengal quince,Bengal quince leaves (Aegle marmelos),1
+pp387,"Herbs, herbal teas & spices",Bengal quince,Bengal quince roots (Aegle marmelos),1
 pp388,"Herbs, herbal teas & spices",Bilberry leave ,Bilberry leave (Vaccinium myrtillus),1
 pp389,"Herbs, herbal teas & spices",Birch leaf ,"Birch leaf (Betula pendula, B. pubescens)",1
 pp390,"Herbs, herbal teas & spices",Bishop’s weed ,Bishop’s weed (Aegopodium podagraria),1
@@ -177,8 +152,8 @@ pp125,"Herbs, herbal teas & spices",Blackcurrant leaf ,Blackcurrant leaf (Ribes 
 pp391,"Herbs, herbal teas & spices",Blue flag root ,Blue flag root (Iris versicolor),1
 pp392,"Herbs, herbal teas & spices",Boldu leaf ,Boldu leaf (Peumus boldus),1
 pp393,"Herbs, herbal teas & spices",Borage,Borage,1
-pp394,"Herbs, herbal teas & spices",Borage ,"Borage (Borago officinalis, B. pygmaea)",1
-pp395,"Herbs, herbal teas & spices",Borage (dried),"Borage (Borago officinalis, B. pygmaea): dried",1
+pp394,"Herbs, herbal teas & spices",Borage,"Borage (Borago officinalis, B. pygmaea)",1
+pp395,"Herbs, herbal teas & spices",Borage,"Borage (Borago officinalis, B. pygmaea): dried",1
 pp126,"Herbs, herbal teas & spices",Brazil pepper ,Brazil pepper (Schinus terebinthifolius),1
 pp396,"Herbs, herbal teas & spices",Buchu ,Buchu (Agathosma betulina),1
 pp397,"Herbs, herbal teas & spices",Buchu leaf ,Buchu leaf (Agathosma betulina),1
@@ -218,7 +193,7 @@ pp414,"Herbs, herbal teas & spices",Coco-grass ,Coco-grass (Cyperus rotundus),1
 pp415,"Herbs, herbal teas & spices",Coconut palm sugar/nectar ,Coconut palm sugar/nectar (Cocos nucifera),1
 pp416,"Herbs, herbal teas & spices",Codonopsis root ,Codonopsis root (Codonopsis pilosulae),1
 pp417,"Herbs, herbal teas & spices",Coffee leaf ,"Coffee leaf (Coffea arabica, C. canephora)",1
-pp316,"Herbs, herbal teas & spices",Coffee leaves,Coffee leaves,1
+pp316,"Herbs, herbal teas & spices",Coffee leaf ,Coffee leaves,1
 pp418,"Herbs, herbal teas & spices",Cola nut ,Cola nut (Cola acuminata),1
 pp419,"Herbs, herbal teas & spices",Common Sorrel ,Common Sorrel (Rumex species),1
 pp420,"Herbs, herbal teas & spices",Common speedwell ,Common speedwell (Veronica officinalis),1
@@ -240,10 +215,10 @@ pp429,"Herbs, herbal teas & spices",Downy hemp nettle ,Downy hemp nettle (Galeop
 pp430,"Herbs, herbal teas & spices",Dwarf elder fruit ,Dwarf elder fruit (Sambucus ebulus),1
 pp431,"Herbs, herbal teas & spices",Dwarf mountain pine shoot ,Dwarf mountain pine shoot ( Pinus mugo),1
 pp432,"Herbs, herbal teas & spices",Dyer’s broom flower ,Dyer’s broom flower (Genista tinctoria),1
-pp433,"Herbs, herbal teas & spices",Echinacea herb ,Echinacea herb (Echinacea spec.),1
-pp434,"Herbs, herbal teas & spices",Echinacea root ,Echinacea root (Echinacea spec.),1
+pp433,"Herbs, herbal teas & spices",Echinacea,Echinacea herb (Echinacea spec.),1
+pp434,"Herbs, herbal teas & spices",Echinacea,Echinacea root (Echinacea spec.),1
 pp435,"Herbs, herbal teas & spices",Elecampane ,Elecampane (Inula helenium),1
-pp506,"Herbs, herbal teas & spices",Epazote ,Epazote (Mexican tea) (Chenopodium ambrosioides),1
+pp506,"Herbs, herbal teas & spices",Epazote Mexican Tea ,Epazote (Mexican tea) (Chenopodium ambrosioides),1
 pp436,"Herbs, herbal teas & spices",Epazote Mexican Tea ,Epazote Mexican Tea (Chenopodium ambrosioides),1
 pp437,"Herbs, herbal teas & spices",Eucalyptus ,Eucalyptus (Eucalyptus species),1
 pp438,"Herbs, herbal teas & spices",Evening primrose ,Evening primrose (Oenothera biennis),1
@@ -259,8 +234,8 @@ pp445,"Herbs, herbal teas & spices",Fumitory ,Fumitory (Fumaria officinalis),1
 pp150,"Herbs, herbal teas & spices",Galangal ,"Galangal (Kaempferia galanga, Languas galanga, L. officinarum, Alpinia galanga, A.officinarum)",1
 pp151,"Herbs, herbal teas & spices",Garlic chive ,"Garlic chive (Allium tuberosum, A. ramosum)",1
 pp152,"Herbs, herbal teas & spices",Geranium ,"Geranium (Pelargonium odoratissimum, P. graveolens)",1
-pp446,"Herbs, herbal teas & spices",Giloy root ,Giloy root (Tinospora cordifolia),1
-pp447,"Herbs, herbal teas & spices",Giloy stem ,Giloy stem (Tinospora cordifolia),1
+pp446,"Herbs, herbal teas & spices",Giloy,Giloy root (Tinospora cordifolia),1
+pp447,"Herbs, herbal teas & spices",Giloy,Giloy stem (Tinospora cordifolia),1
 pp153,"Herbs, herbal teas & spices",Ginger ,Ginger (Zingiber officicinale),1
 pp448,"Herbs, herbal teas & spices",Ginkgo ,Ginkgo (Ginkgo biloba),1
 pp449,"Herbs, herbal teas & spices",Ginseng root ,Ginseng root (Panax ginseng),1
@@ -276,7 +251,7 @@ pp457,"Herbs, herbal teas & spices",Ground ivy ,Ground ivy (Glechoma hederacea),
 pp458,"Herbs, herbal teas & spices",Guarana seed ,Guarana seed (Paullinia cupana),1
 pp155,"Herbs, herbal teas & spices",Guayusa / Wayusa ,Guayusa / Wayusa (Ilex guayusa),1
 pp319,"Herbs, herbal teas & spices",Gum arabica,Gum arabica,1
-pp459,"Herbs, herbal teas & spices",Gum arabica tree trunk sap ,"Gum arabica tree trunk sap (Acacia senegal, A. seyal)",1
+pp459,"Herbs, herbal teas & spices",Gum arabica,"Gum arabica tree trunk sap (Acacia senegal, A. seyal)",1
 pp460,"Herbs, herbal teas & spices",Gymnema leaf ,Gymnema leaf (Gymnema silvestre),1
 pp461,"Herbs, herbal teas & spices",Hairy rupturewort ,Hairy rupturewort (Herniaria hirsuta),1
 pp462,"Herbs, herbal teas & spices",Hawthorn ,Hawthorn (Crataegus species),1
@@ -286,21 +261,21 @@ pp465,"Herbs, herbal teas & spices",Heather ,Heather (Calluna vulgaris),1
 pp466,"Herbs, herbal teas & spices",Heather flower ,Heather flower (Calluna vulgaris),1
 pp467,"Herbs, herbal teas & spices",Hemp ,Hemp (Cannabis sativa),1
 pp468,"Herbs, herbal teas & spices",Herb bennet ,Herb bennet (Geum urbanum),1
-pp469,"Herbs, herbal teas & spices",Herb bennet root ,Herb bennet root (Geum urbanum),1
+pp469,"Herbs, herbal teas & spices",Herb bennet ,Herb bennet root (Geum urbanum),1
 pp470,"Herbs, herbal teas & spices",Herbal tea Not specified,Herbal tea Not specified,1
 pp156,"Herbs, herbal teas & spices",Hibiscus ,Hibiscus (Hibiscus sabdariffa),1
 pp471,"Herbs, herbal teas & spices",Hollyhock flower ,Hollyhock flower (Althaea rosea),1
 pp472,"Herbs, herbal teas & spices",Holy thistle ,Holy thistle (Cnicus benedictus),1
 pp157,"Herbs, herbal teas & spices",Honeybush ,Honeybush (Cyclopia species),1
 pp473,"Herbs, herbal teas & spices",Horehound ,Horehound (Marrubium vulgare),1
-pp474,"Herbs, herbal teas & spices",Horsechestnut bark ,Horsechestnut bark (Aesculus hippocastanum),1
-pp475,"Herbs, herbal teas & spices",Horsechestnut flower ,Horsechestnut flower (Aesculus hippocastanum),1
-pp476,"Herbs, herbal teas & spices",Horsechestnut leaf ,Horsechestnut leaf (Aesculus hippocastanum),1
+pp474,"Herbs, herbal teas & spices",Horsechestnut,Horsechestnut bark (Aesculus hippocastanum),1
+pp475,"Herbs, herbal teas & spices",Horsechestnut,Horsechestnut flower (Aesculus hippocastanum),1
+pp476,"Herbs, herbal teas & spices",Horsechestnut,Horsechestnut leaf (Aesculus hippocastanum),1
 pp477,"Herbs, herbal teas & spices",Horseradish ,Horseradish (Armoracia rusticana),1
 pp478,"Herbs, herbal teas & spices",Hyssop ,Hyssop (Hyssopus officinalis),1
 pp479,"Herbs, herbal teas & spices",Iceland moss ,Iceland moss (Cetraria islandica),1
-pp480,"Herbs, herbal teas & spices",India echinacea leaf ,India echinacea leaf (Andrographis paniculata),1
-pp481,"Herbs, herbal teas & spices",India echinacea root ,India echinacea root (Andrographis paniculata),1
+pp480,"Herbs, herbal teas & spices",India echinacea,India echinacea leaf (Andrographis paniculata),1
+pp481,"Herbs, herbal teas & spices",India echinacea,India echinacea root (Andrographis paniculata),1
 pp640,"Herbs, herbal teas & spices",Indian Frankincense,Indian Frankincense,1
 pp482,"Herbs, herbal teas & spices",Indian ginseng ,Indian ginseng (Withania somnifera),1
 pp483,"Herbs, herbal teas & spices",Indigo ,Indigo (Indigofera tinctoria),1
@@ -316,15 +291,15 @@ pp489,"Herbs, herbal teas & spices",Larkspur flower ,Larkspur flower (Delphinium
 pp161,"Herbs, herbal teas & spices",Lavender ,Lavender (Lavendula species),1
 pp320,"Herbs, herbal teas & spices",Leek; elefant garlic,Leek; elefant garlic,1
 pp490,"Herbs, herbal teas & spices",Lemon Balm,Lemon Balm,1
-pp162,"Herbs, herbal teas & spices",Lemon balm ,Lemon balm (Mellisa officinalis),1
+pp162,"Herbs, herbal teas & spices",Lemon Balm,Lemon balm (Mellisa officinalis),1
 pp163,"Herbs, herbal teas & spices",Lemon myrtle ,Lemon myrtle (Backhousia citriodora),1
 pp491,"Herbs, herbal teas & spices",Lemon savory ,Lemon savory (Satureja biflora),1
 pp492,"Herbs, herbal teas & spices",Lemon verbena,Lemon verbena,1
 pp164,"Herbs, herbal teas & spices",Lemon verbena ,Lemon verbena (Aloysia citrodora),1
 pp165,"Herbs, herbal teas & spices",Lemongrass ,"Lemongrass (Cympobogon citratus, C. flexuosus)",1
 pp493,"Herbs, herbal teas & spices",Lignum vitae wood ,Lignum vitae wood (Guajacum officinale),1
-pp494,"Herbs, herbal teas & spices",Linden flower ,"Linden flower (Tilia cordata, T.  platyphyllos)",1
-pp495,"Herbs, herbal teas & spices",Linden leaf ,"Linden leaf (Tilia cordata, T. platyphyllos)",1
+pp494,"Herbs, herbal teas & spices",Linden,"Linden flower (Tilia cordata, T.  platyphyllos)",1
+pp495,"Herbs, herbal teas & spices",Linden,"Linden leaf (Tilia cordata, T. platyphyllos)",1
 pp166,"Herbs, herbal teas & spices",Liquorice ,Liquorice (Glycyrrhiza glabra),1
 pp167,"Herbs, herbal teas & spices",Long Pepper ,"Long Pepper (Piper longum, P. retrofractum, P. officinarum)",1
 pp168,"Herbs, herbal teas & spices",Lovage herb ,Lovage herb (Levisticum officinale),1
@@ -337,12 +312,12 @@ pp171,"Herbs, herbal teas & spices",Mallow leaf ,Mallow leaf (Malva silvestris),
 pp499,"Herbs, herbal teas & spices",Manna ash resin ,Manna ash resin (Fraxinus ornus),1
 pp172,"Herbs, herbal teas & spices",Marigold flowers ,Marigold flowers (Calendula officinalis),1
 pp173,"Herbs, herbal teas & spices",Marjoram ,Marjoram (Origanum majorana),1
-pp174,"Herbs, herbal teas & spices",Marjoram fruit ,Marjoram fruit (Origanum majorana),1
-pp500,"Herbs, herbal teas & spices",Marshmallow leaf ,Marshmallow leaf (Althaea officinalis),1
-pp501,"Herbs, herbal teas & spices",Marshmallow root ,Marshmallow root (Althaea officinalis),1
+pp174,"Herbs, herbal teas & spices",Marjoram ,Marjoram fruit (Origanum majorana),1
+pp500,"Herbs, herbal teas & spices",Marjoram ,Marshmallow leaf (Althaea officinalis),1
+pp501,"Herbs, herbal teas & spices",Marjoram ,Marshmallow root (Althaea officinalis),1
 pp503,"Herbs, herbal teas & spices",Matico leaves ,Matico leaves (Aristeguietia glutinosa),1
-pp504,"Herbs, herbal teas & spices",Meadowsweet flower ,Meadowsweet flower (Filipendula ulmaria),1
-pp505,"Herbs, herbal teas & spices",Meadowsweet herb ,Meadowsweet herb (Filipendula ulmaria),1
+pp504,"Herbs, herbal teas & spices",Meadowsweet,Meadowsweet flower (Filipendula ulmaria),1
+pp505,"Herbs, herbal teas & spices",Meadowsweet,Meadowsweet herb (Filipendula ulmaria),1
 pp507,"Herbs, herbal teas & spices",Mexican Valerian root ,Mexican Valerian root (Valeriana edulis),1
 pp508,"Herbs, herbal teas & spices",Milk Thistle ,Milk Thistle (Silybum species),1
 pp175,"Herbs, herbal teas & spices",Mint ,Mint (Mentha species),1
@@ -350,8 +325,8 @@ pp509,"Herbs, herbal teas & spices",Mistletoe ,Mistletoe (Viscum album),1
 pp510,"Herbs, herbal teas & spices",Moldavian dragonhead ,Moldavian dragonhead (Dracocephalum moldavica),1
 pp511,"Herbs, herbal teas & spices",Moradilla ,Moradilla (Alternanthera cericea),1
 pp176,"Herbs, herbal teas & spices",Morello cherry stem ,Morello cherry stem (Prunus cerasus),1
-pp512,"Herbs, herbal teas & spices",Moringa leaf ,Moringa leaf (Moringa oleifera),1
-pp513,"Herbs, herbal teas & spices",Moringa seed ,Moringa seed (Moringa oleifera),1
+pp512,"Herbs, herbal teas & spices",Moringa,Moringa leaf (Moringa oleifera),1
+pp513,"Herbs, herbal teas & spices",Moringa,Moringa seed (Moringa oleifera),1
 pp514,"Herbs, herbal teas & spices",Mountain pepper berries ,Mountain pepper berries (Tasmannia species),1
 pp515,"Herbs, herbal teas & spices",Muelan ,Muelan (Muelenbeckia tamnifolia),1
 pp177,"Herbs, herbal teas & spices",Mullein leaf ,Mullein leaf (Verbascum spec.),1
@@ -367,23 +342,23 @@ pp522,"Herbs, herbal teas & spices",Olive leaf ,Olive leaf (Olea europaea),1
 pp180,"Herbs, herbal teas & spices",Orange leaves ,Orange leaves (Citrus aurantium),1
 pp523,"Herbs, herbal teas & spices",Orange leaves ,Orange leaves (Citrus aurantium),1
 pp181,"Herbs, herbal teas & spices",Oregano ,"Oregano (Origanum vulgare, O. majoricum)",1
-pp213,"Herbs, herbal teas & spices",Other [Specify],Other [Specify],1
+pp213,"Herbs, herbal teas & spices","Herbs, herbal teas & spices (other)",Other [Specify],1
 pp524,"Herbs, herbal teas & spices",Palmarosa / Rosha ,Palmarosa / Rosha (Cymbopogon martinii),1
 pp525,"Herbs, herbal teas & spices",Papaya ,Papaya (Carica papaya),1
 pp182,"Herbs, herbal teas & spices",Parsley ,Parsley (Petroselinum crispum),1
 pp318,"Herbs, herbal teas & spices",Patchouli,Patchouli,1
-pp526,"Herbs, herbal teas & spices",Patchouli leaf ,Patchouli leaf (Pogostemon cablin),1
+pp526,"Herbs, herbal teas & spices",Patchouli,Patchouli leaf (Pogostemon cablin),1
 pp183,"Herbs, herbal teas & spices","Pennywort, Gotu Kola ","Pennywort, Gotu Kola (Centrella asiatica)",1
 pp527,"Herbs, herbal teas & spices",Peony flower ,Peony flower (Paeonia officinalis),1
-pp528,"Herbs, herbal teas & spices",Pimpernel herb ,Pimpernel herb (Pimpinella major),1
-pp529,"Herbs, herbal teas & spices",Pimpernel root ,Pimpernel root (Pimpinella major),1
+pp528,"Herbs, herbal teas & spices",Pimpernel,Pimpernel herb (Pimpinella major),1
+pp529,"Herbs, herbal teas & spices",Pimpernel,Pimpernel root (Pimpinella major),1
 pp530,"Herbs, herbal teas & spices",Plantain ,"Plantain (Plantago psyllium, P. ovata, P. major)",1
 pp531,"Herbs, herbal teas & spices",Polpala ,Polpala (Aerva lanata),1
 pp184,"Herbs, herbal teas & spices",Pomegranate ,Pomegranate (Punica granatum),1
 pp532,"Herbs, herbal teas & spices",Poppy seed ,Poppy seed (Papaver somniferum),1
 pp533,"Herbs, herbal teas & spices",Poria fungus ,Poria fungus (Poria cocos),1
-pp534,"Herbs, herbal teas & spices",Primrose flower ,Primrose flower (Primula veris),1
-pp535,"Herbs, herbal teas & spices",Primrose root ,Primrose root (Primula veris),1
+pp534,"Herbs, herbal teas & spices",Primrose,Primrose flower (Primula veris),1
+pp535,"Herbs, herbal teas & spices",Primrose,Primrose root (Primula veris),1
 pp536,"Herbs, herbal teas & spices",Quassia wood ,Quassia wood (Quassia amara),1
 pp537,"Herbs, herbal teas & spices",Queen Anna Lace ,Queen Anna Lace (Daucus carota),1
 pp185,"Herbs, herbal teas & spices",Raspberry leaves ,Raspberry leaves (Rubus idaeus),1
@@ -411,8 +386,8 @@ pp547,"Herbs, herbal teas & spices",Shankhapushpi ,Shankhapushpi (Convolvulus pl
 pp548,"Herbs, herbal teas & spices",Shepherd's purse ,Shepherd's purse (Capsella bursa pastoris),1
 pp549,"Herbs, herbal teas & spices",Siberian ginseng root ,Siberian ginseng root (Eleutherococcus senticosus),1
 pp550,"Herbs, herbal teas & spices",Sichuan pepper ,"Sichuan pepper (Zanthoxylum piperitum, Z. simulans)",1
-pp551,"Herbs, herbal teas & spices",Silver lime flower ,"Silver lime flower (Tilia argentea, T.tomentosa)",1
-pp552,"Herbs, herbal teas & spices",Silver lime leaf ,"Silver lime leaf (Tilia argentea, T.tomentosa)",1
+pp551,"Herbs, herbal teas & spices",Silver lime,"Silver lime flower (Tilia argentea, T.tomentosa)",1
+pp552,"Herbs, herbal teas & spices",Silver lime,"Silver lime leaf (Tilia argentea, T.tomentosa)",1
 pp553,"Herbs, herbal teas & spices",Silverweed ,Silverweed (Potentilla anserina),1
 pp554,"Herbs, herbal teas & spices",Sloe fruit ,Sloe fruit (Prunus spinosa),1
 pp555,"Herbs, herbal teas & spices",Smooth rupturewort ,Smooth rupturewort (Herniaria glabra),1
@@ -420,8 +395,8 @@ pp556,"Herbs, herbal teas & spices",Soap-bark tree bark ,Soap-bark tree bark (Qu
 pp557,"Herbs, herbal teas & spices",Southernwood ,"Southernwood (Artemisia abrotanum, A. vulgaris)",1
 pp197,"Herbs, herbal teas & spices",Spinach leaf ,Spinach leaf (Spinacia oleracea),1
 pp558,"Herbs, herbal teas & spices",Spirulina ,Spirulina (Spirulina platensis),1
-pp559,"Herbs, herbal teas & spices",St. John´s Wort flower ,St. John´s Wort flower (Hypericum perforatum),1
-pp560,"Herbs, herbal teas & spices",St. John´s Wort herb ,St. John´s Wort herb (Hypericum perforatum),1
+pp559,"Herbs, herbal teas & spices",St. John´s Wort,St. John´s Wort flower (Hypericum perforatum),1
+pp560,"Herbs, herbal teas & spices",St. John´s Wort,St. John´s Wort herb (Hypericum perforatum),1
 pp198,"Herbs, herbal teas & spices",Star anise ,Star anise (Illicium verum),1
 pp199,"Herbs, herbal teas & spices",Stevia ,Stevia (Stevia species),1
 pp561,"Herbs, herbal teas & spices",Stink weed/ long coriander ,Stink weed/ long coriander (Eryngium foetidum),1
@@ -454,24 +429,24 @@ pp579,"Herbs, herbal teas & spices",Water mint,Water mint,1
 pp580,"Herbs, herbal teas & spices",Watercress ,Watercress (Nasturtium officinale),1
 pp581,"Herbs, herbal teas & spices",Wattle seed ,Wattle seed (Acacia victoriae),1
 pp582,"Herbs, herbal teas & spices",White atractylodes rhizome ,White atractylodes rhizome (Atractylodis macrocephalae),1
-pp583,"Herbs, herbal teas & spices",White deadnettle flower ,White deadnettle flower (Lamium album),1
-pp584,"Herbs, herbal teas & spices",White deadnettle herb ,White deadnettle herb (Lamium album),1
+pp583,"Herbs, herbal teas & spices",White deadnettle,White deadnettle flower (Lamium album),1
+pp584,"Herbs, herbal teas & spices",White deadnettle,White deadnettle herb (Lamium album),1
 pp585,"Herbs, herbal teas & spices",White ginger ,White ginger (Hedychium coronarium),1
-pp208,"Herbs, herbal teas & spices",White mulberry leaf ,White mulberry leaf (Morus alba),1
-pp586,"Herbs, herbal teas & spices",White mulberry twig ,White mulberry twig (Morus alba),1
+pp208,"Herbs, herbal teas & spices",White mulberry,White mulberry leaf (Morus alba),1
+pp586,"Herbs, herbal teas & spices",White mulberry,White mulberry twig (Morus alba),1
 pp587,"Herbs, herbal teas & spices",White peony root ,White peony root (Paeonia alba),1
 pp209,"Herbs, herbal teas & spices",White Pepper ,White Pepper (Piper nigrum),1
 pp317,"Herbs, herbal teas & spices",Wild date palm sugar,Wild date palm sugar,1
 pp210,"Herbs, herbal teas & spices",Wild strawberry leaf ,Wild strawberry leaf (Fragaria vesca),1
 pp588,"Herbs, herbal teas & spices",Willow herb ,Willow herb (Epilobium angustifolium),1
 pp589,"Herbs, herbal teas & spices",Winter cress/ Yellow rocket ,"Winter cress/ Yellow rocket (Barbarea vulgaris, B. verna)",1
-pp590,"Herbs, herbal teas & spices",Witch hazel bark ,Witch hazel bark (Hamamelis virginiana),1
-pp591,"Herbs, herbal teas & spices",Witch hazel leaf ,Witch hazel leaf (Hamamelis virginiana),1
+pp590,"Herbs, herbal teas & spices",Witch hazel,Witch hazel bark (Hamamelis virginiana),1
+pp591,"Herbs, herbal teas & spices",Witch hazel,Witch hazel leaf (Hamamelis virginiana),1
 pp592,"Herbs, herbal teas & spices",Wood betony ,Wood betony (Betonica officinalis),1
 pp211,"Herbs, herbal teas & spices",Woodruff ,Woodruff (Galium odoratum),1
 pp212,"Herbs, herbal teas & spices",Wormwood ,Wormwood (Artemisia absinthium),1
-pp593,"Herbs, herbal teas & spices",Yarrow  flower ,Yarrow  flower (Achillea millefolium),1
-pp594,"Herbs, herbal teas & spices",Yarrow  herb ,Yarrow  herb (Achillea millefolium),1
+pp593,"Herbs, herbal teas & spices",Yarrow,Yarrow  flower (Achillea millefolium),1
+pp594,"Herbs, herbal teas & spices",Yarrow,Yarrow  herb (Achillea millefolium),1
 pp595,"Herbs, herbal teas & spices",Yellow bedstraw ,Yellow bedstraw (Galium verum),1
 pp596,"Herbs, herbal teas & spices",Yellow gentian root ,Yellow gentian root (Gentiana lutea),1
 pp502,"Herbs, herbal teas & spices",Yerba Mate ,Yerba Mate (llex paragariensis),1
@@ -486,7 +461,7 @@ pp219,Nuts,Brazil Nut,Brazil Nut,1
 pp220,Nuts,Cashew Nut,Cashew Nut,1
 pp309,Nuts,Chestnut,Chestnut,1
 pp221,Nuts,Macadamia Nut,Macadamia Nut,1
-pp224,Nuts,Other [Specify],Other [Specify],1
+pp224,Nuts,Nuts (other),Other [Specify],1
 pp222,Nuts,Peanut,Peanut,1
 pp223,Nuts,Walnut,Walnut,1
 pp225,Oilseeds and Oleaginous fruit,Argan Oil,Argan Oil,1
@@ -495,50 +470,88 @@ pp633,Oilseeds and Oleaginous fruit,Flaxseed,Flaxseed,1
 pp637,Oilseeds and Oleaginous fruit,Mahua seed,Mahua seed,1
 pp227,Oilseeds and Oleaginous fruit,Olive Oil,Olive Oil,1
 pp228,Oilseeds and Oleaginous fruit,Olives,Olives,1
-pp233,Oilseeds and Oleaginous fruit,Other [Specify],Other [Specify],1
+pp233,Oilseeds and Oleaginous fruit,Oilseeds and Oleaginous fruit (other),Other [Specify],1
 pp638,Oilseeds and Oleaginous fruit,Sal seed,Sal seed,1
 pp229,Oilseeds and Oleaginous fruit,Sesame oil,Sesame oil,1
 pp230,Oilseeds and Oleaginous fruit,Sesame Seed,Sesame Seed,1
 pp231,Oilseeds and Oleaginous fruit,Shea Butter,Shea Butter,1
 pp232,Oilseeds and Oleaginous fruit,Soybeans,Soybeans,1
-pp244,Rice,Rice,Basmati: Pusa,1
-pp245,Rice,Rice,Basmati: Traditional,1
-pp246,Rice,Rice,Black petit poussin & White petit poussin,1
-pp604,Rice,Rice,Brazilian long grain,1
-pp605,Rice,Rice,Burmese aromatic long grain,1
-pp606,Rice,Rice,Cambodian aromatic long grain,1
-pp607,Rice,Rice,Giza,1
-pp247,Rice,Rice,Glutinous rice: black or violet,1
-pp248,Rice,Rice,Glutinous rice: white,1
-pp608,Rice,Rice,Hsin Thu Kha,1
-pp249,Rice,Rice,Jasmine Rice & Red Jasmine Rice,1
-pp609,Rice,Rice,Ma Naw Thu Kha,1
-pp610,Rice,Rice,Mandarin,1
-pp611,Rice,Rice,Non-Basmati and Non-Sarbati rice,1
-pp612,Rice,Rice,Non-Glutinous black,1
-pp613,Rice,Rice,Non-Glutinous red,1
-pp250,Rice,Rice,Normal longgrain rice,1
-pp253,Rice,Rice,Other [Specify],1
-pp614,Rice,Rice,Paw San,1
-pp251,Rice,Rice,Sarbati,1
-pp616,Rice,Rice,Shwe Thwe Lay,1
-pp617,Rice,Rice,Thai long grain,1
-pp252,Rice,Rice,Traditional varieties from Sri Lanka,1
+pp019,"Processed fruit (juice, dried and pulp)",Acai,Acai (dried),1
+pp357,"Processed fruit (juice, dried and pulp)",Acai,Acai (juice),1
+pp234,"Processed fruit (juice, dried and pulp)",Acai,Acai (pulp),1
+pp093,"Processed fruit (juice, dried and pulp)",Apple,Apple (juice),1
+pp020,"Processed fruit (juice, dried and pulp)",Apples,Apples (dried),1
+pp021,"Processed fruit (juice, dried and pulp)",Apricot,Apricot (dried),1
+pp235,"Processed fruit (juice, dried and pulp)",Araza,Araza (pulp),1
+pp022,"Processed fruit (juice, dried and pulp)",Banana,Banana (dried),1
+pp236,"Processed fruit (juice, dried and pulp)",Banana,Banana (pulp),1
+pp023,"Processed fruit (juice, dried and pulp)",Blueberry,Blueberry (dried),1
+pp358,"Processed fruit (juice, dried and pulp)",Blueberry,Blueberry (juice),1
+pp237,"Processed fruit (juice, dried and pulp)",Carambola,Carambola (pulp),1
+pp024,"Processed fruit (juice, dried and pulp)",Cherry,Cherry (dried),1
+pp359,"Processed fruit (juice, dried and pulp)",Cherry,Cherry (juice),1
+pp025,"Processed fruit (juice, dried and pulp)",Coconut,Coconut (dried),1
+pp026,"Processed fruit (juice, dried and pulp)",Date,Date (dried),1
+pp094,"Processed fruit (juice, dried and pulp)",Grapefruit,Grapefruit (juice),1
+pp095,"Processed fruit (juice, dried and pulp)",Guava,Guava (juice),1
+pp238,"Processed fruit (juice, dried and pulp)",Guava,Guava (pulp),1
+pp096,"Processed fruit (juice, dried and pulp)",Lemon,Lemon (juice),1
+pp097,"Processed fruit (juice, dried and pulp)",Lime,Lime (juice),1
+pp027,"Processed fruit (juice, dried and pulp)",Limes,Limes (dried),1
+pp239,"Processed fruit (juice, dried and pulp)",Lychee,Lychee (pulp),1
+pp098,"Processed fruit (juice, dried and pulp)",Mandarin,Mandarin (juice),1
+pp028,"Processed fruit (juice, dried and pulp)",Mango,Mango (dried),1
+pp368,"Processed fruit (juice, dried and pulp)",Mango,Mango (juice),1
+pp240,"Processed fruit (juice, dried and pulp)",Mango,Mango (pulp),1
+pp029,"Processed fruit (juice, dried and pulp)",Melon (Cucumis melo),Melon (Cucumis melo) (dried),1
+pp099,"Processed fruit (juice, dried and pulp)",Orange,Orange (juice),1
+pp041,"Processed fruit (juice, dried and pulp)",Processed fruit (other),Other dried fruit [Specify],1
+pp102,"Processed fruit (juice, dried and pulp)",Processed fruit (other),Other fruit juice [Specify],1
+pp241,"Processed fruit (juice, dried and pulp)",Processed fruit (other),Other fruit pulp [Specify],1
+pp030,"Processed fruit (juice, dried and pulp)",Papaya,Papaya (dried),1
+pp369,"Processed fruit (juice, dried and pulp)",Papaya,Papaya (juice),1
+pp100,"Processed fruit (juice, dried and pulp)",Passion fruit,Passion fruit (juice),1
+pp031,"Processed fruit (juice, dried and pulp)",Pears,Pears (dried),1
+pp370,"Processed fruit (juice, dried and pulp)",Pears,Pears (juice),1
+pp327,"Processed fruit (juice, dried and pulp)",Persimmon,Persimmon (dried),1
+pp032,"Processed fruit (juice, dried and pulp)",Physalis,Physalis (dried),1
+pp033,"Processed fruit (juice, dried and pulp)",Pineapple,Pineapple (dried),1
+pp101,"Processed fruit (juice, dried and pulp)",Pineapple,Pineapple (juice),1
+pp034,"Processed fruit (juice, dried and pulp)",Plums,Plums (dried),1
+pp035,"Processed fruit (juice, dried and pulp)",Pomegranate,Pomegranate (dried),1
+pp036,"Processed fruit (juice, dried and pulp)",Raisin,Raisin (dried),1
+pp037,"Processed fruit (juice, dried and pulp)",Raspberries,Raspberries (dried),1
+pp371,"Processed fruit (juice, dried and pulp)",Raspberries,Raspberries (juice),1
+pp038,"Processed fruit (juice, dried and pulp)",Sultana,Sultana (dried),1
+pp039,"Processed fruit (juice, dried and pulp)",Watermelon,Watermelon (dried),1
+pp040,"Processed fruit (juice, dried and pulp)",Wild Apricot,Wild Apricot (dried),1
 pp255,Seed cotton,Seed cotton,"Gossypium barbadense (e.g. Giza, PIMA)",1
 pp254,Seed cotton,Seed cotton,Gossypium hirsutum/ herbaceum/ arboreum,1
 pp256,Seed cotton,Seed cotton,Other [Specify],1
+pp257,Shrimps,Shrimps,M. rosenbergii,1
+pp258,Shrimps,Shrimps,Other [Specify],1
 pp260,Sportsballs,Sportsballs,Other [Specify],1
 pp259,Sportsballs,Sportsballs,Sportsballs,1
 pp261,Tea,Tea,Camellia sinensis: Green leaf,0.22222
 pp262,Tea,Tea,Other [Specify],1
-pp043,Vegetables,Other [Specify],Other [Specify],1
-pp042,Vegetables,Tomato,Tomato,1
+pp618,Textile,Cotton,Cotton,1
+pp619,Textile,Responsible fibres,Responsible fibres,1
+pp264,Timber,Timber,Other [Specify],1
+pp263,Timber,Timber,Timber,1
+pp269,Vegetables,Beans & Green Beans (except French beans),Beans & Green Beans (except French beans),1
+pp278,Vegetables,Cowpeas (leaves),Cowpeas (leaves),1
+pp281,Vegetables,French Beans,French Beans,1
+pp282,Vegetables,Garden peas,Garden peas,1
+pp620,Vegetables,Green Beans,Green Beans,1
+pp628,Vegetables,Green peas (any edible Pisum),Green peas (any edible Pisum),1
+pp622,Vegetables,Leaves of cowpeas (Vigna unguiculata),Leaves of cowpeas (Vigna unguiculata),1
+pp289,Vegetables,New Potatoes,New Potatoes,1
+pp292,Vegetables,Peas (except garden peas),Peas (except garden peas),1
 pp307,Vegetables,Amaranth,Amaranth,1
 pp265,Vegetables,Artichoke,Artichoke,1
 pp266,Vegetables,Asparagus,Asparagus,1
 pp267,Vegetables,Baby corn,Baby corn,1
 pp268,Vegetables,Barlotti Beans,Barlotti Beans,1
-pp269,Vegetables,Beans & Green Beans (except French beans),Beans & Green Beans (except French beans),1
 pp270,Vegetables,Beet,Beet,1
 pp271,Vegetables,Broccoli,Broccoli,1
 pp308,Vegetables,Brussel sprouts,Brussel sprouts,1
@@ -548,29 +561,22 @@ pp274,Vegetables,"Cassava, Mariot root, Tapioca root","Cassava, Mariot root, Tap
 pp275,Vegetables,Cauliflower,Cauliflower,1
 pp276,Vegetables,Celery,Celery,1
 pp277,Vegetables,Chard,Chard,1
-pp278,Vegetables,Cowpeas (leaves),Cowpeas (leaves),1
 pp279,Vegetables,Cucumber,Cucumber,1
 pp280,Vegetables,Eggplant,Eggplant,1
 pp635,Vegetables,Elephant garlic,Elephant garlic,1
-pp281,Vegetables,French Beans,French Beans,1
-pp282,Vegetables,Garden peas,Garden peas,1
 pp283,Vegetables,Garlic,Garlic,1
 pp284,Vegetables,Gherkin,Gherkin,1
-pp620,Vegetables,Green Beans,Green Beans,1
-pp628,Vegetables,Green peas (any edible Pisum),Green peas (any edible Pisum),1
 pp310,Vegetables,Kale,Kale,1
 pp285,Vegetables,Kidney Beans,Kidney Beans,1
 pp621,Vegetables,Leaves of African nightshade,Leaves of African nightshade,1
-pp622,Vegetables,Leaves of cowpeas (Vigna unguiculata),Leaves of cowpeas (Vigna unguiculata),1
 pp286,Vegetables,Leek,Leek,1
 pp287,Vegetables,Lettuce,Lettuce,1
 pp623,Vegetables,Mallow-leaves of jute,Mallow-leaves of jute,1
 pp288,Vegetables,Mung Beans,Mung Beans,1
-pp289,Vegetables,New Potatoes,New Potatoes,1
 pp290,Vegetables,Onion,Onion,1
-pp304,Vegetables,Other [Specify],Other [Specify],1
+pp043,Vegetables,Vegetables (other),Other dried vegetables [Specify],1
+pp304,Vegetables,Vegetables (other),Other fresh vegetables [Specify],1
 pp291,Vegetables,Palm heart,Palm heart,1
-pp292,Vegetables,Peas (except garden peas),Peas (except garden peas),1
 pp293,Vegetables,Peppers: Any Capsicum Annuum,Peppers: Any Capsicum Annuum,1
 pp624,Vegetables,Pulses,Pulses,1
 pp294,Vegetables,Pumpkin,Pumpkin,1
@@ -582,9 +588,10 @@ pp298,Vegetables,Spider plant,Spider plant,1
 pp299,Vegetables,Spinach,Spinach,1
 pp300,Vegetables,Squash,Squash,1
 pp301,Vegetables,Sweet Potatoes (Ipomoea batatas),Sweet Potatoes (Ipomoea batatas),1
-pp302,Vegetables,Tomatoes,Tomatoes,1
+pp042,Vegetables,Tomatoes (dried),Tomatoes (dried),1
+pp302,Vegetables,Tomatoes (fresh),Tomatoes (fresh),1
 pp303,Vegetables,Zucchini,Zucchini,1
-pp306,Wine grapes,Other [Specify],Other [Specify],1
-pp625,Wine grapes,Red wine grapes,Red wine grapes,0.00143
-pp626,Wine grapes,White wine grapes,White wine grapes,0.0016
+pp306,Wine grapes,Wine grapes (other),Other [Specify],1
+pp625,Wine grapes,Red Wine grapes,Red Wine grapes,0.00143
+pp626,Wine grapes,White Wine grapes,White Wine grapes,0.0016
 pp305,Wine grapes,Wine grapes (not specified),Wine grapes (not specified),1
