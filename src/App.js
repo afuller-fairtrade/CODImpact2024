@@ -2075,7 +2075,7 @@ const surveyJson = {
                   title:
                     "If your product was not listed and you selected 'Other' please specify here the product form for which you are reporting production:",
                   visibleIf:
-                    "{panel.product_form_name} contains 'Other' OR {panel.product_form_name} contains 'other'"
+                    "({panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other') AND {panel.product_form_name} notempty"
                 },
                 {
                   type: "text",
