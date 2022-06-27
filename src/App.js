@@ -2408,7 +2408,8 @@ const surveyJson = {
     {
       navigationTitle: "Summary",
       name: "Summary report",
-      title: "Summary report (PLACEHOLDER - SPO only)",
+      title:
+        "Summary report (PLACEHOLDER - for now has only SPO specific summary)",
       elements: [
         {
           type: "html",
@@ -2513,7 +2514,7 @@ const surveyJson = {
         {
           type: "checkbox",
           name: "confirm_report",
-          titleLocation: "hidden",
+          title: "Please confirm before submitting your results",
           hideNumber: true,
           isRequired: true,
           choices: [
