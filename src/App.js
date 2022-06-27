@@ -42,6 +42,7 @@ const surveyJson = {
   showProgressBar: "top",
   title: "Self-reporting pilot test title",
   description: "This is where the short description of the survey would go",
+  showPreviewBeforeComplete: "showAnsweredQuestions",
   pages: [
     {
       navigationTitle: "Start page",
@@ -2400,128 +2401,6 @@ const surveyJson = {
               hideNumber: true,
               html:
                 "<hr><b>Items:</b> For coconuts and sportsballs only. use items when you know the number of coconuts or sportsballs produced."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      navigationTitle: "Summary",
-      name: "Summary report",
-      title:
-        "Summary report (PLACEHOLDER - for now has only SPO specific summary)",
-      elements: [
-        {
-          type: "html",
-          name: "info_box_summary_page",
-          hideNumber: true,
-          html:
-            "Before submitting your report, please take a few minutes to review that the information you reported is correct. If you notice any mistakes, please return to the corresponding page to correct them."
-        },
-        {
-          type: "panel",
-          name: "organization_members_summary",
-          title: "Summary of number of members in your organization:",
-          visibleIf: "{producer_setup} = 'spo'",
-          elements: [
-            {
-              type: "html",
-              name: "total_number_of_farmers_summary",
-              hideNumber: true,
-              html:
-                "<br><b>You have reported that your organization has:</b><br>{farmers_total} total members, with<br>{farmers_conventional_total} conventional farmers and<br>{farmers_organic_total} organic farmers."
-            },
-            {
-              type: "html",
-              name: "total_number_of_farmers_by_gender_summary",
-              hideNumber: true,
-              startWithNewLine: false,
-              html:
-                "<br><b>Of the {farmers_total} total members in your organization, you reported that:</b><br>{farmers_female} are female and<br>{farmers_male} are male."
-            }
-          ]
-        },
-        {
-          type: "panel",
-          name: "youth_membership_summary",
-          title:
-            "Summary of number of young people as members of your organization:",
-          visibleIf:
-            "{producer_setup} = 'spo' AND {farmers_age_not_known} empty",
-          elements: [
-            {
-              type: "html",
-              name: "number_of_farmers_16_28_summary",
-              hideNumber: true,
-              visibleIf: "{farmers_gender_not_known_16_28} empty",
-              html:
-                "<br><b>Number of members between the ages of 16 and 28 years old:</b> {total_farmers_16_28}<br>Of which {farmers_female_16_28} are female and {farmers_male_16_28} are male"
-            },
-            {
-              type: "html",
-              name: "number_of_farmers_16_28_summary",
-              hideNumber: true,
-              startWithNewLine: false,
-              visibleIf: "{farmers_gender_not_known_16_28} notempty",
-              html:
-                "<br><b>Number of members between the ages of 16 and 28 years old:</b> {total_farmers_16_28}<br>The number of male and female members were not reported"
-            },
-            {
-              type: "html",
-              name: "number_of_farmers_29_35_summary",
-              hideNumber: true,
-              visibleIf: "{farmers_gender_not_known_29_35} empty",
-              startWithNewLine: false,
-              html:
-                "<br><b>Number of members between the ages of 29 and 35 years old:</b> {total_farmers_29_35}<br>Of which {farmers_female_29_35} are female and {farmers_male_29_35} are male"
-            },
-            {
-              type: "html",
-              name: "number_of_farmers_29_35_summary",
-              hideNumber: true,
-              visibleIf: "{farmers_gender_not_known_29_35} notempty",
-              startWithNewLine: false,
-              html:
-                "<br><b>Number of members between the ages of 29 and 35 years old:</b> {total_farmers_29_35}<br>The number of male and female members were not reported"
-            },
-            {
-              type: "html",
-              name: "number_of_farmers_36_summary",
-              hideNumber: true,
-              startWithNewLine: false,
-              visibleIf: "{farmers_gender_not_known_36} empty",
-              html:
-                "<br><b>Number of members 36 years of age or older:</b> {total_farmers_36}<br>Of which {farmers_female_36} are female and {farmers_male_36} are male"
-            },
-            {
-              type: "html",
-              name: "number_of_farmers_36_summary",
-              hideNumber: true,
-              visibleIf: "{farmers_gender_not_known_36} notempty",
-              html:
-                "<br><b>Number of members 36 years of age or older:</b> {total_farmers_36}<br>The number of male and female members were not reported"
-            },
-            {
-              type: "html",
-              name: "total_number_of_farmers_age_summary",
-              hideNumber: true,
-              startWithNewLine: false,
-              html:
-                "<br><b>You have reported the age groups for {RO_farmers_age_total} total members,</b><br>Of which {RO_farmers_age_female_total} are female and {RO_farmers_age_male_total} are male"
-            }
-          ]
-        },
-        {
-          type: "checkbox",
-          name: "confirm_report",
-          title: "Please confirm before submitting your results",
-          hideNumber: true,
-          isRequired: true,
-          choices: [
-            {
-              value: "confirm_correct",
-              text:
-                "I confirm that the information reported in this survey is correct to the best of my knowledge."
             }
           ]
         }
