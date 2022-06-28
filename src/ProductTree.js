@@ -26,11 +26,11 @@ let ProductTree = {
       .catch(console.error);
   },
 
-  filterProductionTypes: function (question, minorCategory) {
+  filterProductionTypes: function (question, minorCategory, majorCategory) {
     alasql
       .promise(
-        "SELECT DISTINCT [product_code] AS [value], [production type] AS [text] FROM csv('./products') WHERE [minor category] = ? ORDER BY [production type]",
-        [minorCategory]
+        "SELECT DISTINCT [product_code] AS [value], [production type] AS [text] FROM csv('./products') WHERE [minor category] = ? AND [major category] = ? ORDER BY [production type]",
+        [minorCategory, majorCategory]
       )
       .then(function (results) {
         question.choices = results;

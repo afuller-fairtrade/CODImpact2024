@@ -26,7 +26,8 @@ function onDynamicPanelItemValueChanged(survey, options) {
     case "minor_product_category":
       ProductTree.filterProductionTypes(
         options.panel.getQuestionByName("product_form_name"),
-        options.value
+        options.value,
+        options.panel.getQuestionByName("major_product_category").value
       );
       break;
     default:
@@ -2075,9 +2076,11 @@ const surveyJson = {
                   hideNumber: true,
                   title:
                     "If your product was not listed and you selected 'Other' please specify here the product form for which you are reporting production:",
-                  visibleIf:
+                 /* visibleIf:
                     "({panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other') AND {panel.product_form_name} notempty"
-                },
+                }, */
+                visibleIf: "{panel.product_form_name} contains 'Other' OR {panel.product_form_name} contains 'other'"
+              },
                 {
                   type: "text",
                   name: "volume_conventional_produced",
