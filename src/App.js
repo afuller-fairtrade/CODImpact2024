@@ -22,6 +22,7 @@ function onDynamicPanelItemValueChanged(survey, options) {
         options.panel.getQuestionByName("minor_product_category"),
         options.value
       );
+      options.panel.getQuestionByName("minor_product_category").value = null;
       break;
     case "minor_product_category":
       ProductTree.filterProductionTypes(
@@ -29,6 +30,7 @@ function onDynamicPanelItemValueChanged(survey, options) {
         options.value,
         options.panel.getQuestionByName("major_product_category").value
       );
+      options.panel.getQuestionByName("product_form_name").value = null;
       break;
     default:
       break;
@@ -263,6 +265,12 @@ const surveyJson = {
                         "Please check here if you do not know the number of conventional farmers by gender"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "conventional_sum_validation",
+                  html: "Test warning box",
+                  visibleIf: "{farmers_conventional_total} <> {farmers_conventional_female}+{farmers_conventional_male}"
                 }
               ],
               visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']"
