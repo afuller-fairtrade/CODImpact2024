@@ -1187,15 +1187,7 @@ const surveyJson = {
                 "{workers_fixed_term_total}+{workers_subcontractor_total}"
             }
           ]
-        }
-      ]
-    },
-    {
-      name: "Seasonal workers",
-      title: "Seasonal workers hired by your organization",
-      navigationTitle: "Seasonal workers",
-      /*navigationDescription: "employed by your organization"*/
-      elements: [
+        },
         {
           type: "panel",
           name: "Info box seasonal workers",
@@ -1215,13 +1207,6 @@ const surveyJson = {
               html:
                 "<br>This section applies <b>only to those workers hired by your organization directly.</b> Workers hired by individual members that work on farms should <i>not</i> be counted in this section."
             },
-            {
-              type: "html",
-              name: "info_workerdefinition",
-              hideNumber: true,
-              html:
-                "<br><i><b>Workers</b> are defined as all waged employees including migrant, temporary, seasonal, sub-contracted and permanent workers. Workers include all hired personnel whether they work in the field, in processing sites, or in administration. The term is restricted to personnel that can be unionised and therefore middle and senior and other professionals are generally not considered workers. For all types of workers, employment refers to any activity that one performs to produce goods or provide services for pay or profit.</i>"
-            }
           ]
         },
         {
@@ -1868,7 +1853,7 @@ const surveyJson = {
               name: "info_box_units",
               hideNumber: true,
               html:
-                "<br>Note that <u>some units should only be used for specific products</u>. For guidance on which units to use for your organization's products, please see the information box at the bottom of this page."
+                "<br>Note that <u>some units should only be used for specific products</u>. For guidance on which units to use for your organization's products, please see the information box below."
             },
             {
               type: "html",
@@ -1878,6 +1863,104 @@ const surveyJson = {
                 "<br>How to enter information about your organization's Fairtrade certified products:<i><ul><li>Select 'Add product.' From the dropdown list, select the product and proceed to enter the land area, volumes produced, and forecast volumes.</li><li>To add a second product, scroll to the bottom of the page and select 'Add product.' You can add as many Fairtrade products as needed.</li><li>Go back to the previous or next product by using the navigation buttons at the botom of the page.</li><li>To remove all information about a product, select 'Remove this product' at the bottom of the page.</li></ul></i>"
             }
           ]
+        },
+        {
+          type: "panel",
+          name: "volume_units_panel",
+          title: "Information box: Units for reporting volumes produced",
+          elements: [
+        {
+         "type": "boolean",
+         "name": "hide_unit_info_box",
+         "title": "Toggle between \"Show\" and \"Hide\" to display",
+         "labelTrue": "Hide",
+         "labelFalse": "Show",
+          defaultValue: false,
+          hideNumber: true
+        },
+        {
+          type: "panel",
+          name: "unit_descriptions_panel",
+          visibleIf: "{hide_unit_info_box} = false",
+          elements: [
+            {
+              type: "html",
+              name: "kg_description",
+              hideNumber: true,
+              html:
+                "<hr><b>Kilograms (kg):</b> Use kg when you know the volume of your product in kilograms."
+            },
+            {
+              type: "html",
+              name: "mt_description",
+              startWithNewLine: false,
+              hideNumber: true,
+              html:
+                "<hr><b>Metric tons (MT):</b> Use MT when you know the volume of your product in metric tons."
+            },
+            {
+              type: "html",
+              name: "boxes_large_description",
+              hideNumber: true,
+              html:
+                "<hr><b>18.14 kg Boxes:</b> For bananas only. use 18.14 kg Boxes when you know the number of boxes of bananas."
+            },
+            {
+              type: "html",
+              name: "boxes_small_description",
+              startWithNewLine: false,
+              hideNumber: true,
+              html:
+                "<hr><b>13.5 kg Boxes:</b> For bananas only. use 13.5 kg Boxes when you know the number of boxes of bananas."
+            },
+            {
+              type: "html",
+              name: "pounds_description",
+              hideNumber: true,
+              html:
+                "<hr><b>Pound:</b> Use pound when you know the volume of your product in pounds."
+            },
+            {
+              type: "html",
+              name: "quintales_description",
+              startWithNewLine: false,
+              hideNumber: true,
+              html:
+                "<hr><b>Quintales (46 kg):</b> Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)."
+            },
+            {
+              type: "html",
+              name: "flowers_description",
+              hideNumber: true,
+              html:
+                "<hr><b>Stems of flowers:</b> For flowers and plants only. use when you know the number of flowers or plants."
+            },
+            {
+              type: "html",
+              name: "1000stems_description",
+              startWithNewLine: false,
+              hideNumber: true,
+              html:
+                "<hr><b>1000 stems of flowers:</b> For flowers and plants only. use when you know the number of 1,000 flower or plant bunches."
+            },
+            {
+              type: "html",
+              name: "litres_description",
+              hideNumber: true,
+              html:
+                "<hr><b>Litres:</b> For argan oil and wine bottles only. use litres when you know the volume of your oil or wine in litres."
+            },
+            {
+              type: "html",
+              name: "items_description",
+              startWithNewLine: false,
+              hideNumber: true,
+              html:
+                "<hr><b>Items:</b> For coconuts and sportsballs only. use items when you know the number of coconuts or sportsballs produced."
+            }
+          ]
+        }
+      ]
         },
         {
           type: "paneldynamic",
@@ -2335,88 +2418,6 @@ const surveyJson = {
           showQuestionNumbers: "onPanel",
           renderMode: "progressTopBottom"
         },
-        {
-          type: "panel",
-          name: "unit_descriptions_panel",
-          title: "Information box: Units for reporting volumes produced",
-          elements: [
-            {
-              type: "html",
-              name: "kg_description",
-              hideNumber: true,
-              html:
-                "<hr><b>Kilograms (kg):</b> Use kg when you know the volume of your product in kilograms."
-            },
-            {
-              type: "html",
-              name: "mt_description",
-              startWithNewLine: false,
-              hideNumber: true,
-              html:
-                "<hr><b>Metric tons (MT):</b> Use MT when you know the volume of your product in metric tons."
-            },
-            {
-              type: "html",
-              name: "boxes_large_description",
-              hideNumber: true,
-              html:
-                "<hr><b>18.14 kg Boxes:</b> For bananas only. use 18.14 kg Boxes when you know the number of boxes of bananas."
-            },
-            {
-              type: "html",
-              name: "boxes_small_description",
-              startWithNewLine: false,
-              hideNumber: true,
-              html:
-                "<hr><b>13.5 kg Boxes:</b> For bananas only. use 13.5 kg Boxes when you know the number of boxes of bananas."
-            },
-            {
-              type: "html",
-              name: "pounds_description",
-              hideNumber: true,
-              html:
-                "<hr><b>Pound:</b> Use pound when you know the volume of your product in pounds."
-            },
-            {
-              type: "html",
-              name: "quintales_description",
-              startWithNewLine: false,
-              hideNumber: true,
-              html:
-                "<hr><b>Quintales (46 kg):</b> Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)."
-            },
-            {
-              type: "html",
-              name: "flowers_description",
-              hideNumber: true,
-              html:
-                "<hr><b>Stems of flowers:</b> For flowers and plants only. use when you know the number of flowers or plants."
-            },
-            {
-              type: "html",
-              name: "1000stems_description",
-              startWithNewLine: false,
-              hideNumber: true,
-              html:
-                "<hr><b>1000 stems of flowers:</b> For flowers and plants only. use when you know the number of 1,000 flower or plant bunches."
-            },
-            {
-              type: "html",
-              name: "litres_description",
-              hideNumber: true,
-              html:
-                "<hr><b>Litres:</b> For argan oil and wine bottles only. use litres when you know the volume of your oil or wine in litres."
-            },
-            {
-              type: "html",
-              name: "items_description",
-              startWithNewLine: false,
-              hideNumber: true,
-              html:
-                "<hr><b>Items:</b> For coconuts and sportsballs only. use items when you know the number of coconuts or sportsballs produced."
-            }
-          ]
-        }
       ]
     }
   ],
