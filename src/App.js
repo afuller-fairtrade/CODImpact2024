@@ -425,7 +425,7 @@ const surveyJson = {
               name: "info_box_numberfarmers_byage",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><hr>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<ul><li>16 to 28 years old</li><li>29 to 35 years old</li><li>36 years and older</li></ul><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of farmers that are members of your organization, according to the following age groups:<ul><li>16 to 28 years old</li><li>29 to 35 years old</li><li>36 years and older</li></ul>If you know the number of members for some age groups but not all, please fill in the fields that you know and leave the rest blank. If you do not know this information for any and all of the age groups, please check the box below and proceed to the next page.<br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of farmers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
             }
           ]
         },
@@ -440,7 +440,7 @@ const surveyJson = {
             {
               value: "not_known",
               text:
-                "Please check here if you do not know the number of your organization's members for the specified age groups"
+                "Please check here if you do not know the number of your organization's members for all the specified age groups."
             }
           ]
         },
@@ -783,10 +783,15 @@ const surveyJson = {
           visibleIf: "{farmers_age_not_known} empty",
           elements: [
             {
+              type: "panel",
+              name: "farmers_total_summary_byage",
+              title: "Total number of farmers in your organization: {farmers_total}",
+              elements: [
+            {
               type: "expression",
               name: "RO_farmers_age_total",
               title:
-                "Total number of farmers reported that are members of your organization:",
+                "Number of farmers reported in an age group:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -801,8 +806,33 @@ const surveyJson = {
             },
             {
               type: "expression",
+              name: "RO_farmers_age_unknown",
+              title:
+                "Number of farmers (age unknown):",
+              hideNumber: true,
+              displayStyle: "decimal",
+              startWithNewLine: false,
+              expression:
+                "{farmers_total}-{RO_farmers_age_total}"
+              /* validators: [
+              {
+                type: "expression",
+                text: "The number of farmers reported by age is more than the number of farmers reported on the previous page.",
+                expression: "{RO_farmers_age_total} <= {farmers_total}"
+              }
+            ]*/
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "farmers_female_summary_byage",
+          title: "Total number of farmers in your organization that are women : {farmers_female}",
+          elements: [
+            {
+              type: "expression",
               name: "RO_farmers_age_female_total",
-              title: "Number of farmers reported that are women:",
+              title: "Number of female farmers reported in an age group:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -817,10 +847,33 @@ const surveyJson = {
             },
             {
               type: "expression",
-              name: "RO_farmers_age_male_total",
-              title: "Number of farmers reported that are men:",
+              name: "RO_farmers_age_female_unknown",
+              title: "Number of female farmers (age unknown):",
               hideNumber: true,
+              displayStyle: "decimal",
               startWithNewLine: false,
+              expression:
+                "{farmers_female}-{RO_farmers_age_female_total}"
+              /*validators: [
+              {
+                type: "expression",
+                text: "The number of female farmers reported by age is more than the number of female farmers reported on the previous page.",
+                expression: "{RO_farmers_age_female_total} <= {farmers_female}"
+              }
+            ]*/
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "farmers_male_summary_byage",
+          title: "Total number of farmers in your organization that are men : {farmers_male}",
+          elements: [
+            {
+              type: "expression",
+              name: "RO_farmers_age_male_total",
+              title: "Number of male farmers reported in an age group:",
+              hideNumber: true,
               displayStyle: "decimal",
               expression:
                 "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
@@ -831,7 +884,26 @@ const surveyJson = {
                 expression: "{RO_farmers_age_male_total} <= {farmers_male}"
               }
             ]*/
+            },
+            {
+              type: "expression",
+              name: "RO_farmers_age_male_unknown",
+              title: "Number of male farmers (age unknown):",
+              hideNumber: true,
+              startWithNewLine: false,
+              displayStyle: "decimal",
+              expression:
+                "{farmers_male}-{RO_farmers_age_male_total}"
+              /* validators: [
+              {
+                type: "expression",
+                text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page.",
+                expression: "{RO_farmers_age_male_total} <= {farmers_male}"
+              }
+            ]*/
             }
+          ]
+        }
           ]
         }
       ]
