@@ -2,11 +2,13 @@ import { useCallback } from "react";
 
 import "survey-core/defaultV2.min.css";
 // import 'survey-core/survey.min.css';
-import { StylesManager, Model } from "survey-core";
+import { StylesManager, Model, FunctionFactory } from "survey-core";
 import { Survey } from "survey-react-ui";
 import ProductTree from "./ProductTree";
 
 StylesManager.applyTheme("defaultV2");
+
+FunctionFactory.Instance.register("screenValue", screenValue);
 
 function onAfterRenderQuestion(survey, options) {
   if (options.question.name === "major_product_category") {
@@ -2087,7 +2089,7 @@ const surveyJson = {
                  /* visibleIf:
                     "({panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other') AND {panel.product_form_name} notempty"
                 }, */
-                visibleIf: "{panel.product_form_name} contains 'Other' OR {panel.product_form_name} contains 'other'"
+                visibleIf: "screenValue('product_form_name') contains 'Other' OR screenValue('product_form_name') contains 'other'"
               },
                 {
                   type: "text",
@@ -2420,6 +2422,17 @@ const surveyJson = {
   ],
   checkErrorsMode: "onValueChanged"
 };
+
+function screenValue(params) {
+  if (!params && params.length < 1) return false;
+
+  var question = this.question.parent.getQuestionByName(params[0]);
+
+  if (!question) return undefined;
+  var selItem = question.selectedItem;
+  var res = !!selItem ? selItem.text : undefined;
+  return res;
+}
 
 function App() {
   const survey = new Model(surveyJson);
