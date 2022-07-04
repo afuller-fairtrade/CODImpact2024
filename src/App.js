@@ -100,23 +100,23 @@ const surveyJson = {
                 "Choose the language of the survey:",
               choices: [
                 {
-                  value: "english",
+                  value: "en",
                   text: "English"
                 },
                 {
-                  value: "spanish",
+                  value: "es",
                   text: "Spanish"
                 },
                 {
-                  value: "portuguese",
+                  value: "pt",
                   text: "Portuguese"
                 },
                 {
-                  value: "french",
+                  value: "fr",
                   text: "French"
                 }
               ],
-              defaultValue: "english"
+              defaultValue: "en"
             }
           ]
         },
@@ -146,7 +146,8 @@ const surveyJson = {
                   value: "no_consent",
                   text: "No, I do not consent to sharing my information and feedback asked in this survey with Fairtrade"
                 }
-              ]
+              ],
+              defaultValue: 'consent'
             }
             /*{
               type: "html",
@@ -167,6 +168,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "organic_logic_panel",
+          visibleIf: "{consent_to_participate} = 'consent'",
           elements: [
             {
               type: "html",
@@ -2115,7 +2117,7 @@ const surveyJson = {
               startWithNewLine: false,
               hideNumber: true,
               html:
-                "<hr><b>Quintales (46 kg):</b> Use quintales when you know the volume of your product in quintales (1 quintale = 46 kg)."
+                "<hr><b>Quintales (46 kg):</b> Use quintales when you know the volume of your product in quintales (1 quintal = 100 lbs = 46 kg)."
             },
             {
               type: "html",
@@ -2607,6 +2609,133 @@ const surveyJson = {
           showQuestionNumbers: "onPanel",
           renderMode: "progressTopBottom"
         },
+      ]
+    },
+    {
+      name: "feedback_fairinsight",
+      title: "Your Feedback on FairInsight & Reporting Information to Fairtrade",
+      navigationTitle: "Your Feedback",
+      /*navigationDescription: "of your organization",*/
+      visibleIf: "{consent_to_participate} = 'consent'",
+      elements: [
+        {
+          type: "html",
+          name: "feedback_instructions",
+          hideNumber: true,
+          html: "<br><b>Thank you for filling out our survey</b>, it covered a set of questions related to some of Fairtrade's most frequently used data. Your contributions will help us better understand challenges in reporting and the quality of the data being reported.<br><br>In this section, we would appreciate to hear from you on the challenges, suggestions and feedback that you and your organization have relating to reporting information to Fairtrade and FairInsight. We would appreciate any feedback you may be willing to share. We will only use your feedback on this page to identify common challenges faced by producer organizations and assess solutions for improvements."
+        },
+        {
+          type: "panel",
+          name: "survey_feedback",
+          title: "Your survey experience",
+          elements: [
+        {
+          type: "rating",
+          name: "rating_survey_overall",
+          title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy overall was it to fill out the information in this survey?"
+              },
+              {
+                type: "rating",
+                name: "rating_survey_questions",
+                hideNumber: true,
+                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy was it to understand the questions and what was being asked?"
+              },
+              {
+                type: "rating",
+                name: "rating_survey_content",
+                hideNumber: true,
+                title: "On a scale of 1 to 5 (1 being not at all and 5 being very), how relavant were the questions to your organization?"
+              },
+              {
+                type: "comment",
+                name: "textbox_issues_survey",
+                hideNumber: true,
+                title: "When completing this survey, did you have any issues or trouble with any parts of the survey? (max. 500 characters):",
+                maxLength: 500
+              },
+              {
+                type: "comment",
+                name: "textbox_suggestions_survey",
+                hideNumber: true,
+                title: "We want to improve how we collect this information from Fairtrade producer organizations. Do have any suggestions for improving the survey in any way (on the questions, functionality, accessibility, etc.) that you would like to share? (max. 500 characters):",
+                maxLength: 500
+              }
+            ]
+          },
+          {
+            type: "panel",
+            name: "reporting_feedback",
+            title: "Reporting information to Fairtrade",
+            elements: [
+              {
+                type: "rating",
+                name: "rating_reporting_overall",
+                hideNumber: true,
+                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy do you find it to report information about your organization to Fairtrade?"
+              },
+              {
+                type: "rating",
+                name: "rating_codimpact",
+                hideNumber: true,
+                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy do you find it to report information on members and workers, production and land area to Fairtrade? (these are currently reported through the CODImpact questionnaire)",
+              },
+              {
+                type: "comment",
+                name: "textbox_reporting",
+                hideNumber: true,
+                title: "We want to better understand the challenges that producer organizations face when asked to report information to Fairtrade. Does your organization have any challenges that you would like to share with us? (max. 500 characters)",
+                maxLength: 500
+              }
+            ]
+          },
+          {
+            type: "panel",
+            name: "fairinsight_feedback",
+            title: "FairInsight usage",
+            elements: [
+              {
+                type: "rating",
+                name: "rating_fairinsight",
+                hideNumber: true,
+                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy do you find it to use FairInsight to report on your Fairtrade Premium Investments?"
+              },
+              {
+                type: "comment",
+                name: "textbox_fairinsight_not_easy",
+                hideNumber: true,
+                visibleIf: "{rating_fairinsight} < 4",
+                title: "How can we improve your user experience to make reporting on your Fairtrade Premium Investments easier? (max. 500 characters)",
+                maxLength: 500
+              },
+              {
+                type: "rating",
+                name: "rating_fairinsight_usefulness",
+                hideNumber: true,
+                title: "On a scale of 1 to 5 (1 being not useful at all and 5 very useful), how useful do you see FairInsight to your organization?"
+              },
+              {
+                type: "comment",
+                name: "textbox_fairinsight_not_useful",
+                hideNumber: true,
+                visibleIf: "{rating_fairinsight_usefulness} < 4",
+                title: "How can we make FairInsight more useful for your organization? (max. 500 characters)",
+                maxLength: 500
+              },
+              {
+                type: "comment",
+                name: "textbox_fairinsight",
+                hideNumber: true,
+                title: "Do you have any other comments, suggestions or feedback you would like to share with us on FairInsight? (max. 500 characters)",
+                maxLength: 500
+              }
+            ]
+          },
+          {
+            type: "html",
+            name: "thank_you",
+            hideNumber: true,
+            html: "<br><b>Thank you for your feedback!</b> We want to make reporting easier for you and your organization through FairInsight. We will review your inputs and keep them in mind for further improvements to the platform."
+          }
       ]
     }
   ],
