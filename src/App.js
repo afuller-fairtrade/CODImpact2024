@@ -218,6 +218,12 @@ const surveyJson = {
           elements: [
             {
               type: "html",
+              name: "info_box_farmers_workers",
+              hideNumber: true,
+              html: "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many male and female farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. This helps Fairtrade understand and communicate our reach, analyse trends over time, and guide our global strategy."
+            },
+            {
+              type: "html",
               name: "info_box_numberfarmers",
               hideNumber: true,
               html:
@@ -464,6 +470,12 @@ const surveyJson = {
           type: "panel",
           name: "instructions_farmers_by_age",
           elements: [
+            {
+              type: "html",
+              name: "info_box_farmers_workers",
+              hideNumber: true,
+              html: "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many male and female farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. We are also trying to better understand the engagement of young people in Fairtrade organizations."
+            },
             {
               type: "html",
               name: "info_box_numberfarmers_byage",
@@ -965,6 +977,12 @@ const surveyJson = {
           elements: [
             {
               type: "html",
+              name: "info_box_farmers_workers",
+              hideNumber: true,
+              html: "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many male and female farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. This helps Fairtrade understand and communicate our reach, analyse trends over time, and guide our global strategy."
+            },
+            {
+              type: "html",
               name: "info_box_numberworkers",
               hideNumber: true,
               html:
@@ -1432,6 +1450,12 @@ const surveyJson = {
           type: "panel",
           name: "instructions_workers_by_age",
           elements: [
+            {
+              type: "html",
+              name: "info_box_youth",
+              hideNumber: true,
+              html: "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many male and female farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. We are also trying to better understand the engagement of young people in Fairtrade organizations."
+            },
             {
               type: "html",
               name: "info_box_numberworkers_byage",
@@ -1932,6 +1956,12 @@ const surveyJson = {
           elements: [
             {
               type: "html",
+              name: "info_box_production",
+              hideNumber: true,
+              html: "<br>Another key area of information that Fairtrade stakeholders and consumers are interested in is the production of Fairtrade certified products. This helps Fairtrade understand our producer organizations; analyse growth, yields and market potential over time; and guide our global strategy."
+            },
+            {
+              type: "html",
               name: "info_box_landarea",
               hideNumber: true,
               html:
@@ -2033,6 +2063,12 @@ const surveyJson = {
           type: "panel",
           name: "instructions_products_page",
           elements: [
+            {
+              type: "html",
+              name: "info_box_production",
+              hideNumber: true,
+              html: "<br>Another key area of information that Fairtrade stakeholders and consumers are interested in is the production of Fairtrade certified products. This helps Fairtrade understand our producer organizations; analyse growth, yields and market potential over time; and guide our global strategy.<br><br>In addition, a new indicator that we want to better understand is the forecasted volumes (volumes on offer) that are of export quality and can be sold on Fairtrade terms. In the future, information like this could be used (only by authorised commercial support staff from Fairtrade International and the Producer Networks) to seek new market opportunities."
+            },
             {
               type: "html",
               name: "info_box_products_page",
