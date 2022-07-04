@@ -45,57 +45,42 @@ const surveyJson = {
   focusOnFirstError: false,
   progressBarType: "buttons",
   showProgressBar: "top",
-  title: "Self-reporting pilot test title",
+  title: "FairInsight Self-Reporting & Usage Pilot Survey",
   description: "This is where the short description of the survey would go",
   showPreviewBeforeComplete: "showAnsweredQuestions",
   pages: [
     {
       navigationTitle: "Start page",
       name: "Start page",
-      title: "Start Page",
+      title: "Welcome to the Survey on [FairInsight usage pilot]!",
       elements: [
+        
         {
           type: "panel",
-          name: "Number of farmers info box",
+          name: "hidden_fields_panel",
+          /*visible: false,*/
           elements: [
             {
-              type: "html",
-              name: "info_box_placeholder",
-              hideNumber: true,
-              html:
-                "<br><b><u>PLACEHOLDER for information about survey, data points, consent to share, etc.:</u> Information like this will either go on each individual page, OR in an introduction/ consent to share info page.<hr>"
+              type: "text",
+              name: "floid",
+              title: "Fairtrade ID (FLOID):",
+              validators: [
+                {
+                  type: "numeric",
+                  text: "Please enter a valid number"
+                }
+              ]
             },
-            {
-              type: "html",
-              name: "info_box_memberspage",
-              hideNumber: true,
-              html:
-                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. <i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
-            },
-            {
-              type: "html",
-              name: "info_box_memberspage_gender",
-              hideNumber: true,
-              html:
-                "<br>A key element of this relates to representation of women in Fairtrade. <i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
-            }
-          ]
-        },
-        {
-          type: "panel",
-          name: "startpage_panel",
-          elements: [
             {
               type: "text",
               name: "org_name",
               title:
-                "[PRE-FILLED Placeholder for unique ID] Name of the organization:"
+                "Name of the organization:"
             },
             {
               type: "radiogroup",
               name: "producer_setup",
-              title: "[PRE-FILLED Placeholder] Choose your producer setup:",
-              isRequired: true,
+              title: "Choose your producer setup:",
               choices: [
                 {
                   value: "spo",
@@ -103,7 +88,7 @@ const surveyJson = {
                     "Small-scale producer organization or Contract production"
                 },
                 {
-                  value: "hlo",
+                  value: "hl",
                   text: "Hired labor plantation"
                 }
               ]
@@ -112,8 +97,7 @@ const surveyJson = {
               type: "radiogroup",
               name: "survey_language",
               title:
-                "[PRE-FILLED Placeholder] Choose the language of the survey:",
-              isRequired: true,
+                "Choose the language of the survey:",
               choices: [
                 {
                   value: "english",
@@ -133,13 +117,70 @@ const surveyJson = {
                 }
               ],
               defaultValue: "english"
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "consent_form_text",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_placeholder",
+              hideNumber: true,
+              html:
+                "<br>Fairtrade is a voluntary certification system which aims to have positive impacts on farmers like you through the certification of your certified product.<br><br>Our goal is to make FairInsight a single place for producer organizations to share your information with Fairtrade. Over the next few years, FairInsight will replace other data collection tools (such as the CODImpact questionnaire conducted during audits).<br><br>Through this questionnaire Fairtrade is collecting data from members of certified organizations to better understand any challenges in reporting and the quality of data being reported. Your participation is very important for the survey’s success. Your contribution will be identifiable to us so that we can follow up on untangling specific issues or challenges that you may face while reporting.<br><br>While the survey is completely voluntary, your participation will help us better understand how to make the FairInsight platform easy to use and beneficial to you. The collected data will be treated as confidential by the Fairtrade system and we would only be using this for internal quality assessments that may inform the further development of FairInsight. No personal or sensitive information will be shared outside of Fairtrade International and the Producer Networks."
+            },
+            {
+              type: "radiogroup",
+              name: "consent_to_participate",
+              title: "Are you willing to take part in this survey for internal learning and improvement?",
+              isRequired: true,
+              hideNumber: true,
+              choices: [
+                {
+                  value: "consent",
+                  text: "Yes, I consent to sharing my information and feedback asked in this survey with Fairtrade"
+                },
+                {
+                  value: "no_consent",
+                  text: "No, I do not consent to sharing my information and feedback asked in this survey with Fairtrade"
+                }
+              ]
+            }
+            /*{
+              type: "html",
+              name: "info_box_memberspage",
+              hideNumber: true,
+              html:
+                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. <i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
+            },
+            {
+              type: "html",
+              name: "info_box_memberspage_gender",
+              hideNumber: true,
+              html:
+                "<br>A key element of this relates to representation of women in Fairtrade. <i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
+            }*/
+          ]
+        },
+        {
+          type: "panel",
+          name: "organic_logic_panel",
+          elements: [
+            {
+              type: "html",
+              name: "info_box_in_transition_to_organic",
+              hideNumber: true,
+              html: "<br><i>Note: For the purposes of this survey, please consider members, land area and production that are in transition from conventional to organic, as organic</i>"
             },
             {
               type: "radiogroup",
               name: "organic_logic",
               title:
-                "For the last production cycle (2021-2022), was some or all of your production of Fairtrade crops also produced under an organic certification?",
+                "For the last production cycle (2021-2022), was some or all of your production of Fairtrade crops also produced under, or in transition to, an organic certification?",
               isRequired: true,
+              hideNumber: true,
               choices: [
                 {
                   value: "mixed",
@@ -148,7 +189,7 @@ const surveyJson = {
                 },
                 {
                   value: "organic_only",
-                  text: "Yes, all production was also organic"
+                  text: "Yes, all production was organic or in transition to organic"
                 },
                 {
                   value: "conventional_only",
@@ -166,7 +207,7 @@ const surveyJson = {
       title: "Members of your organization",
       navigationTitle: "Members",
       /*navigationDescription: "of your organization",*/
-      visibleIf: "{producer_setup} = 'spo'",
+      visibleIf: "{producer_setup} = 'spo' AND {consent_to_participate} = 'consent'",
       elements: [
         {
           type: "panel",
@@ -411,7 +452,7 @@ const surveyJson = {
     },
     {
       name: "Young people (SPOs)",
-      visibleIf: "{producer_setup} = 'spo'",
+      visibleIf: "{producer_setup} = 'spo' AND {consent_to_participate} = 'consent'",
       title: "Number of young people as members of your organization",
       navigationTitle: "Young people",
       /*navigationDescription: "in your organization"*/
@@ -440,7 +481,7 @@ const surveyJson = {
             {
               value: "not_known",
               text:
-                "Please check here if you do not know the number of your organization's members for all the specified age groups."
+                "Please check here if you do not know the number of your organization's members for any of the specified age groups."
             }
           ]
         },
@@ -912,6 +953,7 @@ const surveyJson = {
       name: "Workers",
       title: "Number of workers employed by your organization",
       navigationTitle: "Workers",
+      visibleIf: "{consent_to_participate} = 'consent'",
       /*navigationDescription: "employed by your organization"*/
       elements: [
         {
@@ -1378,7 +1420,7 @@ const surveyJson = {
     },
     {
       name: "Young people (HL)",
-      visibleIf: "{producer_setup} = 'hlo'",
+      visibleIf: "{producer_setup} = 'hl' AND {consent_to_participate} = 'consent'",
       title: "Number of young people employed by your organization",
       navigationTitle: "Young people",
       /*navigationDescription: "employed by your organization"*/
@@ -1392,7 +1434,7 @@ const surveyJson = {
               name: "info_box_numberworkers_byage",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><hr>In this section, please enter the number of workers employed by your organization, according to the following age groups:<ul><li>16 to 28 years old</li><li>29 to 35 years old</li><li>36 years and older</li></ul><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of workers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of workers employed by your organization, according to the following age groups:<ul><li>16 to 28 years old</li><li>29 to 35 years old</li><li>36 years and older</li></ul>If you know the number of workers for some age groups but not all, please fill in the fields that you know and leave the rest blank. If you do not know this information for any and all of the age groups, please check the box below and proceed to the next page.<br><br><i>If exact numbers are not known, estimates or minimum amounts are ok, as long as the numbers entered here are not greater than the number of workers entered on the previous page. Please also enter the number of women and men in each age group, if this information is known or can be reasonably estimated.</i>"
             }
           ]
         },
@@ -1407,7 +1449,7 @@ const surveyJson = {
             {
               value: "not_known",
               text:
-                "Please check here if you do not know the number of workers employed by your organization for the specified age groups"
+                "Please check here if you do not know the number of workers employed by your organization for any of the specified age groups"
             }
           ]
         },
@@ -1746,14 +1788,19 @@ const surveyJson = {
           type: "panel",
           name: "Summary of workers reported",
           title:
-            "Summary number of workers employed by your organization reported by age group",
+            "Summary number of workers reported by age group",
           visibleIf: "{workers_age_not_known} empty",
           elements: [
+            {
+              type: "panel",
+              name: "workers_total_summary_byage",
+              title: "Total number of workers employed by your organization: {workers_total}",
+              elements: [
             {
               type: "expression",
               name: "RO_workers_age_total",
               title:
-                "Total number of workers reported that are employed by your organization:",
+                "Number of workers reported in an age group:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -1768,8 +1815,33 @@ const surveyJson = {
             },
             {
               type: "expression",
+              name: "RO_workers_age_unknown",
+              title:
+                "Number of workers (age unknown):",
+              hideNumber: true,
+              displayStyle: "decimal",
+              startWithNewLine: false,
+              expression:
+                "{workers_total}-{RO_workers_age_total}"
+              /* validators: [
+              {
+                type: "expression",
+                text: "The number of workers reported by age is more than the number of workers reported on the previous page.",
+                expression: "{RO_workers_age_total} <= {workers_total}"
+              }
+            ]*/
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "workers_female_summary_byage",
+          title: "Total number of workers employed by your organization that are women : {workers_female}",
+          elements: [
+            {
+              type: "expression",
               name: "RO_workers_age_female_total",
-              title: "Number of workers reported that are women:",
+              title: "Number of female workers reported in an age group:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -1784,8 +1856,32 @@ const surveyJson = {
             },
             {
               type: "expression",
+              name: "RO_workers_age_female_unknown",
+              title: "Number of female workers (age unknown):",
+              hideNumber: true,
+              displayStyle: "decimal",
+              startWithNewLine: false,
+              expression:
+                "{workers_female}-{RO_workers_age_female_total}"
+              /*validators: [
+              {
+                type: "expression",
+                text: "The number of female workers reported by age is more than the number of female workers reported on the previous page.",
+                expression: "{RO_workers_age_female_total} <= {workers_female}"
+              }
+            ]*/
+            }
+          ]
+        },
+        {
+          type: "panel",
+          name: "workers_male_summary_byage",
+          title: "Total number of workers employed by your organization that are men : {workers_male}",
+          elements: [
+            {
+              type: "expression",
               name: "RO_workers_age_male_total",
-              title: "Number of workers reported that are men:",
+              title: "Number of male workers reported in an age group:",
               hideNumber: true,
               startWithNewLine: false,
               displayStyle: "decimal",
@@ -1798,7 +1894,26 @@ const surveyJson = {
                         expression: "{RO_workers_age_male_total} <= {workers_male}"
                        }
                      ]*/
+            },
+            {
+              type: "expression",
+              name: "RO_workers_age_male_unknown",
+              title: "Number of male workers (age unknown):",
+              hideNumber: true,
+              startWithNewLine: false,
+              displayStyle: "decimal",
+              expression:
+                "{workers_male}-{RO_workers_age_male_total}"
+              /* validators: [
+              {
+                type: "expression",
+                text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page.",
+                expression: "{RO_farmers_age_male_total} <= {farmers_male}"
+              }
+            ]*/
             }
+          ]
+        }
           ]
         }
       ]
@@ -1806,6 +1921,7 @@ const surveyJson = {
     {
       name: "Total Land Area",
       title: "Land area under cultivation by your organization",
+      visibleIf: "{consent_to_participate} = 'consent'",
       elements: [
         {
           type: "panel",
@@ -1890,7 +2006,7 @@ const surveyJson = {
                   type: "expression",
                   text: "Fairtrade land area is larger than total land area.",
                   expression:
-                    "{producer_setup} = 'hlo' OR {producer_setup} = 'spo' AND ({total_land_managed} >= {total_area_ft_certification} OR {total_area_ft_certification} empty OR {total_land_managed} empty)"
+                    "{producer_setup} = 'hl' OR {producer_setup} = 'spo' AND ({total_land_managed} >= {total_area_ft_certification} OR {total_area_ft_certification} empty OR {total_land_managed} empty)"
                 }
               ]
             }
@@ -1908,6 +2024,7 @@ const surveyJson = {
       name: "product_page",
       navigationTitle: "Products",
       title: "Products produced by your organization on Fairtrade terms",
+      visibleIf: "{consent_to_participate} = 'consent'",
       elements: [
         {
           type: "panel",
@@ -1932,7 +2049,7 @@ const surveyJson = {
               name: "info_box_navigation",
               hideNumber: true,
               html:
-                "<br>How to enter information about your organization's Fairtrade certified products:<i><ul><li>Select 'Add product.' From the dropdown list, select the product and proceed to enter the land area, volumes produced, and forecast volumes.</li><li>To add a second product, scroll to the bottom of the page and select 'Add product.' You can add as many Fairtrade products as needed.</li><li>Go back to the previous or next product by using the navigation buttons at the botom of the page.</li><li>To remove all information about a product, select 'Remove this product' at the bottom of the page.</li></ul></i>"
+                "<br>How to enter information about your organization's Fairtrade certified products:<i><ul><li>Enter the information for each product one at a time. To start reporting on your first product, select the 'Add product' botton.</li><li>From the dropdown list, select the product. Note, the first dropdown list helps you to narrow down your search by product category (ex: coffee, vegetables). Once selected, a second dropdown list will appear from which you can select the product.</li><li>Proceed to enter the land area, volumes produced and forecast volumes for your first product.</li><li>When you reach the bottom of the page, you have the option to add additional products by selecting the 'Add product' button. You can add as many Fairtrade products as needed.</li><li>Proceed to enter the information for the rest of your Fairtrade products.</li><li>Go back to the previous or next product by using the navigation buttons at the bottom of the page.</li><li>To remove all information about a product, select 'Remove this product' at the bottom of the page.</li></ul></i>"
             }
           ]
         },
@@ -2136,7 +2253,7 @@ const surveyJson = {
                   type: "text",
                   name: "land_organic_production",
                   title:
-                    "How many {land_area_unit} of land was under cultivation of organic certification?",
+                    "How many {land_area_unit} of land was under cultivation of, or in transition to, organic certification?",
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'organic_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
@@ -2268,7 +2385,7 @@ const surveyJson = {
                   hideNumber: true,
                   visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
                   title:
-                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under organic certification?",
+                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under, or in transition to, organic certification?",
                   validators: [
                     {
                       type: "numeric",
@@ -2447,7 +2564,7 @@ const surveyJson = {
                   hideNumber: true,
                   startWithNewLine: false,
                   title:
-                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under organic certification does your organization forecast will be of export quality?",
+                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under, or in transition to, organic certification does your organization forecast will be of export quality?",
                   validators: [
                     {
                       type: "numeric",
