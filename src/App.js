@@ -2619,11 +2619,17 @@ const surveyJson = {
       visibleIf: "{consent_to_participate} = 'consent'",
       elements: [
         {
+          type: "panel",
+          name: "feedback_instructions_panel",
+          elements: [
+        {
           type: "html",
           name: "feedback_instructions",
           hideNumber: true,
           html: "<br><b>Thank you for filling out our survey</b>, it covered a set of questions related to some of Fairtrade's most frequently used data. Your contributions will help us better understand challenges in reporting and the quality of the data being reported.<br><br>In this section, we would appreciate to hear from you on the challenges, suggestions and feedback that you and your organization have relating to reporting information to Fairtrade and FairInsight. We would appreciate any feedback you may be willing to share. We will only use your feedback on this page to identify common challenges faced by producer organizations and assess solutions for improvements."
-        },
+        }
+      ]
+    },
         {
           type: "panel",
           name: "survey_feedback",
@@ -2731,11 +2737,17 @@ const surveyJson = {
             ]
           },
           {
+            type: "panel",
+            name: "thank_you_panel",
+            elements: [
+          {
             type: "html",
             name: "thank_you",
             hideNumber: true,
             html: "<br><b>Thank you for your feedback!</b> We want to make reporting easier for you and your organization through FairInsight. We will review your inputs and keep them in mind for further improvements to the platform."
           }
+        ]
+      }
       ]
     }
   ],
