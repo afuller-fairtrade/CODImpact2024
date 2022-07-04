@@ -58,6 +58,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "hidden_fields_panel",
+          title: "This panel will be pre-populated and hidden",
           /*visible: false,*/
           elements: [
             {
