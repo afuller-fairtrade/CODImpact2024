@@ -1247,7 +1247,7 @@ const surveyJson = {
                 {
                   type: "expression",
                   text: "The number of seasonal workers reported is greater than the number of fixed-term and sub-contracted workers. Please correct the error.",
-                  expression: "{workers_seasonal_total} <= {workers_fixed_term_total}+{workers_subcontractor_total}"
+                  expression: "{workers_seasonal_total} <= {workers_fixed_term_total}+{workers_subcontractor_total} OR {workers_seasonal_total} empty"
                 }
               ]
             },
@@ -1265,7 +1265,7 @@ const surveyJson = {
                 {
                   type: "expression",
                   text: "The number of seasonal female workers reported is greater than the number of fixed-term and sub-contracted female workers. Please correct the error.",
-                  expression: "{workers_seasonal_female} <= {workers_fixed_term_female}+{workers_subcontractor_female}"
+                  expression: "{workers_seasonal_female} <= {workers_fixed_term_female}+{workers_subcontractor_female} OR {workers_seasonal_female} empty"
                 }
               ]
             },
@@ -1284,7 +1284,7 @@ const surveyJson = {
                 {
                   type: "expression",
                   text: "The number of seasonal male workers reported is greater than the number of fixed-term and sub-contracted male workers. Please correct the error.",
-                  expression: "{workers_seasonal_male} <= {workers_fixed_term_male}+{workers_subcontractor_male}"
+                  expression: "{workers_seasonal_male} <= {workers_fixed_term_male}+{workers_subcontractor_male} OR {workers_seasonal_male} empty"
                 }
               ]
             },
@@ -1821,7 +1821,7 @@ const surveyJson = {
                   type: "expression",
                   text: "Fairtrade land area is larger than total land area.",
                   expression:
-                    "{total_land_managed} >= {total_area_ft_certification} OR {total_land_managed} empty"
+                    "{total_land_managed} >= {total_area_ft_certification} OR {total_land_managed} empty OR {total_area_ft_certification} empty"
                 }
               ],
               visibleIf: "{producer_setup} = 'spo'"
@@ -2052,7 +2052,7 @@ const surveyJson = {
                       text:
                         "The sum of organic and conventional land is greater than the total. Please correct the error.",
                       expression:
-                        "({panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})) AND {organic_logic} = 'mixed'"
+                        "({panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})) OR {organic_logic} <> 'mixed'"
                     }
                   ]
                 },
