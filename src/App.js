@@ -149,20 +149,6 @@ const surveyJson = {
               ],
               defaultValue: 'consent'
             }
-            /*{
-              type: "html",
-              name: "info_box_memberspage",
-              hideNumber: true,
-              html:
-                "<br>One of the most important pieces of information that Fairtrade stakeholders and consumers are interested in is how many farmers and workers are part of the global Fairtrade community and benefit from Fairtrade certification. <i>This helps Fairtrade communicate our reach and impact, analyze trends over time, make high-level decisions and guide our global strategy.</i>"
-            },
-            {
-              type: "html",
-              name: "info_box_memberspage_gender",
-              hideNumber: true,
-              html:
-                "<br>A key element of this relates to representation of women in Fairtrade. <i>Information on the gender representation in your organization can help us understand how Fairtrade Standards contribute to preventing gender inequality, increasing female participation and empowering more women and girls to access the benefits of Fairtrade.</i><br>"
-            }*/
           ]
         },
         {
@@ -289,7 +275,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_conventional_farmers_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female conventional farmers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female conventional farmers is less than the total. Please check for errors before moving on.</span>\n</div>',
                   visibleIf: "{farmers_conventional_total} > {farmers_conventional_female}+{farmers_conventional_male} AND {farmers_conventional_female} notempty AND {farmers_conventional_male} notempty"
                 },
                 {
