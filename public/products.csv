@@ -1,40 +1,40 @@
 ﻿product_code,major category,minor category,production type,multiplication_factor
 pp002,Banana,Baby banana,Baby banana: Coastal (<800m above sea level),1
-pp003,Banana,Baby banana,Baby banana: Mountain (?800m above sea level),1
+pp003,Banana,Baby banana,Baby banana: Mountain (>800m above sea level),1
 pp001,Banana,Banana (fresh),Banana (fresh),1
 pp005,Banana,Banana (other),Other [Specify],1
 pp004,Banana,Plantain (fresh),Plantain (fresh),1
 pp007,Cane sugar,Cane sugar,Other [Specify],1
 pp321,Cane sugar,Cane sugar,Sugar,1
 pp006,Cane sugar,Cane sugar,Sugarcane,0.1
-pp311,Cereals and rice,Millet,Millet,1
-pp243,Cereals and rice,Cereals (other),Other [Specify],1
-pp329,Cereals and rice,Qañiwa,Qañiwa,1
-pp242,Cereals and rice,Quinoa,Quinoa,1
-pp244,Cereals and rice,Rice,Basmati: Pusa,1
-pp245,Cereals and rice,Rice,Basmati: Traditional,1
-pp246,Cereals and rice,Rice,Black petit poussin & White petit poussin,1
-pp604,Cereals and rice,Rice,Brazilian long grain,1
-pp605,Cereals and rice,Rice,Burmese aromatic long grain,1
-pp606,Cereals and rice,Rice,Cambodian aromatic long grain,1
-pp607,Cereals and rice,Rice,Giza,1
-pp247,Cereals and rice,Rice,Glutinous rice: black or violet,1
-pp248,Cereals and rice,Rice,Glutinous rice: white,1
-pp608,Cereals and rice,Rice,Hsin Thu Kha,1
-pp249,Cereals and rice,Rice,Jasmine Rice & Red Jasmine Rice,1
-pp609,Cereals and rice,Rice,Ma Naw Thu Kha,1
-pp610,Cereals and rice,Rice,Mandarin,1
-pp611,Cereals and rice,Rice,Non-Basmati and Non-Sarbati rice,1
-pp612,Cereals and rice,Rice,Non-Glutinous black,1
-pp613,Cereals and rice,Rice,Non-Glutinous red,1
-pp250,Cereals and rice,Rice,Normal longgrain rice,1
-pp253,Cereals and rice,Rice,Other [Specify],1
-pp614,Cereals and rice,Rice,Paw San,1
-pp251,Cereals and rice,Rice,Sarbati,1
-pp616,Cereals and rice,Rice,Shwe Thwe Lay,1
-pp617,Cereals and rice,Rice,Thai long grain,1
-pp252,Cereals and rice,Rice,Traditional varieties from Sri Lanka,1
-pp636,Cereals and rice,Sorghum,Sorghum,1
+pp311,Cereals,Millet,Millet,1
+pp243,Cereals,Cereals (other),Other [Specify],1
+pp329,Cereals,Qañiwa,Qañiwa,1
+pp242,Cereals,Quinoa,Quinoa,1
+pp244,Rice,Rice,Basmati: Pusa,1
+pp245,Rice,Rice,Basmati: Traditional,1
+pp246,Rice,Rice,Black petit poussin & White petit poussin,1
+pp604,Rice,Rice,Brazilian long grain,1
+pp605,Rice,Rice,Burmese aromatic long grain,1
+pp606,Rice,Rice,Cambodian aromatic long grain,1
+pp607,Rice,Rice,Giza,1
+pp247,Rice,Rice,Glutinous rice: black or violet,1
+pp248,Rice,Rice,Glutinous rice: white,1
+pp608,Rice,Rice,Hsin Thu Kha,1
+pp249,Rice,Rice,Jasmine Rice & Red Jasmine Rice,1
+pp609,Rice,Rice,Ma Naw Thu Kha,1
+pp610,Rice,Rice,Mandarin,1
+pp611,Rice,Rice,Non-Basmati and Non-Sarbati rice,1
+pp612,Rice,Rice,Non-Glutinous black,1
+pp613,Rice,Rice,Non-Glutinous red,1
+pp250,Rice,Rice,Normal longgrain rice,1
+pp253,Rice,Rice,Other [Specify],1
+pp614,Rice,Rice,Paw San,1
+pp251,Rice,Rice,Sarbati,1
+pp616,Rice,Rice,Shwe Thwe Lay,1
+pp617,Rice,Rice,Thai long grain,1
+pp252,Rice,Rice,Traditional varieties from Sri Lanka,1
+pp636,Cereals,Sorghum,Sorghum,1
 pp008,Cocoa,Cocoa,Cocoa beans (raw),1
 pp009,Cocoa,Cocoa,Other [Specify],1
 pp011,Coffee,Arabica,Arabica: Dry cherry,0.5
