@@ -926,7 +926,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                        "The sum of male and female permanent workers is greater than the total. Please correct the error.",
                       expression:
                         "{workers_permanent_total} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_total} empty"
                     }
@@ -942,13 +942,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_permanent_total} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_female} empty"
                     }
                   ]
                 },
@@ -963,15 +956,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_permanent_total} >= {workers_permanent_female}+{workers_permanent_male} OR {workers_permanent_male} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_permanent_workers_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female permanent workers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{workers_permanent_total} > {workers_permanent_female}+{workers_permanent_male} AND {workers_permanent_female} notempty AND {workers_permanent_male} notempty"
                 },
                 {
                   type: "checkbox",
@@ -1013,7 +1006,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                        "The sum of male and female fixed-term workers is greater than the total. Please correct the error.",
                       expression:
                         "{workers_fixed_term_total} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_total} empty"
                     }
@@ -1029,13 +1022,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_fixed_term_total} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_female} empty"
                     }
                   ]
                 },
@@ -1050,15 +1036,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_fixed_term_total} >= {workers_fixed_term_female}+{workers_fixed_term_male} OR {workers_fixed_term_male} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_fixed_term_workers_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female fixed-term workers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{workers_fixed_term_total} > {workers_fixed_term_female}+{workers_fixed_term_male} AND {workers_fixed_term_female} notempty AND {workers_fixed_term_male} notempty"
                 },
                 {
                   type: "checkbox",
@@ -1100,7 +1086,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                        "The sum of male and female sub-contracted workers is greater than the total. Please correct the error.",
                       expression:
                         "{workers_subcontractor_total} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_total} empty"
                     }
@@ -1116,13 +1102,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_subcontractor_total} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_female} empty"
                     }
                   ]
                 },
@@ -1137,15 +1116,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_subcontractor_total} >= {workers_subcontractor_female}+{workers_subcontractor_male} OR {workers_subcontractor_male} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_subcontractor_workers_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female subcontracted workers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{workers_subcontractor_total} > {workers_subcontractor_female}+{workers_subcontractor_male} AND {workers_subcontractor_female} notempty AND {workers_subcontractor_male} notempty"
                 },
                 {
                   type: "checkbox",
@@ -1261,9 +1240,14 @@ const surveyJson = {
                 {
                   type: "expression",
                   text:
-                    "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                    "The sum of male and female seasonal workers is greater than the total. Please correct the error.",
                   expression:
                     "{workers_seasonal_total} >= {workers_seasonal_female}+{workers_seasonal_male} OR {workers_seasonal_total} empty"
+                },
+                {
+                  type: "expression",
+                  text: "The number of seasonal workers reported is greater than the number of fixed-term and sub-contracted workers. Please correct the error.",
+                  expression: "{workers_seasonal_total} <= {workers_fixed_term_total}+{workers_subcontractor_total}"
                 }
               ]
             },
@@ -1280,10 +1264,8 @@ const surveyJson = {
                 },
                 {
                   type: "expression",
-                  text:
-                    "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                  expression:
-                    "{workers_seasonal_total} >= {workers_seasonal_female}+{workers_seasonal_male} OR {workers_seasonal_female} empty"
+                  text: "The number of seasonal female workers reported is greater than the number of fixed-term and sub-contracted female workers. Please correct the error.",
+                  expression: "{workers_seasonal_female} <= {workers_fixed_term_female}+{workers_subcontractor_female}"
                 }
               ]
             },
@@ -1301,12 +1283,17 @@ const surveyJson = {
                 },
                 {
                   type: "expression",
-                  text:
-                    "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                  expression:
-                    "{workers_seasonal_total} >= {workers_seasonal_female}+{workers_seasonal_male} OR {workers_seasonal_male} empty"
+                  text: "The number of seasonal male workers reported is greater than the number of fixed-term and sub-contracted male workers. Please correct the error.",
+                  expression: "{workers_seasonal_male} <= {workers_fixed_term_male}+{workers_subcontractor_male}"
                 }
               ]
+            },
+            {
+              type: "html",
+              name: "warning_fixed_seasonal_sum",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of male and female seasonal workers is less than the total. Please check for errors before moving on.</b>",
+              visibleIf: "{workers_seasonal_total} > {workers_seasonal_female}+{workers_seasonal_male} AND {workers_seasonal_female} notempty AND {workers_seasonal_male} notempty"
             },
             {
               type: "checkbox",
@@ -1400,14 +1387,14 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                        "The sum of male and female workers is greater than the total. Please correct the error.",
                       expression:
                         "{total_workers_16_28} >= {workers_female_16_28}+{workers_male_16_28} OR {total_workers_16_28} empty"
                     },
                     {
                       type: "expression",
                       text:
-                        "The number of workers reported by age is greater than the number of workers reported on the previous page.",
+                        "The sum of workers by age group is greater than the total reported on the previous page. Please correct the error.",
                       expression:
                         "{RO_workers_age_total} <= {workers_total} OR {total_workers_16_28} empty"
                     }
@@ -1423,20 +1410,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{total_workers_16_28} >= {workers_female_16_28}+{workers_male_16_28} OR {workers_female_16_28} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of female workers reported by age is greater than the number of female workers reported on the previous page.",
-                      expression:
-                        "{RO_workers_age_female_total} <= {workers_female} OR {workers_female_16_28} empty"
                     }
                   ]
                 },
@@ -1451,22 +1424,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{total_workers_16_28} >= {workers_female_16_28}+{workers_male_16_28} OR {workers_male_16_28} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of male workers reported by age is greater than the number of male workers reported on the previous page.",
-                      expression:
-                        "{RO_workers_age_male_total} <= {workers_male} OR {workers_male_16_28} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_workers_16to28_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female workers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{total_workers_16_28} > {workers_female_16_28}+{workers_male_16_28} AND {workers_female_16_28} notempty AND {workers_male_16_28} notempty"
                 },
                 {
                   type: "checkbox",
@@ -1506,14 +1472,14 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                        "The sum of male and female workers is greater than the total. Please correct the error.",
                       expression:
                         "{total_workers_29_35} >= {workers_female_29_35}+{workers_male_29_35} OR {total_workers_29_35} empty"
                     },
                     {
                       type: "expression",
                       text:
-                        "The number of workers reported by age is greater than the number of workers reported on the previous page.",
+                        "The sum of workers by age group is greater than the total reported on the previous page. Please correct the error.",
                       expression:
                         "{RO_workers_age_total} <= {workers_total} OR {total_workers_29_35} empty"
                     }
@@ -1529,20 +1495,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{total_workers_29_35} >= {workers_female_29_35}+{workers_male_29_35} OR {workers_female_29_35} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of female workers reported by age is greater than the number of female workers reported on the previous page.",
-                      expression:
-                        "{RO_workers_age_female_total} <= {workers_female} OR {workers_female_29_35} empty"
                     }
                   ]
                 },
@@ -1557,22 +1509,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{workers_seasonal_total} >= {workers_seasonal_female}+{workers_seasonal_male} OR {workers_male_29_35} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of male workers reported by age is greater than the number of male workers reported on the previous page.",
-                      expression:
-                        "{RO_workers_age_male_total} <= {workers_male} OR {workers_male_29_35} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_workers_29to35_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female workers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{total_workers_29_35} > {workers_female_29_35}+{workers_male_29_35} AND {workers_female_29_35} notempty AND {workers_male_29_35} notempty"
                 },
                 {
                   type: "checkbox",
@@ -1612,16 +1557,16 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
+                        "The sum of male and female workers is greater than the total. Please correct the error.",
                       expression:
                         "{total_workers_36} >= {workers_female_36}+{workers_male_36} OR {total_workers_36} empty"
                     },
                     {
                       type: "expression",
                       text:
-                        "The number of workers reported by age is greater than the number of workers reported on the previous page.",
+                        "The sum of workers by age group is greater than the total reported on the previous page. Please correct the error.",
                       expression:
-                        "{RO_workers_age_total} <= {workers_total} OR {total_workers_29_35} empty"
+                        "{RO_workers_age_total} <= {workers_total} OR {total_workers_36} empty"
                     }
                   ]
                 },
@@ -1635,20 +1580,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{total_workers_36} >= {workers_female_36}+{workers_male_36} OR {workers_female_36} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of female workers reported by age is greater than the number of female workers reported on the previous page.",
-                      expression:
-                        "{RO_workers_age_female_total} <= {workers_female} OR {workers_female_36} empty"
                     }
                   ]
                 },
@@ -1663,22 +1594,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male workers is correct.",
-                      expression:
-                        "{total_workers_36} >= {workers_female_36}+{workers_male_36} OR {workers_male_36} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of male workers reported by age is greater than the number of male workers reported on the previous page.",
-                      expression:
-                        "{RO_workers_age_male_total} <= {workers_male} OR {workers_male_36} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_workers_36_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female workers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{total_workers_36} > {workers_female_36}+{workers_male_36} AND {workers_female_36} notempty AND {workers_male_36} notempty"
                 },
                 {
                   type: "checkbox",
@@ -1724,13 +1648,6 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{total_workers_16_28}+{total_workers_29_35}+{total_workers_36}"
-              /* validators: [
-                       {
-                         type: "expression",
-                        text: "The number of workers reported by age is more than the number of workers reported on the previous page.",
-                        expression: "{RO_workers_age_total} <= {workers_total}"
-                       }
-                     ]*/
             },
             {
               type: "expression",
@@ -1742,13 +1659,20 @@ const surveyJson = {
               startWithNewLine: false,
               expression:
                 "{workers_total}-{RO_workers_age_total}"
-              /* validators: [
-              {
-                type: "expression",
-                text: "The number of workers reported by age is more than the number of workers reported on the previous page.",
-                expression: "{RO_workers_age_total} <= {workers_total}"
-              }
-            ]*/
+            },
+            {
+              type: "html",
+              name: "warning_workers_byage_sum",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of workers by age group is less than the total reported on the previous page. Please check for errors before moving on.</b>",
+              visibleIf: "{workers_total} > {RO_workers_age_total}"
+            },
+            {
+              type: "html",
+              name: "warning_workers_total_byage",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              visibleIf: "{RO_workers_age_total} > {workers_total}"
             }
           ]
         },
@@ -1765,13 +1689,6 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{workers_female_16_28}+{workers_female_29_35}+{workers_female_36}"
-              /* validators: [
-                       {
-                         type: "expression",
-                        text: "The number of female workers reported by age is more than the number of female workers reported on the previous page.",
-                        expression: "{RO_workers_age_female_total} <= {workers_female}"
-                       }
-                     ]*/
             },
             {
               type: "expression",
@@ -1782,13 +1699,13 @@ const surveyJson = {
               startWithNewLine: false,
               expression:
                 "{workers_female}-{RO_workers_age_female_total}"
-              /*validators: [
-              {
-                type: "expression",
-                text: "The number of female workers reported by age is more than the number of female workers reported on the previous page.",
-                expression: "{RO_workers_age_female_total} <= {workers_female}"
-              }
-            ]*/
+            },
+            {
+              type: "html",
+              name: "warning_workers_female_byage",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of female workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              visibleIf: "{RO_workers_age_female_total} > {workers_female}"
             }
           ]
         },
@@ -1806,13 +1723,6 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{workers_male_16_28}+{workers_male_29_35}+{workers_male_36}"
-              /* validators: [
-                       {
-                         type: "expression",
-                        text: "The number of male workers reported by age is more than the number of male workers reported on the previous page.",
-                        expression: "{RO_workers_age_male_total} <= {workers_male}"
-                       }
-                     ]*/
             },
             {
               type: "expression",
@@ -1823,13 +1733,13 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{workers_male}-{RO_workers_age_male_total}"
-              /* validators: [
-              {
-                type: "expression",
-                text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page.",
-                expression: "{RO_farmers_age_male_total} <= {farmers_male}"
-              }
-            ]*/
+            },
+            {
+              type: "html",
+              name: "warning_workers_male_byage",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of male workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              visibleIf: "{RO_workers_age_male_total} > {workers_male}"
             }
           ]
         }
