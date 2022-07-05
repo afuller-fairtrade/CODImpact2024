@@ -1836,12 +1836,6 @@ const surveyJson = {
                 {
                   type: "numeric",
                   text: "Please enter a valid number"
-                },
-                {
-                  type: "expression",
-                  text: "Fairtrade land area is larger than total land area.",
-                  expression:
-                    "{producer_setup} = 'hl' OR {producer_setup} = 'spo' AND ({total_land_managed} >= {total_area_ft_certification} OR {total_area_ft_certification} empty OR {total_land_managed} empty)"
                 }
               ]
             }
@@ -2052,6 +2046,13 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text:
+                        "The sum of organic and conventional land is greater than the total. Please correct the error.",
+                      expression:
+                        "({panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})) AND {organic_logic} = 'mixed'"
                     }
                   ]
                 },
@@ -2083,10 +2084,8 @@ const surveyJson = {
                     },
                     {
                       type: "expression",
-                      text:
-                        "Totals do not add up. Please check to make sure the conventional and organic certified land areas are correct.",
-                      expression:
-                        "{panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})"
+                      text: "Conventional land area is greater than total land area. Please correct the error.",
+                      expression: "{panel.land_total_production} empty OR {panel.land_conventional_production} empty OR {panel.land_total_production} >= {panel.land_conventional_production}"
                     }
                   ]
                 },
@@ -2106,12 +2105,17 @@ const surveyJson = {
                     },
                     {
                       type: "expression",
-                      text:
-                        "Totals do not add up. Please check to make sure the conventional and organic certified land areas are correct.",
-                      expression:
-                        "{panel.land_total_production} empty OR {panel.land_total_production} >= ({panel.land_conventional_production}+{panel.land_organic_production})"
+                      text: "Organic land area is greater than total land area. Please correct the error.",
+                      expression: "{panel.land_total_production} empty OR {panel.land_organic_production} empty OR {panel.land_total_production} >= {panel.land_organic_production}"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_land_area_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of conventional and organic land area is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{panel.land_total_production} > {panel.land_conventional_production}+{panel.land_organic_production} AND {panel.land_conventional_production} notempty AND {panel.land_organic_production} notempty AND {organic_logic} = 'mixed'"                
                 },
                 {
                   type: "checkbox",
