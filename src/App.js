@@ -275,7 +275,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_conventional_farmers_sum",
                   hideNumber: true,
-                  html: '<div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female conventional farmers is less than the total. Please check for errors before moving on.</span>\n</div>',
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female conventional farmers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{farmers_conventional_total} > {farmers_conventional_female}+{farmers_conventional_male} AND {farmers_conventional_female} notempty AND {farmers_conventional_male} notempty"
                 },
                 {
@@ -349,7 +349,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_organic_farmers_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female organic farmers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female organic farmers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{farmers_organic_total} > {farmers_organic_female}+{farmers_organic_male} AND {farmers_organic_female} notempty AND {farmers_organic_male} notempty"
                 },
                 {
@@ -527,7 +527,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_farmers_16to28_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female farmers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female farmers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{total_farmers_16_28} > {farmers_female_16_28}+{farmers_male_16_28} AND {farmers_female_16_28} notempty AND {farmers_male_16_28} notempty"
                 },
                 {
@@ -612,7 +612,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_farmers_29to35_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female farmers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female farmers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{total_farmers_29_35} > {farmers_female_29_35}+{farmers_male_29_35} AND {farmers_female_29_35} notempty AND {farmers_male_29_35} notempty"
                 },
                 {
@@ -697,7 +697,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_farmers_36_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female farmers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female farmers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{total_farmers_36} > {farmers_female_36}+{farmers_male_36} AND {farmers_female_36} notempty AND {farmers_male_36} notempty"
                 },
                 {
@@ -760,14 +760,14 @@ const surveyJson = {
               type: "html",
               name: "warning_farmers_byage_sum",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of farmers by age group is less than the total reported on the previous page. Please check for errors before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of farmers by age group is less than the total reported on the previous page. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
               visibleIf: "{farmers_total} > {RO_farmers_age_total}"
             },
             {
               type: "html",
               name: "warning_farmers_total_byage",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</span>\n</div>',
               visibleIf: "{RO_farmers_age_total} > {farmers_total}"
             }
           ]
@@ -800,7 +800,7 @@ const surveyJson = {
               type: "html",
               name: "warning_farmers_female_byage",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of female farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of female farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</span>\n</div>',
               visibleIf: "{RO_farmers_age_female_total} > {farmers_female}"
             }
           ]
@@ -833,7 +833,7 @@ const surveyJson = {
               type: "html",
               name: "warning_farmers_male_byage",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of male farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</span>\n</div>',
               visibleIf: "{RO_farmers_age_male_total} > {farmers_male}"
             }
           ]
@@ -949,7 +949,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_permanent_workers_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female permanent workers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female permanent workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{workers_permanent_total} > {workers_permanent_female}+{workers_permanent_male} AND {workers_permanent_female} notempty AND {workers_permanent_male} notempty"
                 },
                 {
@@ -1029,7 +1029,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_fixed_term_workers_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female fixed-term workers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female fixed-term workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{workers_fixed_term_total} > {workers_fixed_term_female}+{workers_fixed_term_male} AND {workers_fixed_term_female} notempty AND {workers_fixed_term_male} notempty"
                 },
                 {
@@ -1109,7 +1109,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_subcontractor_workers_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female subcontracted workers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female subcontracted workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{workers_subcontractor_total} > {workers_subcontractor_female}+{workers_subcontractor_male} AND {workers_subcontractor_female} notempty AND {workers_subcontractor_male} notempty"
                 },
                 {
@@ -1278,7 +1278,7 @@ const surveyJson = {
               type: "html",
               name: "warning_fixed_seasonal_sum",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of male and female seasonal workers is less than the total. Please check for errors before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female seasonal workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
               visibleIf: "{workers_seasonal_total} > {workers_seasonal_female}+{workers_seasonal_male} AND {workers_seasonal_female} notempty AND {workers_seasonal_male} notempty"
             },
             {
@@ -1309,7 +1309,6 @@ const surveyJson = {
       visibleIf: "{producer_setup} = 'hl' AND {consent_to_participate} = 'consent'",
       title: "Number of young people employed by your organization",
       navigationTitle: "Young people",
-      /*navigationDescription: "employed by your organization"*/
       elements: [
         {
           type: "panel",
@@ -1417,7 +1416,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_workers_16to28_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female workers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{total_workers_16_28} > {workers_female_16_28}+{workers_male_16_28} AND {workers_female_16_28} notempty AND {workers_male_16_28} notempty"
                 },
                 {
@@ -1502,7 +1501,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_workers_29to35_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female workers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{total_workers_29_35} > {workers_female_29_35}+{workers_male_29_35} AND {workers_female_29_35} notempty AND {workers_male_29_35} notempty"
                 },
                 {
@@ -1587,7 +1586,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_workers_36_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of male and female workers is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male and female workers is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{total_workers_36} > {workers_female_36}+{workers_male_36} AND {workers_female_36} notempty AND {workers_male_36} notempty"
                 },
                 {
@@ -1650,14 +1649,14 @@ const surveyJson = {
               type: "html",
               name: "warning_workers_byage_sum",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of workers by age group is less than the total reported on the previous page. Please check for errors before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of workers by age group is less than the total reported on the previous page. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
               visibleIf: "{workers_total} > {RO_workers_age_total}"
             },
             {
               type: "html",
               name: "warning_workers_total_byage",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</span>\n</div>',
               visibleIf: "{RO_workers_age_total} > {workers_total}"
             }
           ]
@@ -1690,7 +1689,7 @@ const surveyJson = {
               type: "html",
               name: "warning_workers_female_byage",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of female workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of female workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</span>\n</div>',
               visibleIf: "{RO_workers_age_female_total} > {workers_female}"
             }
           ]
@@ -1724,7 +1723,7 @@ const surveyJson = {
               type: "html",
               name: "warning_workers_male_byage",
               hideNumber: true,
-              html: "<br><body text=8B0000><b>Warning: the sum of male workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of male workers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</span>\n</div>',
               visibleIf: "{RO_workers_age_male_total} > {workers_male}"
             }
           ]
@@ -2100,7 +2099,7 @@ const surveyJson = {
                   type: "html",
                   name: "warning_land_area_sum",
                   hideNumber: true,
-                  html: "<br><body text=8B0000><b>Warning: the sum of conventional and organic land area is less than the total. Please check for errors before moving on.</b>",
+                  html: '<br><div style="background-color: #ffd6d6; padding: 8px; border: 1px solid red; border-radius:8px"><h3 style="margin: auto; color: red; font-weight: bold">Warning!</h3>\n<span style="font-size: medium;">The sum of conventional and organic land area is less than the total. Please double check that the numbers reported are correct before moving on.</span>\n</div>',
                   visibleIf: "{panel.land_total_production} > {panel.land_conventional_production}+{panel.land_organic_production} AND {panel.land_conventional_production} notempty AND {panel.land_organic_production} notempty AND {organic_logic} = 'mixed'"                
                 },
                 {
