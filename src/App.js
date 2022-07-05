@@ -54,7 +54,6 @@ const surveyJson = {
       name: "Start page",
       title: "Welcome to the Survey on [FairInsight usage pilot]!",
       elements: [
-        
         {
           type: "panel",
           name: "hidden_fields_panel",
@@ -238,13 +237,8 @@ const surveyJson = {
             {
               type: "panel",
               name: "farmers_conventional_panel",
+              title: "Conventional Farmers",
               elements: [
-                {
-                  type: "html",
-                  name: "info_box_conventional_farmers",
-                  hideNumber: true,
-                  html: "<br><b>Conventional Farmers</b>"
-                },
                 {
                   type: "text",
                   name: "farmers_conventional_total",
@@ -258,7 +252,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
+                        "The sum of male and female conventional farmers is greater than the total. Please correct the error.",
                       expression:
                         "{farmers_conventional_total} >= {farmers_conventional_female}+{farmers_conventional_male} OR {farmers_conventional_total} empty"
                     }
@@ -274,13 +268,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{farmers_conventional_total} >= {farmers_conventional_female}+{farmers_conventional_male} OR {farmers_conventional_female} empty"
                     }
                   ]
                 },
@@ -295,15 +282,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{farmers_conventional_total} >= {farmers_conventional_female}+{farmers_conventional_male} OR {farmers_conventional_male} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_conventional_farmers_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female conventional farmers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{farmers_conventional_total} > {farmers_conventional_female}+{farmers_conventional_male} AND {farmers_conventional_female} notempty AND {farmers_conventional_male} notempty"
                 },
                 {
                   type: "checkbox",
@@ -317,12 +304,6 @@ const surveyJson = {
                         "Please check here if you do not know the number of conventional farmers by gender"
                     }
                   ]
-                },
-                {
-                  type: "html",
-                  name: "conventional_sum_validation",
-                  html: "Test warning box",
-                  visibleIf: "{farmers_conventional_total} <> {farmers_conventional_female}+{farmers_conventional_male}"
                 }
               ],
               visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only']"
@@ -330,13 +311,8 @@ const surveyJson = {
             {
               type: "panel",
               name: "farmers_organic_panel",
+              title: "Organic Farmers",
               elements: [
-                {
-                  type: "html",
-                  name: "info_box_organic_farmers",
-                  hideNumber: true,
-                  html: "<br><b>Organic Farmers</b>"
-                },
                 {
                   type: "text",
                   name: "farmers_organic_total",
@@ -350,7 +326,7 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
+                        "The sum of male and female organic farmers is greater than the total. Please correct the error.",
                       expression:
                         "{farmers_organic_total} >= {farmers_organic_female}+{farmers_organic_male} OR {farmers_organic_total} empty"
                     }
@@ -367,13 +343,6 @@ const surveyJson = {
                       type: "numeric",
                       text: "Please enter a valid number"
                     },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{farmers_organic_total} >= {farmers_organic_female}+{farmers_organic_male} OR {farmers_organic_female} empty"
-                    }
                   ]
                 },
                 {
@@ -388,14 +357,14 @@ const surveyJson = {
                       type: "numeric",
                       text: "Please enter a valid number"
                     },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{farmers_organic_total} >= {farmers_organic_female}+{farmers_organic_male} OR {farmers_organic_male} empty"
-                    }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_organic_farmers_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female organic farmers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{farmers_organic_total} > {farmers_organic_female}+{farmers_organic_male} AND {farmers_organic_female} notempty AND {farmers_organic_male} notempty"
                 },
                 {
                   type: "checkbox",
@@ -528,14 +497,14 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
+                        "The sum of male and female farmers is greater than the total. Please correct the error.",
                       expression:
                         "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {total_farmers_16_28} empty"
                     },
                     {
                       type: "expression",
                       text:
-                        "The number of farmers reported by age is greater than the number of farmers reported on the previous page.",
+                        "The sum of farmers by age group is greater than the total reported on the previous page. Please correct the error.",
                       expression:
                         "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_16_28} empty"
                     }
@@ -551,20 +520,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {farmers_female_16_28} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of female farmers reported by age is greater than the number of female farmers reported on the previous page.",
-                      expression:
-                        "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_16_28} empty"
                     }
                   ]
                 },
@@ -579,22 +534,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{total_farmers_16_28} >= {farmers_female_16_28}+{farmers_male_16_28} OR {farmers_male_16_28} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of male farmers reported by age is greater than the number of male farmers reported on the previous page.",
-                      expression:
-                        "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_16_28} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_farmers_16to28_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female farmers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{total_farmers_16_28} > {farmers_female_16_28}+{farmers_male_16_28} AND {farmers_female_16_28} notempty AND {farmers_male_16_28} notempty"
                 },
                 {
                   type: "checkbox",
@@ -634,14 +582,14 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
+                        "The sum of male and female farmers is greater than the total. Please correct the error.",
                       expression:
-                        "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {total_farmers_29_35} empty"
+                        "{total_farmers_29_35} >= {farmers_female_29_35}+{farmers_male_29_35} OR {total_farmers_29_35} empty"
                     },
                     {
                       type: "expression",
                       text:
-                        "The number of farmers reported by age is greater than the number of farmers reported on the previous page.",
+                        "The sum of farmers by age group is greater than the total reported on the previous page. Please correct the error.",
                       expression:
                         "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_29_35} empty"
                     }
@@ -657,20 +605,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {farmers_female_29_35} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of female farmers reported by age is greater than the number of female farmers reported on the previous page.",
-                      expression:
-                        "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_29_35} empty"
                     }
                   ]
                 },
@@ -685,22 +619,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{total_farmers_29_35} >= ({farmers_female_29_35}+{farmers_male_29_35}) OR {farmers_male_29_35} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of male farmers reported by age is greater than the number of male farmers reported on the previous page.",
-                      expression:
-                        "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_29_35} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_farmers_29to35_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female farmers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{total_farmers_29_35} > {farmers_female_29_35}+{farmers_male_29_35} AND {farmers_female_29_35} notempty AND {farmers_male_29_35} notempty"
                 },
                 {
                   type: "checkbox",
@@ -740,14 +667,14 @@ const surveyJson = {
                     {
                       type: "expression",
                       text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
+                        "The sum of male and female farmers is greater than the total. Please correct the error.",
                       expression:
                         "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {total_farmers_36} empty"
                     },
                     {
                       type: "expression",
                       text:
-                        "The number of farmers reported by age is greater than the number of farmers reported on the previous page.",
+                        "The sum of farmers by age group is greater than the total reported on the previous page. Please correct the error.",
                       expression:
                         "{RO_farmers_age_total} <= {farmers_total} OR {total_farmers_36} empty"
                     }
@@ -763,20 +690,6 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {farmers_female_36} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of female farmers reported by age is greater than the number of female farmers reported on the previous page.",
-                      expression:
-                        "{RO_farmers_age_female_total} <= {farmers_female} OR {farmers_female_36} empty"
                     }
                   ]
                 },
@@ -791,22 +704,15 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "Totals do not add up. Please check that the total number of female and male farmers is correct.",
-                      expression:
-                        "{total_farmers_36} >= {farmers_female_36}+{farmers_male_36} OR {farmers_male_36} empty"
-                    },
-                    {
-                      type: "expression",
-                      text:
-                        "The number of male farmers reported by age is greater than the number of male farmers reported on the previous page.",
-                      expression:
-                        "{RO_farmers_age_male_total} <= {farmers_male} OR {farmers_male_36} empty"
                     }
                   ]
+                },
+                {
+                  type: "html",
+                  name: "warning_farmers_36_sum",
+                  hideNumber: true,
+                  html: "<br><body text=8B0000><b>Warning: the sum of male and female farmers is less than the total. Please check for errors before moving on.</b>",
+                  visibleIf: "{total_farmers_36} > {farmers_female_36}+{farmers_male_36} AND {farmers_female_36} notempty AND {farmers_male_36} notempty"
                 },
                 {
                   type: "checkbox",
@@ -852,13 +758,6 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{total_farmers_16_28}+{total_farmers_29_35}+{total_farmers_36}"
-              /* validators: [
-              {
-                type: "expression",
-                text: "The number of farmers reported by age is more than the number of farmers reported on the previous page.",
-                expression: "{RO_farmers_age_total} <= {farmers_total}"
-              }
-            ]*/
             },
             {
               type: "expression",
@@ -870,13 +769,20 @@ const surveyJson = {
               startWithNewLine: false,
               expression:
                 "{farmers_total}-{RO_farmers_age_total}"
-              /* validators: [
-              {
-                type: "expression",
-                text: "The number of farmers reported by age is more than the number of farmers reported on the previous page.",
-                expression: "{RO_farmers_age_total} <= {farmers_total}"
-              }
-            ]*/
+            },
+            {
+              type: "html",
+              name: "warning_farmers_byage_sum",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of farmers by age group is less than the total reported on the previous page. Please check for errors before moving on.</b>",
+              visibleIf: "{farmers_total} > {RO_farmers_age_total}"
+            },
+            {
+              type: "html",
+              name: "warning_farmers_total_byage",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              visibleIf: "{RO_farmers_age_total} > {farmers_total}"
             }
           ]
         },
@@ -893,13 +799,6 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{farmers_female_16_28}+{farmers_female_29_35}+{farmers_female_36}"
-              /*validators: [
-              {
-                type: "expression",
-                text: "The number of female farmers reported by age is more than the number of female farmers reported on the previous page.",
-                expression: "{RO_farmers_age_female_total} <= {farmers_female}"
-              }
-            ]*/
             },
             {
               type: "expression",
@@ -910,13 +809,13 @@ const surveyJson = {
               startWithNewLine: false,
               expression:
                 "{farmers_female}-{RO_farmers_age_female_total}"
-              /*validators: [
-              {
-                type: "expression",
-                text: "The number of female farmers reported by age is more than the number of female farmers reported on the previous page.",
-                expression: "{RO_farmers_age_female_total} <= {farmers_female}"
-              }
-            ]*/
+            },
+            {
+              type: "html",
+              name: "warning_farmers_female_byage",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of female farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              visibleIf: "{RO_farmers_age_female_total} > {farmers_female}"
             }
           ]
         },
@@ -933,13 +832,6 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}"
-              /* validators: [
-              {
-                type: "expression",
-                text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page.",
-                expression: "{RO_farmers_age_male_total} <= {farmers_male}"
-              }
-            ]*/
             },
             {
               type: "expression",
@@ -950,13 +842,13 @@ const surveyJson = {
               displayStyle: "decimal",
               expression:
                 "{farmers_male}-{RO_farmers_age_male_total}"
-              /* validators: [
-              {
-                type: "expression",
-                text: "The number of male farmers reported by age is more than the number of male farmers reported on the previous page.",
-                expression: "{RO_farmers_age_male_total} <= {farmers_male}"
-              }
-            ]*/
+            },
+            {
+              type: "html",
+              name: "warning_farmers_male_byage",
+              hideNumber: true,
+              html: "<br><body text=8B0000><b>Warning: the sum of male farmers by age group is greater than the total reported on the previous page. Please correct the error before moving on.</b>",
+              visibleIf: "{RO_farmers_age_male_total} > {farmers_male}"
             }
           ]
         }
@@ -2067,7 +1959,7 @@ const surveyJson = {
               type: "html",
               name: "info_box_production",
               hideNumber: true,
-              html: "<br>Another key area of information that Fairtrade stakeholders and consumers are interested in is the production of Fairtrade certified products. This helps Fairtrade understand our producer organizations; analyse growth, yields and market potential over time; and guide our global strategy.<br><br>In addition, a new indicator that we want to better understand is the forecasted volumes (volumes on offer) that are of export quality and can be sold on Fairtrade terms. In the future, information like this could be used (only by authorised commercial support staff from Fairtrade International and the Producer Networks) to seek new market opportunities."
+              html: "<br>Another key area of information that Fairtrade stakeholders and consumers are interested in is the production of Fairtrade certified products. This helps Fairtrade understand our producer organizations; analyse growth, yields and market potential over time; and guide our global strategy.<br><br>In addition, a new indicator that we want to better understand is the forecasted volumes (volumes on offer) that are of export quality and can be sold on Fairtrade terms. In the future, information like this could be used (by authorised staff at Fairtrade International and the Producer Networks) to seek new market opportunities."
             },
             {
               type: "html",
@@ -2675,32 +2567,39 @@ const surveyJson = {
         {
           type: "rating",
           name: "rating_survey_overall",
-          title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy overall was it to fill out the information in this survey?"
+          hideNumber: true,
+          minRateDescription: "(Very Difficult)",
+          maxRateDescription: "(Very Easy)",
+          title: "On a scale of 1 to 5, how easy overall was it to fill out the information in this survey?"
               },
               {
                 type: "rating",
                 name: "rating_survey_questions",
                 hideNumber: true,
-                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy was it to understand the questions and what was being asked?"
+                minRateDescription: "(Very Difficult)",
+                maxRateDescription: "(Very Easy)",
+                title: "On a scale of 1 to 5, how easy was it to understand the questions and what was being asked?"
               },
               {
                 type: "rating",
                 name: "rating_survey_content",
                 hideNumber: true,
-                title: "On a scale of 1 to 5 (1 being not at all and 5 being very), how relavant were the questions to your organization?"
+                minRateDescription: "(Not at all Relevant)",
+                maxRateDescription: "(Very Relevant)",
+                title: "On a scale of 1 to 5, how relevant were the questions to your organization?"
               },
               {
                 type: "comment",
                 name: "textbox_issues_survey",
                 hideNumber: true,
-                title: "When completing this survey, did you have any issues or trouble with any parts of the survey? (max. 500 characters):",
+                title: "When completing this survey, did you have any issues or trouble with any parts of the survey? If so, please explain here (max. 500 characters):",
                 maxLength: 500
               },
               {
                 type: "comment",
                 name: "textbox_suggestions_survey",
                 hideNumber: true,
-                title: "We want to improve how we collect this information from Fairtrade producer organizations. Do have any suggestions for improving the survey in any way (on the questions, functionality, accessibility, etc.) that you would like to share? (max. 500 characters):",
+                title: "We want to improve how we collect this type of information from Fairtrade producer organizations. Do have any suggestions for improving the survey in any way (on the questions, functionality, accessibility, etc.) that you would like to share? (max. 500 characters):",
                 maxLength: 500
               }
             ]
@@ -2710,18 +2609,6 @@ const surveyJson = {
             name: "reporting_feedback",
             title: "Reporting information to Fairtrade",
             elements: [
-              {
-                type: "rating",
-                name: "rating_reporting_overall",
-                hideNumber: true,
-                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy do you find it to report information about your organization to Fairtrade?"
-              },
-              {
-                type: "rating",
-                name: "rating_codimpact",
-                hideNumber: true,
-                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy do you find it to report information on members and workers, production and land area to Fairtrade? (these are currently reported through the CODImpact questionnaire)",
-              },
               {
                 type: "comment",
                 name: "textbox_reporting",
@@ -2740,7 +2627,9 @@ const surveyJson = {
                 type: "rating",
                 name: "rating_fairinsight",
                 hideNumber: true,
-                title: "On a scale of 1 to 5 (1 being very difficult and 5 very easy), how easy do you find it to use FairInsight to report on your Fairtrade Premium Investments?"
+                minRateDescription: "(Very Difficult)",
+                maxRateDescription: "(Very Easy)",
+                title: "On a scale of 1 to 5, how easy do you find it to use FairInsight to report on your Fairtrade Premium Investments?"
               },
               {
                 type: "comment",
@@ -2754,7 +2643,9 @@ const surveyJson = {
                 type: "rating",
                 name: "rating_fairinsight_usefulness",
                 hideNumber: true,
-                title: "On a scale of 1 to 5 (1 being not useful at all and 5 very useful), how useful do you see FairInsight to your organization?"
+                minRateDescription: "(Not at all Useful)",
+                maxRateDescription: "(Very Useful)",
+                title: "On a scale of 1 to 5, how useful do you see FairInsight being for your organization?"
               },
               {
                 type: "comment",
@@ -2768,7 +2659,7 @@ const surveyJson = {
                 type: "comment",
                 name: "textbox_fairinsight",
                 hideNumber: true,
-                title: "Do you have any other comments, suggestions or feedback you would like to share with us on FairInsight? (max. 500 characters)",
+                title: "Do you have any other comments, suggestions or feedback you would like to share with us about FairInsight? (max. 500 characters)",
                 maxLength: 500
               }
             ]
