@@ -262,7 +262,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_conventional_female",
                   visibleIf: "{farmers_conventional_gender_not_known} empty",
-                  title: "Farmers that are women:",
+                  title: "Number of female farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -276,7 +276,7 @@ const surveyJson = {
                   name: "farmers_conventional_male",
                   visibleIf: "{farmers_conventional_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Farmers that are men:",
+                  title: "Number of male farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -336,7 +336,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_organic_female",
                   visibleIf: "{farmers_organic_gender_not_known} empty",
-                  title: "Farmers that are women:",
+                  title: "Number of female farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -350,7 +350,7 @@ const surveyJson = {
                   name: "farmers_organic_male",
                   visibleIf: "{farmers_organic_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Farmers that are men:",
+                  title: "Number of male farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -409,7 +409,7 @@ const surveyJson = {
             {
               type: "expression",
               name: "farmers_female",
-              title: "Number of farmers that are women:",
+              title: "Number of female farmers:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -419,7 +419,7 @@ const surveyJson = {
               type: "expression",
               name: "farmers_male",
               startWithNewLine: false,
-              title: "Number of farmers that are men:",
+              title: "Number of male farmers:",
               hideNumber: true,
               displayStyle: "decimal",
               expression: "{farmers_conventional_male}+{farmers_organic_male}"
@@ -514,7 +514,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_female_16_28",
                   visibleIf: "{farmers_gender_not_known_16_28} empty",
-                  title: "Farmers that are women:",
+                  title: "Number of female farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -528,7 +528,7 @@ const surveyJson = {
                   name: "farmers_male_16_28",
                   visibleIf: "{farmers_gender_not_known_16_28} empty",
                   startWithNewLine: false,
-                  title: "Farmers that are men:",
+                  title: "Number of male farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -599,7 +599,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_female_29_35",
                   visibleIf: "{farmers_gender_not_known_29_35} empty",
-                  title: "Farmers that are women:",
+                  title: "Number of female farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -613,7 +613,7 @@ const surveyJson = {
                   name: "farmers_male_29_35",
                   visibleIf: "{farmers_gender_not_known_29_35} empty",
                   startWithNewLine: false,
-                  title: "Farmers that are men:",
+                  title: "Number of male farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -684,7 +684,7 @@ const surveyJson = {
                   type: "text",
                   name: "farmers_female_36",
                   visibleIf: "{farmers_gender_not_known_36} empty",
-                  title: "Farmers that are women:",
+                  title: "Number of female farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -698,7 +698,7 @@ const surveyJson = {
                   name: "farmers_male_36",
                   visibleIf: "{farmers_gender_not_known_36} empty",
                   startWithNewLine: false,
-                  title: "Farmers that are men:",
+                  title: "Number of male farmers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -789,7 +789,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "farmers_female_summary_byage",
-          title: "Total number of farmers in your organization that are women : {farmers_female}",
+          title: "Total number of female farmers in your organization: {farmers_female}",
           elements: [
             {
               type: "expression",
@@ -822,7 +822,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "farmers_male_summary_byage",
-          title: "Total number of farmers in your organization that are men : {farmers_male}",
+          title: "Total number of male farmers in your organization: {farmers_male}",
           elements: [
             {
               type: "expression",
@@ -936,7 +936,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_permanent_female",
                   visibleIf: "{permanent_gender_not_known} empty",
-                  title: "Permanent workers that are women:",
+                  title: "Number of female permanent workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -950,7 +950,7 @@ const surveyJson = {
                   name: "workers_permanent_male",
                   visibleIf: "{permanent_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Permanent workers that are men:",
+                  title: "Number of male permanent workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1016,7 +1016,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_fixed_term_female",
                   visibleIf: "{workers_fixedterm_gender_not_known} empty",
-                  title: "Fixed-term workers that are women:",
+                  title: "Number of female fixed-term workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1030,7 +1030,7 @@ const surveyJson = {
                   name: "workers_fixed_term_male",
                   visibleIf: "{workers_fixedterm_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Fixed-term workers that are men:",
+                  title: "Number of male fixed-term workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1096,7 +1096,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_subcontractor_female",
                   visibleIf: "{workers_subcontractor_gender_not_known} empty",
-                  title: "Sub-contracted workers that are women:",
+                  title: "Number of female sub-contracted workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1110,7 +1110,7 @@ const surveyJson = {
                   name: "workers_subcontractor_male",
                   visibleIf: "{workers_subcontractor_gender_not_known} empty",
                   startWithNewLine: false,
-                  title: "Sub-contracted workers that are men:",
+                  title: "Number of male sub-contracted workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1166,7 +1166,7 @@ const surveyJson = {
             {
               type: "expression",
               name: "workers_female",
-              title: "Number of workers that are women:",
+              title: "Number of female workers:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -1176,7 +1176,7 @@ const surveyJson = {
               type: "expression",
               name: "workers_male",
               startWithNewLine: false,
-              title: "Number of workers that are men:",
+              title: "Number of male workers:",
               hideNumber: true,
               displayStyle: "decimal",
               expression:
@@ -1255,7 +1255,7 @@ const surveyJson = {
               type: "text",
               name: "workers_seasonal_female",
               visibleIf: "{workers_seasonal_gender_not_known} empty",
-              title: "Seasonal workers that are women:",
+              title: "Number of female seasonal workers:",
               hideNumber: true,
               validators: [
                 {
@@ -1274,7 +1274,7 @@ const surveyJson = {
               name: "workers_seasonal_male",
               visibleIf: "{workers_seasonal_gender_not_known} empty",
               startWithNewLine: false,
-              title: "Seasonal workers that are men:",
+              title: "Number of male seasonal workers:",
               hideNumber: true,
               validators: [
                 {
@@ -1404,7 +1404,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_female_16_28",
                   visibleIf: "{workers_gender_not_known_16_28} empty",
-                  title: "Workers that are women:",
+                  title: "Number of female workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1418,7 +1418,7 @@ const surveyJson = {
                   name: "workers_male_16_28",
                   visibleIf: "{workers_gender_not_known_16_28} empty",
                   startWithNewLine: false,
-                  title: "Workers that are men:",
+                  title: "Number of male workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1489,7 +1489,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_female_29_35",
                   visibleIf: "{workers_gender_not_known_29_35} empty",
-                  title: "Workers that are women:",
+                  title: "Number of female workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1503,7 +1503,7 @@ const surveyJson = {
                   name: "workers_male_29_35",
                   visibleIf: "{workers_gender_not_known_29_35} empty",
                   startWithNewLine: false,
-                  title: "Workers that are men:",
+                  title: "Number of male workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1574,7 +1574,7 @@ const surveyJson = {
                   type: "text",
                   name: "workers_female_36",
                   visibleIf: "{workers_gender_not_known_36} empty",
-                  title: "Workers that are women:",
+                  title: "Number of female workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1588,7 +1588,7 @@ const surveyJson = {
                   name: "workers_male_36",
                   visibleIf: "{workers_gender_not_known_36} empty",
                   startWithNewLine: false,
-                  title: "Workers that are men:",
+                  title: "Number of male workers:",
                   hideNumber: true,
                   validators: [
                     {
@@ -1679,7 +1679,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "workers_female_summary_byage",
-          title: "Total number of workers employed by your organization that are women : {workers_female}",
+          title: "Total number of female workers employed by your organization: {workers_female}",
           elements: [
             {
               type: "expression",
@@ -1712,7 +1712,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "workers_male_summary_byage",
-          title: "Total number of workers employed by your organization that are men : {workers_male}",
+          title: "Total number of male workers employed by your organization: {workers_male}",
           elements: [
             {
               type: "expression",
