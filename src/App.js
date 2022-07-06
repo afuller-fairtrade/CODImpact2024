@@ -45,14 +45,14 @@ const surveyJson = {
   focusOnFirstError: false,
   progressBarType: "buttons",
   showProgressBar: "top",
-  title: "FairInsight Self-Reporting & Usage Pilot Survey",
-  description: "This is where the short description of the survey would go",
+  title: "FairInsight Survey on Use and Information Management",
+  description: "This survey will take about 20 to 30 minutes to complete and asks about some of Fairtrade’s key indicators, such as production and land area of Fairtrade certified products, members of your organization and workers employed by your organization. You will also have an opportunity to share your feedback about the survey and any challenges your organization faces on managing and sharing information with Fairtrade.",
   showPreviewBeforeComplete: "showAnsweredQuestions",
   pages: [
     {
       navigationTitle: "Start page",
       name: "Start page",
-      title: "Welcome to the Survey on [FairInsight usage pilot]!",
+      title: "Welcome to the FairInsight Survey on Use and Information Management!",
       elements: [
         {
           type: "panel",
@@ -129,7 +129,7 @@ const surveyJson = {
               name: "info_box_placeholder",
               hideNumber: true,
               html:
-                "<br>Fairtrade is a voluntary certification system which aims to have positive impacts on farmers like you through the certification of your certified product.<br><br>Our goal is to make FairInsight a single place for producer organizations to share your information with Fairtrade. Over the next few years, FairInsight will replace other data collection tools (such as the CODImpact questionnaire conducted during audits).<br><br>Through this questionnaire Fairtrade is collecting data from members of certified organizations to better understand any challenges in reporting and the quality of data being reported. Your participation is very important for the survey’s success. Your contribution will be identifiable to us so that we can follow up on untangling specific issues or challenges that you may face while reporting.<br><br>While the survey is completely voluntary, your participation will help us better understand how to make the FairInsight platform easy to use and beneficial to you. The collected data will be treated as confidential by the Fairtrade system and we would only be using this for internal quality assessments that may inform the further development of FairInsight. No personal or sensitive information will be shared outside of Fairtrade International and the Producer Networks."
+                "<br>Fairtrade is a voluntary certification system which aims to have positive impacts on farmer organisations like yours through the certification of your certified product.<br><br>Our goal is to make FairInsight a single place for producer organizations to manage your information and possibly share with Fairtrade. Over the next few years, FairInsight will replace other data collection tools (such as the CODImpact questionnaire conducted during audits).<br><br>Through this questionnaire Fairtrade is collecting data from members of certified organizations to better understand any challenges in reporting and the quality of data being reported. Your participation is very important for the survey’s success. Your contribution will be identifiable to us so that we can follow up on untangling specific issues or challenges that you may face while reporting.<br><br>While the survey is completely voluntary, your participation will help us better understand how to make the FairInsight platform easy to use and beneficial to you. The collected data will be treated as confidential by the Fairtrade system and we would only be using this for internal quality assessments that may inform the further development of FairInsight. No personal or sensitive information will be shared outside of Fairtrade International and the Producer Networks."
             },
             {
               type: "radiogroup",
@@ -160,13 +160,13 @@ const surveyJson = {
               type: "html",
               name: "info_box_in_transition_to_organic",
               hideNumber: true,
-              html: "<br><i>Note: For the purposes of this survey, please consider members, land area and production that are in transition from conventional to organic, as organic</i>"
+              html: "<br><i>Note: For the purposes of this survey, please consider members, land area and production that are in transition from conventional to organic, as conventional</i>"
             },
             {
               type: "radiogroup",
               name: "organic_logic",
               title:
-                "For the last production cycle (2021-2022), was some or all of your production of Fairtrade crops also produced under, or in transition to, an organic certification?",
+                "For the last production cycle (2021-2022), was some or all of your production of Fairtrade crops also produced under an organic certification?",
               isRequired: true,
               hideNumber: true,
               choices: [
@@ -177,11 +177,11 @@ const surveyJson = {
                 },
                 {
                   value: "organic_only",
-                  text: "Yes, all production was organic or in transition to organic"
+                  text: "Yes, all production was organic"
                 },
                 {
                   value: "conventional_only",
-                  text: "No, all production was conventional"
+                  text: "No, all production was either conventional or in transition to organic"
                 }
               ],
               defaultValue: "mixed"
@@ -212,7 +212,7 @@ const surveyJson = {
               name: "info_box_numberfarmers",
               hideNumber: true,
               html:
-                "<br><b>Instructions:</b><hr>In this section, please enter the number of farmers that are members of your organization. Please also enter the number of women and men in your organization, if this information is known.<br><br><i>Count each member of your organization only once. If some members are in the process of transitioning from conventional to organic production, please count them as organic farmers.</i>"
+                "<br><b>Instructions:</b><hr>In this section, please enter the number of farmers that are members of your organization. Please also enter the number of women and men in your organization, if this information is known.<br><br><i>Count each member of your organization only once. If some members are in the process of transitioning from conventional to organic production, please count them as conventional farmers.</i>"
             }
           ]
         },
@@ -1804,6 +1804,11 @@ const surveyJson = {
                 },
                 {
                   type: "expression",
+                  text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                  expression: "{total_land_managed} notcontains ','"
+                },
+                {
+                  type: "expression",
                   text: "Fairtrade land area is larger than total land area.",
                   expression:
                     "{total_land_managed} >= {total_area_ft_certification} OR {total_land_managed} empty OR {total_area_ft_certification} empty"
@@ -1821,6 +1826,11 @@ const surveyJson = {
                 {
                   type: "numeric",
                   text: "Please enter a valid number"
+                },
+                {
+                  type: "expression",
+                  text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                  expression: "{total_area_ft_certification} notcontains ','"
                 }
               ]
             }
@@ -2015,7 +2025,7 @@ const surveyJson = {
                 {
                   type: "html",
                   name: "honey_land_area_html",
-                  hideNUmber: true,
+                  hideNumber: true,
                   visibleIf: "{panel.major_product_category} = 'Honey'",
                   html:
                     "<br><i>For honey, please enter the <b>number of beehives</b> instead of {land_area_unit} of land</i>"
@@ -2031,6 +2041,11 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.land_total_production} notcontains ','"
                     },
                     {
                       type: "expression",
@@ -2058,7 +2073,7 @@ const surveyJson = {
                   type: "text",
                   name: "land_conventional_production",
                   title:
-                    "How many {land_area_unit} of land was under conventional cultivation?",
+                    "How many {land_area_unit} of land was under conventional cultivation or in transition to organic?",
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'conventional_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
@@ -2066,6 +2081,11 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.land_conventional_production} notcontains ','"
                     },
                     {
                       type: "expression",
@@ -2078,7 +2098,7 @@ const surveyJson = {
                   type: "text",
                   name: "land_organic_production",
                   title:
-                    "How many {land_area_unit} of land was under cultivation of, or in transition to, organic certification?",
+                    "How many {land_area_unit} of land was under cultivation of organic certification?",
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'organic_only'] AND {panel.conventional_organic_area_known} empty",
                   hideNumber: true,
@@ -2087,6 +2107,11 @@ const surveyJson = {
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.land_organic_production} notcontains ','"
                     },
                     {
                       type: "expression",
@@ -2200,11 +2225,16 @@ const surveyJson = {
                   visibleIf:
                     "{organic_logic} anyof ['mixed', 'conventional_only']",
                   title:
-                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under conventional cultivation?",
+                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under conventional cultivation or under transition to organic?",
                   validators: [
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.volume_conventional_produced} notcontains ','"
                     }
                   ]
                 },
@@ -2215,11 +2245,16 @@ const surveyJson = {
                   hideNumber: true,
                   visibleIf: "{organic_logic} anyof ['mixed', 'organic_only']",
                   title:
-                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under, or in transition to, organic certification?",
+                    "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under organic certification?",
                   validators: [
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.volume_organic_produced} notcontains ','"
                     }
                   ]
                 },
@@ -2379,11 +2414,16 @@ const surveyJson = {
                   name: "volume_conventional_forecast",
                   hideNumber: true,
                   title:
-                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under conventional cultivation does your organization forecast will be of export quality?",
+                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under conventional cultivation or under transition to organic does your organization forecast will be of export quality?",
                   validators: [
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.volume_conventional_forecast} notcontains ','"
                     }
                   ],
                   visibleIf: "{panel.volume_forecast_known} empty"
@@ -2394,11 +2434,16 @@ const surveyJson = {
                   hideNumber: true,
                   startWithNewLine: false,
                   title:
-                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under, or in transition to, organic certification does your organization forecast will be of export quality?",
+                    "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under organic certification does your organization forecast will be of export quality?",
                   validators: [
                     {
                       type: "numeric",
                       text: "Please enter a valid number"
+                    },
+                    {
+                      type: "expression",
+                      text: "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
+                      expression: "{panel.volume_organic_forecast} notcontains ','"
                     }
                   ],
                   visibleIf: "{panel.volume_forecast_known} empty"
@@ -2454,7 +2499,7 @@ const surveyJson = {
           type: "html",
           name: "feedback_instructions",
           hideNumber: true,
-          html: "<br><b>Thank you for filling out our survey</b>, it covered a set of questions related to some of Fairtrade's most frequently used data. Your contributions will help us better understand challenges in reporting and the quality of the data being reported.<br><br>In this section, we would appreciate to hear from you on the challenges, suggestions and feedback that you and your organization have relating to reporting information to Fairtrade and FairInsight. We would appreciate any feedback you may be willing to share. We will only use your feedback on this page to identify common challenges faced by producer organizations and assess solutions for improvements."
+          html: "<br><b>Thank you for filling out our survey</b>, it covered a set of questions related to some of Fairtrade's most frequently used data. Your contributions will help us better understand challenges in reporting and the quality of the data being reported.<br><br>In this section, we would appreciate to hear from you on the challenges, suggestions and feedback that you and your organization have relating to managing and sharing information to Fairtrade through FairInsight. We would appreciate any feedback you may be willing to share. We will only use your feedback on this page to identify common challenges faced by producer organizations and assess solutions for improvements."
         }
       ]
     },
@@ -2498,21 +2543,21 @@ const surveyJson = {
                 type: "comment",
                 name: "textbox_suggestions_survey",
                 hideNumber: true,
-                title: "We want to improve how we collect this type of information from Fairtrade producer organizations. Do have any suggestions for improving the survey in any way (on the questions, functionality, accessibility, etc.) that you would like to share? (max. 500 characters):",
+                title: "We want to improve how we ask this type of information from Fairtrade producer organizations. Do you have any suggestions for improving the survey in any way (on the questions, functionality, accessibility, etc.) that you would like to share? (max. 500 characters):",
                 maxLength: 500
               }
             ]
           },
           {
             type: "panel",
-            name: "reporting_feedback",
-            title: "Reporting information to Fairtrade",
+            name: "sharing_to_ft_feedback",
+            title: "Sharing information with Fairtrade",
             elements: [
               {
                 type: "comment",
                 name: "textbox_reporting",
                 hideNumber: true,
-                title: "We want to better understand the challenges that producer organizations face when asked to report information to Fairtrade. Does your organization have any challenges that you would like to share with us? (max. 500 characters)",
+                title: "We want to better understand the challenges that producer organizations face when asked to share information with Fairtrade. Does your organization have any challenges that you would like to share with us? (max. 500 characters)",
                 maxLength: 500
               }
             ]
@@ -2528,14 +2573,14 @@ const surveyJson = {
                 hideNumber: true,
                 minRateDescription: "(Very Difficult)",
                 maxRateDescription: "(Very Easy)",
-                title: "On a scale of 1 to 5, how easy do you find it to use FairInsight to report on your Fairtrade Premium Investments?"
+                title: "On a scale of 1 to 5, how easy do you find it to use FairInsight to manage your Fairtrade Premium Investments?"
               },
               {
                 type: "comment",
                 name: "textbox_fairinsight_not_easy",
                 hideNumber: true,
                 visibleIf: "{rating_fairinsight} < 4",
-                title: "How can we improve your user experience to make reporting on your Fairtrade Premium Investments easier? (max. 500 characters)",
+                title: "How can we improve your user experience to make managing your Fairtrade Premium Investments easier in FairInsight? (max. 500 characters)",
                 maxLength: 500
               },
               {
