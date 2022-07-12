@@ -41,7 +41,7 @@ function onDynamicPanelItemValueChanged(survey, options) {
 
 const surveyJson = {
   version: 1,
-  locale: "en",
+  locale: "pt",
   logoPosition: "right",
   focusOnFirstError: false,
   progressBarType: "buttons",
