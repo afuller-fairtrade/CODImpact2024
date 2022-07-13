@@ -69,7 +69,7 @@ const surveyJson = {
         type: "panel",
         name: "hidden_fields_panel",
         elements: [
-         {
+         /*{
           type: "text",
           name: "floid",
           title: "Fairtrade ID (FLOID):",
@@ -89,7 +89,7 @@ const surveyJson = {
           type: "text",
           name: "org_name",
           title: "Name of the organization:"
-         },
+         },*/
          {
           type: "radiogroup",
           name: "producer_setup",
@@ -105,7 +105,7 @@ const surveyJson = {
            }
           ]
          },
-         {
+         /*{
           type: "radiogroup",
           name: "survey_language",
           title: "Choose the language of the survey:",
@@ -128,7 +128,7 @@ const surveyJson = {
             text: "French"
            }
           ]
-         }
+         }*/
         ],
         title: "This panel will be pre-populated and hidden from the PO (hence not translated)"
        },
