@@ -1207,6 +1207,7 @@ const surveyJson = {
              pt: "Número de fazendeiros masculinos relatados em uma faixa etária:"
             },
             expression: "{farmers_male_16_28}+{farmers_male_29_35}+{farmers_male_36}",
+            hideNumber: true,
             displayStyle: "decimal"
            },
            {
