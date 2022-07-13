@@ -3179,7 +3179,7 @@ const surveyJson = {
             name: "land_conventional_production",
             visibleIf: "{organic_logic} anyof ['mixed', 'conventional_only'] AND {panel.conventional_organic_area_known} empty",
             title: {
-             default: "How many {land_area_unit}Â of land was under conventional cultivation or in transition to organic?",
+             default: "How many {land_area_unit} of land was under conventional cultivation or in transition to organic?",
              es: "¿Cuántos/as {land_area_unit} de tierra estuvieron bajo cultivo convencional o en transición a orgánico?",
              fr: "Combien de {land_area_unit} de terres étaient dédiés/ées à la culture conventionnelle ou étaient en transition vers la culture biologique ?",
              pt: "Quantas {land_area_unit} de terra estavam sob cultivo convencional ou em transição para orgânico?"
@@ -3223,7 +3223,7 @@ const surveyJson = {
             visibleIf: "{organic_logic} anyof ['mixed', 'organic_only'] AND {panel.conventional_organic_area_known} empty",
             startWithNewLine: false,
             title: {
-             default: "How many {land_area_unit}Â of land was under cultivation of organic certification?",
+             default: "How many {land_area_unit} of land was under cultivation of organic certification?",
              es: "¿Cuántos/as {land_area_unit} de tierra estuvieron bajo cultivo de certificación orgánica?",
              fr: "Combien de {land_area_unit} de terres étaient dédiés/ées à la culture sous certification biologique ?",
              pt: "Quantas {land_area_unit} de terra estavam sob cultivo de certificação orgânica?"
