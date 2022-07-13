@@ -4,6 +4,7 @@ import "survey-core/defaultV2.min.css";
 // import 'survey-core/survey.min.css';
 import { StylesManager, Model, FunctionFactory } from "survey-core";
 import { Survey } from "survey-react-ui";
+import "survey-core/survey.i18n.js";
 import ProductTree from "./ProductTree";
 
 StylesManager.applyTheme("defaultV2");
