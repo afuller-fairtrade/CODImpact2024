@@ -62,6 +62,7 @@ const surveyJson = {
      {
       type: "panel",
       name: "hidden_fields_panel",
+      visible: false,
       elements: [
        {
         type: "text",
@@ -96,30 +97,6 @@ const surveyJson = {
          {
           value: "hl",
           text: "Hired labor plantation"
-         }
-        ]
-       },
-       {
-        type: "radiogroup",
-        name: "survey_language",
-        title: "Choose the language of the survey:",
-        defaultValue: "en",
-        choices: [
-         {
-          value: "en",
-          text: "English"
-         },
-         {
-          value: "es",
-          text: "Spanish"
-         },
-         {
-          value: "pt",
-          text: "Portuguese"
-         },
-         {
-          value: "fr",
-          text: "French"
          }
         ]
        }
@@ -3096,7 +3073,7 @@ const surveyJson = {
        {
         type: "text",
         name: "minor_category_other",
-        visibleIf: "{panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other'",
+        visibleIf: "{panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other' OR {panel.minor_product_category} contains 'autre' OR {panel.minor_product_category} contains 'otro' OR {panel.minor_product_category} contains 'outro'",
         title: {
          default: "If your product was not listed and you selected 'other' please specify here the product for which your organization produced under Fairtrade certification:",
          es: "Si su producto no aparece en la lista y usted seleccionó “otro”, especifique aquí el producto para el cual su organización produjo bajo la certificación de Fairtrade:",
@@ -3112,7 +3089,7 @@ const surveyJson = {
          {
           type: "html",
           name: "honey_land_area_html",
-          visibleIf: "{panel.major_product_category} = 'Honey'",
+          visibleIf: "{panel.major_product_category} = 'Honey' OR {panel.major_product_category} = 'Miel' OR {panel.major_product_category} = 'Mel'",
           html: {
            default: "<br><i>For honey, please enter the <b>number of beehives</b> instead of {land_area_unit} of land</i>",
            es: "<br><i>Para miel, ingrese el <b>número de panales/colmenas</b> en vez de {land_area_unit} de la tierra</i>",
@@ -3415,7 +3392,7 @@ const surveyJson = {
          {
           type: "text",
           name: "product_form_other",
-          visibleIf: "screenValue('product_form_name') contains 'Other' OR screenValue('product_form_name') contains 'other'",
+          visibleIf: "screenValue('product_form_name') contains 'Other' OR screenValue('product_form_name') contains 'other' OR screenValue('product_form_name') contains 'Autre' OR screenValue('product_form_name') contains 'Autres' OR screenValue('product_form_name') contains 'autres' OR screenValue('product_form_name') contains 'Otro' OR screenValue('product_form_name') contains 'Otras' OR screenValue('product_form_name') contains 'otro' OR screenValue('product_form_name') contains 'Outro' OR screenValue('product_form_name') contains 'Outros' OR screenValue('product_form_name') contains 'Outras' OR screenValue('product_form_name') contains 'outro' OR screenValue('product_form_name') contains 'outros' OR screenValue('product_form_name') contains 'Outra'",
           title: {
            default: "If your product was not listed and you selected 'Other' please specify here the product form for which you are reporting production:",
            es: "Si su producto no se listó y usted seleccionó “otro”, especifique aquí la forma del producto para el cual reporta la producción:",
