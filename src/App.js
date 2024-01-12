@@ -42,7 +42,7 @@ function onDynamicPanelItemValueChanged(survey, options) {
 
 const surveyJson = {
   title: {
-    default: "FairInsight Survey on Use and Information Management 2024",
+    default: "FairInsight Survey on Use and Information Management 2025",
     es: "Encuesta de Fairtrade sobre el uso y la gestión de la información",
     fr: "Enquête FairInsight sur l'utilisation et la gestion des informations",
     pt: "Pesquisa FairInsight sobre uso e gerenciamento de informações",
