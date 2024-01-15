@@ -12,28 +12,21 @@ StylesManager.applyTheme("defaultV2");
 FunctionFactory.Instance.register("screenValue", screenValue);
 
 function onAfterRenderQuestion(survey, options) {
-  if (options.question.name === "major_product_category") {
-    ProductTree.loadMajorCategories(options.question);
+  if (options.question.name === "product_category") {
+    ProductTree.loadProductCategories(options.question);
   }
 }
 
 function onDynamicPanelItemValueChanged(survey, options) {
   console.dir(options);
   switch (options.name) {
-    case "major_product_category":
-      ProductTree.filterMinorCategories(
-        options.panel.getQuestionByName("minor_product_category"),
+    case "product_category":
+      ProductTree.filterProductTypes(
+        options.panel.getQuestionByName("product_type"),
         options.value,
+        options.panel.getQuestionByName("product_category").value,
       );
-      options.panel.getQuestionByName("minor_product_category").value = null;
-      break;
-    case "minor_product_category":
-      ProductTree.filterProductionTypes(
-        options.panel.getQuestionByName("product_form_name"),
-        options.value,
-        options.panel.getQuestionByName("major_product_category").value,
-      );
-      options.panel.getQuestionByName("product_form_name").value = null;
+      options.panel.getQuestionByName("product_type").value = null;
       break;
     default:
       break;
@@ -49,7 +42,7 @@ const surveyJson = {
   },
   description: {
     default:
-      "This survey will take about 20 to 30 minutes to complete and asks about some of Fairtrade's key indicators, such as production and land area of Fairtrade certified products, members of your organization and workers employed by your organization. You will also have an opportunity to share your feedback about the survey and any challenges your organization faces on managing and sharing information with Fairtrade.",
+      "This survey will take about XX to XX minutes to complete and asks about some of Fairtrade's key indicators, such as production and land area of Fairtrade certified products, members of your organization and workers employed by your organization.",
     es: "Esta encuesta tardará de 20 a 30 minutos e incluye preguntas sobre algunos de los indicadores clave de Fairtrade, tales como la producción y el área cultivada con productos certificados de Fairtrade, socios(as) de su organización y trabajadores(as) empleados(as) por la misma. También tendrá la oportunidad de compartir sus comentarios acerca de la encuesta y cualquier reto que enfrente su organización al administrar y compartir información con Fairtrade.",
     fr: "Cette enquête ne prendra que de 20 à 30 minutes et elle portera sur certains indicateurs clés de Fairtrade, comme la production et la superficie des terres des produits certifiés Fairtrade, les membres et les travailleurs/euses employés/ées de votre organisation. Vous aurez également l'occasion de nous faire part de vos commentaires sur l'enquête et des défis que votre organisation doit relever pour gérer et partager les informations avec Fairtrade.",
     pt: "Esta pesquisa levará apenas 20-30 minutos e inclui sobre alguns dos indicadores-chave do Fairtrade, tais como produção e extensão de terra cultivada de produtos certificados Fairtrade, membros de sua organização e trabalhadores(as) empregados(as) por sua organização. Você também terá a oportunidade de compartilhar seus comentários sobre a pesquisa e quaisquer desafios que sua organização enfrente em relação à gestão e compartilhamento de informações com o Fairtrade.",
@@ -63,7 +56,7 @@ const surveyJson = {
         {
           type: "panel",
           name: "hidden_fields_panel",
-          visible: false,
+          //visible: false,
           elements: [
             {
               type: "text",
@@ -104,7 +97,7 @@ const surveyJson = {
             },
           ],
           title:
-            "This panel will be pre-populated and hidden from the PO (hence no translation)",
+            "This panel will be pre-populated in FairInsight and hidden from the PO, but have left it visible for testing so we can toggle between SPO and HL",
         },
         {
           type: "panel",
@@ -1808,7 +1801,7 @@ const surveyJson = {
           templateElements: [
             {
               type: "dropdown",
-              name: "major_product_category",
+              name: "product_category",
               title: {
                 default:
                   "Please select the product category from the dropdown that corresponds to your Fairtrade product certification:",
@@ -1821,35 +1814,6 @@ const surveyJson = {
               choices: ["item1", "item2"],
             },
             {
-              type: "dropdown",
-              name: "minor_product_category",
-              visibleIf: "{panel.major_product_category} notempty",
-              title: {
-                default:
-                  "Please select the type of {panel.major_product_category} from the dropdown that your organization produced under Fairtrade certification",
-                es: "Seleccione el tipo de {panel.major_product_category} de la lista desplegable que produjo su organización bajo la certificación Fairtrade",
-                fr: "Veuillez sélectionner le type de {panel.major_product_category} à partir du menu déroulant que votre organisation a produit sous la certification Fairtrade",
-                pt: "Favor selecionar o tipo de {panel.major_product_category} a partir da lista suspensa que sua organização produziu sob certificação Fairtrade",
-              },
-              hideNumber: true,
-              isRequired: true,
-              choices: ["item1", "item2"],
-            },
-            {
-              type: "text",
-              name: "minor_category_other",
-              visibleIf:
-                "{panel.minor_product_category} contains 'Other' OR {panel.minor_product_category} contains 'other' OR {panel.minor_product_category} contains 'autre' OR {panel.minor_product_category} contains 'otro' OR {panel.minor_product_category} contains 'outro'",
-              title: {
-                default:
-                  "If your product was not listed and you selected 'other' please specify here the product for which your organization produced under Fairtrade certification:",
-                es: "Si su producto no aparece en la lista y usted seleccionó “otro”, especifique aquí el producto para el cual su organización produjo bajo la certificación de Fairtrade:",
-                fr: "Si votre produit n'a pas été listé et que vous avez sélectionné « Autre », veuillez préciser ici le produit pour lequel votre organisation a produit sous la certification Fairtrade :",
-                pt: "Se seu produto não aparece na lista e você selecionou 'outro', favor especificar aqui o produto para o qual sua organização produziu sob a certificação Fairtrade:",
-              },
-              hideNumber: true,
-            },
-            {
               type: "panel",
               name: "land_area_panel",
               elements: [
@@ -1857,7 +1821,7 @@ const surveyJson = {
                   type: "html",
                   name: "honey_land_area_html",
                   visibleIf:
-                    "{panel.major_product_category} = 'Honey' OR {panel.major_product_category} = 'Miel' OR {panel.major_product_category} = 'Mel'",
+                    "{panel.product_category} = 'Honey' OR {panel.product_category} = 'Miel' OR {panel.product_category} = 'Mel'",
                   html: {
                     default:
                       "<br><i>For honey, please enter the <b>number of beehives</b> instead of {land_area_unit} of land</i>",
@@ -2066,13 +2030,13 @@ const surveyJson = {
                   ],
                 },
               ],
-              visibleIf: "{panel.minor_product_category} notempty",
+              visibleIf: "{panel.product_category} notempty",
               title: {
                 default:
-                  "Land area under Fairtrade cultivation: {panel.major_product_category} ({panel.minor_product_category})",
-                es: "Área de tierra bajo cultivo de Fairtrade: {panel.major_product_category} ({panel.minor_product_category})",
-                fr: "Superficie des terres cultivées sous certification Fairtrade : {panel.major_product_category} ({panel.minor_product_category})",
-                pt: "Área de terra sob cultivo Fairtrade: {panel.major_product_category} ({panel.minor_product_category})",
+                  "Land area under Fairtrade cultivation: {panel.product_category}",
+                es: "Área de tierra bajo cultivo de Fairtrade: {panel.product_category}",
+                fr: "Superficie des terres cultivées sous certification Fairtrade : {panel.product_category}",
+                pt: "Área de terra sob cultivo Fairtrade: {panel.product_category}",
               },
             },
             {
@@ -2081,13 +2045,13 @@ const surveyJson = {
               elements: [
                 {
                   type: "dropdown",
-                  name: "product_form_name",
+                  name: "product_type",
                   title: {
                     default:
-                      "In what product form would you like to report your organization's {panel.minor_product_category} production?",
-                    es: "En qué forma de producto le gustaría reportar la producción de {panel.minor_product_category} de su organización?",
-                    fr: "Dans quel type de produit souhaitez-vous rapporter la production  {panel.minor_product_category} de votre organisation",
-                    pt: "Em que forma de produto você gostaria de relatar a produção de sua organização {panel.minor_product_category}?",
+                      "In what product form would you like to report your organization's {panel.product_category} production?",
+                    es: "En qué forma de producto le gustaría reportar la producción de {panel.product_category} de su organización?",
+                    fr: "Dans quel type de produit souhaitez-vous rapporter la production  {panel.product_category} de votre organisation",
+                    pt: "Em que forma de produto você gostaria de relatar a produção de sua organização {panel.product_category}?",
                   },
                   hideNumber: true,
                   isRequired: true,
@@ -2098,10 +2062,10 @@ const surveyJson = {
                   startWithNewLine: false,
                   title: {
                     default:
-                      "In what unit would you like to report your organization's {panel.minor_product_category} production?",
-                    es: "¿En qué unidad le gustaría reportar la producción de {panel.minor_product_category} de su organización?",
-                    fr: "Dans quelle unité souhaitez-vous rapporter la production  {panel.minor_product_category} de votre organisation",
-                    pt: "Em que unidade você gostaria de relatar a produção de sua organização {panel.minor_product_category}?",
+                      "In what unit would you like to report your organization's {panel.product_category} production?",
+                    es: "¿En qué unidad le gustaría reportar la producción de {panel.product_category} de su organización?",
+                    fr: "Dans quelle unité souhaitez-vous rapporter la production  {panel.product_category} de votre organisation",
+                    pt: "Em que unidade você gostaria de relatar a produção de sua organização {panel.product_category}?",
                   },
                   hideNumber: true,
                   isRequired: true,
@@ -2184,9 +2148,9 @@ const surveyJson = {
                 },
                 {
                   type: "text",
-                  name: "product_form_other",
+                  name: "product_type_other",
                   visibleIf:
-                    "screenValue('product_form_name') contains 'Other' OR screenValue('product_form_name') contains 'other' OR screenValue('product_form_name') contains 'Autre' OR screenValue('product_form_name') contains 'Autres' OR screenValue('product_form_name') contains 'autres' OR screenValue('product_form_name') contains 'Otro' OR screenValue('product_form_name') contains 'Otras' OR screenValue('product_form_name') contains 'otro' OR screenValue('product_form_name') contains 'Outro' OR screenValue('product_form_name') contains 'Outros' OR screenValue('product_form_name') contains 'Outras' OR screenValue('product_form_name') contains 'outro' OR screenValue('product_form_name') contains 'outros' OR screenValue('product_form_name') contains 'Outra'",
+                    "screenValue('product_type') contains 'Other' OR screenValue('product_type') contains 'other' OR screenValue('product_type') contains 'Autre' OR screenValue('product_type') contains 'Autres' OR screenValue('product_type') contains 'autres' OR screenValue('product_type') contains 'Otro' OR screenValue('product_type') contains 'Otras' OR screenValue('product_type') contains 'otro' OR screenValue('product_type') contains 'Outro' OR screenValue('product_type') contains 'Outros' OR screenValue('product_type') contains 'Outras' OR screenValue('product_type') contains 'outro' OR screenValue('product_type') contains 'outros' OR screenValue('product_type') contains 'Outra'",
                   title: {
                     default:
                       "If your product was not listed and you selected 'Other' please specify here the product form for which you are reporting production:",
@@ -2203,10 +2167,10 @@ const surveyJson = {
                     "{organic_logic} anyof ['mixed', 'conventional_only']",
                   title: {
                     default:
-                      "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under conventional cultivation or under transition to organic?",
-                    es: "¿Cuántos/as {panel.volume_produced_unit} de {panel.product_form_name} produjo su organización bajo cultivo convencional o bajo transición a orgánico?",
-                    fr: "Combien des {panel.volume_produced_unit} de {panel.product_form_name} votre organisation a-t-elle produit dans le cadre de la culture conventionnelle ou en transition vers l'agriculture biologique ?",
-                    pt: "Quantos {panel.volume_produced_unit} de {panel.product_form_name} sua organização produziu sob cultivo convencional ou sob transição para orgânico?",
+                      "How many {panel.volume_produced_unit} of {panel.product_type} did your organization produce under conventional cultivation or under transition to organic?",
+                    es: "¿Cuántos/as {panel.volume_produced_unit} de {panel.product_type} produjo su organización bajo cultivo convencional o bajo transición a orgánico?",
+                    fr: "Combien des {panel.volume_produced_unit} de {panel.product_type} votre organisation a-t-elle produit dans le cadre de la culture conventionnelle ou en transition vers l'agriculture biologique ?",
+                    pt: "Quantos {panel.volume_produced_unit} de {panel.product_type} sua organização produziu sob cultivo convencional ou sob transição para orgânico?",
                   },
                   hideNumber: true,
                   validators: [
@@ -2240,10 +2204,10 @@ const surveyJson = {
                   startWithNewLine: false,
                   title: {
                     default:
-                      "How many {panel.volume_produced_unit} of {panel.product_form_name} did your organization produce under organic certification?",
-                    es: "¿Cuántos/as {panel.volume_produced_unit} de {panel.product_form_name} produjo su organización bajo certificación orgánica?",
-                    fr: "Combien des {panel.volume_produced_unit} de {panel.product_form_name} votre organisation a-t-elle produit sous certification biologique ?",
-                    pt: "Quantos {panel.volume_produced_unit} de {panel.product_form_name} sua organização produziu sob certificação orgânica?",
+                      "How many {panel.volume_produced_unit} of {panel.product_type} did your organization produce under organic certification?",
+                    es: "¿Cuántos/as {panel.volume_produced_unit} de {panel.product_type} produjo su organización bajo certificación orgánica?",
+                    fr: "Combien des {panel.volume_produced_unit} de {panel.product_type} votre organisation a-t-elle produit sous certification biologique ?",
+                    pt: "Quantos {panel.volume_produced_unit} de {panel.product_type} sua organização produziu sob certificação orgânica?",
                   },
                   hideNumber: true,
                   validators: [
@@ -2349,13 +2313,13 @@ const surveyJson = {
                   ],
                 },
               ],
-              visibleIf: "{panel.minor_product_category} notempty",
+              visibleIf: "{panel.product_category} notempty",
               title: {
                 default:
-                  "Volumes Produced on Fairtrade terms in the 2021-2022 production cycle: {panel.major_product_category} ({panel.minor_product_category})",
-                es: "Volúmenes producidos en términos de Fairtrade en el ciclo de producción 2021-2022: {panel.major_product_category} ({panel.minor_product_category})",
-                fr: "Volumes produits conformément aux conditions Fairtrade dans le cycle de production 2021-2022 :  {panel.major_product_category} ({panel.minor_product_category})",
-                pt: "Volumes produzidos em termos Fairtrade no ciclo de produção de 2021-2022: {panel.major_product_category} ({panel.minor_product_category})",
+                  "Volumes Produced on Fairtrade terms in the 2023-2024 production cycle: {panel.product_category}",
+                es: "Volúmenes producidos en términos de Fairtrade en el ciclo de producción 2023-2024: {panel.product_category}",
+                fr: "Volumes produits conformément aux conditions Fairtrade dans le cycle de production 2023-2024 :  {panel.product_category}",
+                pt: "Volumes produzidos em termos Fairtrade no ciclo de produção de 2023-2024: {panel.product_category}",
               },
             },
             {
@@ -2383,10 +2347,10 @@ const surveyJson = {
                   startWithNewLine: false,
                   title: {
                     default:
-                      "Estimated total yields of {panel.product_form_name} in {panel.volume_produced_unit}/{land_area_unit}",
-                    es: "Rendimientos totales calculados de {panel.product_form_name} en {panel.volume_produced_unit}/{land_area_unit}",
-                    fr: "Estimation des rendements totaux de {panel.product_form_name} en {panel.volume_produced_unit}/{land_area_unit}",
-                    pt: "Rendimento total calculado de {panel.product_form_name} em {panel.volume_produced_unit}/{land_area_unit}",
+                      "Estimated total yields of {panel.product_type} in {panel.volume_produced_unit}/{land_area_unit}",
+                    es: "Rendimientos totales calculados de {panel.product_type} en {panel.volume_produced_unit}/{land_area_unit}",
+                    fr: "Estimation des rendements totaux de {panel.product_type} en {panel.volume_produced_unit}/{land_area_unit}",
+                    pt: "Rendimento total calculado de {panel.product_type} em {panel.volume_produced_unit}/{land_area_unit}",
                   },
                   hideNumber: true,
                   expression:
@@ -2400,10 +2364,10 @@ const surveyJson = {
                     "{panel.land_conventional_production} notempty AND {organic_logic} anyof ['mixed', 'conventional_only']",
                   title: {
                     default:
-                      "Estimated conventional yields of {panel.product_form_name} in {panel.volume_produced_unit}/{land_area_unit}",
-                    es: "Rendimientos convencionales calculados de {panel.product_form_name} en {panel.volume_produced_unit}/{land_area_unit}",
-                    fr: "Estimation des rendements conventionnels de {panel.product_form_name} en {panel.volume_produced_unit}/{land_area_unit}",
-                    pt: "Rendimentos convencionais calculados de {panel.product_form_name} em {panel.volume_produced_unit}/{land_area_unit}",
+                      "Estimated conventional yields of {panel.product_type} in {panel.volume_produced_unit}/{land_area_unit}",
+                    es: "Rendimientos convencionales calculados de {panel.product_type} en {panel.volume_produced_unit}/{land_area_unit}",
+                    fr: "Estimation des rendements conventionnels de {panel.product_type} en {panel.volume_produced_unit}/{land_area_unit}",
+                    pt: "Rendimentos convencionais calculados de {panel.product_type} em {panel.volume_produced_unit}/{land_area_unit}",
                   },
                   hideNumber: true,
                   expression:
@@ -2418,10 +2382,10 @@ const surveyJson = {
                   startWithNewLine: false,
                   title: {
                     default:
-                      "Estimated organic yields of {panel.product_form_name} in {panel.volume_produced_unit}/{land_area_unit}",
-                    es: "Rendimientos orgánicos calculados de {panel.product_form_name} en {panel.volume_produced_unit}/{land_area_unit}",
-                    fr: "Estimation des rendements biologiques de {panel.product_form_name} en {panel.volume_produced_unit}/{land_area_unit}",
-                    pt: "Rendimentos orgânicos calculado de {panel.product_form_name} em {panel.volume_produced_unit}/{land_area_unit}",
+                      "Estimated organic yields of {panel.product_type} in {panel.volume_produced_unit}/{land_area_unit}",
+                    es: "Rendimientos orgánicos calculados de {panel.product_type} en {panel.volume_produced_unit}/{land_area_unit}",
+                    fr: "Estimation des rendements biologiques de {panel.product_type} en {panel.volume_produced_unit}/{land_area_unit}",
+                    pt: "Rendimentos orgânicos calculado de {panel.product_type} em {panel.volume_produced_unit}/{land_area_unit}",
                   },
                   hideNumber: true,
                   expression:
@@ -2432,213 +2396,16 @@ const surveyJson = {
               visibleIf: "{panel.minor_product_category} notempty",
               title: {
                 default:
-                  "Summary of production and yields for the 2021-2022 production cycle: {panel.major_product_category} ({panel.minor_product_category})",
-                es: "Resumen de producción y rendimientos para el ciclo de producción 2021-2022: {panel.major_product_category} ({panel.minor_product_category})",
-                fr: "Résumé de la production et des rendements pour le cycle de production 2021-2022 : {panel.major_product_category} ({panel.minor_product_category})",
-                pt: "Resumo da produção e rendimentos para o ciclo de produção 2021-2022: {panel.major_product_category} ({panel.minor_product_category})",
-              },
-            },
-            {
-              type: "panel",
-              name: "panel_volumes_forecast",
-              elements: [
-                {
-                  type: "dropdown",
-                  name: "volume_forecast_unit",
-                  visibleIf: "{panel.volume_forecast_known} empty",
-                  startWithNewLine: false,
-                  title: {
-                    default:
-                      "In what unit would you like to report your organization's {panel.minor_product_category} forecasted volume?",
-                    es: "¿En qué unidad le gustaría reportar el pronóstico de volumen de {panel.minor_product_category} de su organización?",
-                    fr: "Dans quelle unité souhaitez-vous rapporter le volume estimé  {panel.minor_product_category} de votre organisation ?",
-                    pt: "Em qual unidade você gostaria de relatar a previsão de volume de {panel.minor_product_category}?",
-                  },
-                  hideNumber: true,
-                  isRequired: true,
-                  choices: [
-                    "kg",
-                    {
-                      value: "mt",
-                      text: "MT",
-                    },
-                    {
-                      value: "boxes_large",
-                      text: {
-                        default: "18.14 kg Boxes",
-                        es: "Cajas de 18.14 kg",
-                        fr: "Boîtes de 18.14 kg",
-                        pt: "Caixas de 18.14 kg",
-                      },
-                    },
-                    {
-                      value: "boxes_small",
-                      text: {
-                        default: "13.5 kg Boxes",
-                        es: "Cajas de 13.5 kg",
-                        fr: "Boîtes de 13.5 kg",
-                        pt: "Caixas de 13.5 kg",
-                      },
-                    },
-                    {
-                      value: "pound",
-                      text: {
-                        default: "Pound",
-                        es: "Libra",
-                        fr: "Livres",
-                        pt: "Libras",
-                      },
-                    },
-                    {
-                      value: "quintales",
-                      text: {
-                        default: "Quintales (46 kg)",
-                        fr: "quintaux (46 kg)",
-                      },
-                    },
-                    {
-                      value: "stems",
-                      text: {
-                        default: "Stems of flowers",
-                        es: "Tallos de flores",
-                        fr: "Tiges de fleurs",
-                        pt: "Caules de flores",
-                      },
-                    },
-                    {
-                      value: "1000stems",
-                      text: {
-                        default: "1000 stems of flowers",
-                        es: "1000 tallos de flores",
-                        fr: "1 000 tiges de fleurs",
-                        pt: "1000 Caules de flores",
-                      },
-                    },
-                    {
-                      value: "litres",
-                      text: {
-                        default: "Litres",
-                        es: "Litros",
-                        pt: "Litros",
-                      },
-                    },
-                    {
-                      value: "items",
-                      text: {
-                        default: "Items",
-                        es: "Productos",
-                        fr: "Pièces",
-                        pt: "Itens",
-                      },
-                    },
-                  ],
-                },
-                {
-                  type: "text",
-                  name: "volume_conventional_forecast",
-                  visibleIf: "{panel.volume_forecast_known} empty",
-                  title: {
-                    default:
-                      "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under conventional cultivation or under transition to organic does your organization forecast will be of export quality?",
-                    es: "¿Cuántos/as {panel.volume_forecast_unit} de {panel.product_form_name} producidos bajo cultivo convencional o bajo la transición a orgánico pronostica su organización que tendrán calidad de exportación?",
-                    fr: "Combien des {panel.volume_forecast_unit} de {panel.product_form_name} produits/es sous culture conventionnelle ou en transition vers la culture biologique de qualité exportable votre organisation prévoit-elle d’avoir ?",
-                    pt: "Quantos {panel.volume_forecast_unit} de {panel.product_form_name} produzidos sob cultivo convencional ou em transição para orgânico sua organização prevê que serão de qualidade de exportação?",
-                  },
-                  hideNumber: true,
-                  validators: [
-                    {
-                      type: "numeric",
-                      text: {
-                        default: "Please enter a valid number.",
-                        es: "Ingrese un número válido.",
-                        fr: "Veuillez entrer un nombre valide.",
-                        pt: "Por favor, digite um número válido.",
-                      },
-                    },
-                    {
-                      type: "expression",
-                      text: {
-                        default:
-                          "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
-                        es: "No se permiten comas (,). Utilice el punto (.) como separador decimal.",
-                        fr: "Veuillez ne pas mettre de virgule (,). Utilisez un point (.) comme séparateur décimal.",
-                        pt: "Vírgulas (,) não são permitidas. Use o ponto (.) como separador decimal.",
-                      },
-                      expression:
-                        "{panel.volume_conventional_forecast} notcontains ','",
-                    },
-                  ],
-                },
-                {
-                  type: "text",
-                  name: "volume_organic_forecast",
-                  visibleIf: "{panel.volume_forecast_known} empty",
-                  startWithNewLine: false,
-                  title: {
-                    default:
-                      "How many {panel.volume_forecast_unit} of {panel.product_form_name} produced under organic certification does your organization forecast will be of export quality?",
-                    es: "¿Cuántos/as {panel.volume_forecast_unit} de {panel.product_form_name} producidos bajo certificación orgánica pronostica su organización que tendrán calidad de exportación?",
-                    fr: "Combien des {panel.volume_forecast_unit} de {panel.product_form_name} produits/es sous certification biologique de qualité exportable votre organisation prévoit-elle d’avoir ?",
-                    pt: "Quantos {panel.volume_forecast_unit} de {panel.product_form_name} produzidos sob certificação orgânica sua organização prevê que serão de qualidade para exportação?",
-                  },
-                  hideNumber: true,
-                  validators: [
-                    {
-                      type: "numeric",
-                      text: {
-                        default: "Please enter a valid number.",
-                        es: "Ingrese un número válido.",
-                        fr: "Veuillez entrer un nombre valide.",
-                        pt: "Por favor, digite um número válido.",
-                      },
-                    },
-                    {
-                      type: "expression",
-                      text: {
-                        default:
-                          "A comma (,) is not allowed. Please use a dot (.) as a decimal separator.",
-                        es: "No se permiten comas (,). Utilice el punto (.) como separador decimal.",
-                        fr: "Veuillez ne pas mettre de virgule (,). Utilisez un point (.) comme séparateur décimal.",
-                        pt: "Vírgulas (,) não são permitidas. Use o ponto (.) como separador decimal.",
-                      },
-                      expression:
-                        "{panel.volume_organic_forecast} notcontains ','",
-                    },
-                  ],
-                },
-                {
-                  type: "checkbox",
-                  name: "volume_forecast_known",
-                  title: "volume_forecast_known",
-                  titleLocation: "hidden",
-                  hideNumber: true,
-                  choices: [
-                    {
-                      value: "not_known",
-                      text: {
-                        default:
-                          "Please check here if you do not know the forecast volume for this product or this question is not applicable",
-                        es: "Ponga una marca aquí si no conoce el volumen pronosticado para este producto o si esta pregunta no aplica",
-                        fr: "Veuillez cocher ici si vous ne connaissez pas le volume estimé pour ce produit ou si cette question n'est pas applicable",
-                        pt: "Marque aqui se você não sabe o volume previsto para este produto ou se esta pergunta não é aplicável",
-                      },
-                    },
-                  ],
-                },
-              ],
-              visibleIf: "{panel.minor_product_category} notempty",
-              title: {
-                default:
-                  "Forecast of volumes of export quality for the 2022-2023 production cycle: {panel.major_product_category} ({panel.minor_product_category})",
-                es: "Pronóstico de producción y rendimientos para el ciclo de producción 2022-2023: {panel.major_product_category} ({panel.minor_product_category})",
-                fr: "Résumé des volumes et des rendements de qualité exportable pour le cycle de production 2022-2023 : {panel.major_product_category ({panel.minor_product_category})",
-                pt: "Previsão de produção e rendimentos para o ciclo de produção de 2022-2023: {panel.major_product_category} ({panel.minor_product_category})",
+                  "Summary of production and yields for the 2023-2024 production cycle: {panel.product_category}",
+                es: "Resumen de producción y rendimientos para el ciclo de producción 2023-2024: {panel.product_category}",
+                fr: "Résumé de la production et des rendements pour le cycle de production 2023-2024 : {panel.product_category}",
+                pt: "Resumo da produção e rendimentos para o ciclo de produção 2023-2024: {panel.product_category}",
               },
             },
             {
               type: "text",
               name: "product_page_comments_byproduct",
-              visibleIf: "{panel.minor_product_category} notempty",
+              visibleIf: "{panel.product_category} notempty",
               title: {
                 default: "Optional space for comments:",
                 es: "Espacio opcional para comentarios:",
@@ -2702,6 +2469,34 @@ const surveyJson = {
         es: "Productos",
         fr: "Produits",
         pt: "Produtos",
+      },
+    },
+    {
+      name: "Review and Submit",
+      elements: [
+        {
+          type: "html",
+          name: "review_and_submit_text",
+          html: {
+            default:
+              "<br>[ADD TEXT]. Please click 'Preview' to review your responses before you confirm your submission.",
+            es: "<br>Fairtrade es un sistema de certificación voluntaria que busca tener impactos positivos en las organizaciones de productores(as) como la suya, a través de la certificación de su producto certificado.<br><br>Nuestra meta es hacer que FairInsight sea un lugar único para que las organizaciones de productores(as) administren información y posiblemente la compartan con Fairtrade. En los años venideros, FairInsight reemplazará otras herramientas de recolección de datos (como el cuestionario CODImpact que se conduce durante las auditorías).<br><br>A través de este cuestionario, Fairtrade recolecta datos de los miembros(as) de las organizaciones certificadas para comprender mejor cualequier reto para compartir datos y la calidad de los datos que se reportan. Su participación es muy importante para el éxito de la encuesta. Su contribución nos ayudará para que podamos dar seguimiento con respecto a explicar cuestiones o retos en específico que pueda enfrentar mientras comparte información.<br><br>Aunque es voluntario participar, si lo hace nos ayudará a comprender mejor cómo hacer que FairInsight sea más fácil de usar y beneficioso para usted. Fairtrade tratará con confidencialidad los datos recolectados en el sistema y solo usaremos esto para evaluaciones de calidad interna y tener información para desarrollar más FairInsight. No se compartirá información personal ni sensible fuera de Fairtrade International y las Redes de productores(as).",
+            fr: "<br>Fairtrade est un système de certification volontaire dont l’objectif est d’avoir des impacts positifs sur les organisations d'agriculteurs comme la vôtre grâce à la certification de votre produit certifié.<br><br>Notre objectif est de faire de FairInsight un lieu unique pour les organisations de producteurs afin de gérer vos informations et éventuellement de les partager avec Fairtrade. Au cours des années qui viennent, FairInsight remplacera d'autres outils de collecte de données (tels que le questionnaire CODImpact réalisé lors des audits).<br><br>Par le biais de ce questionnaire, Fairtrade collecte des données auprès des membres des organisations certifiées afin de mieux comprendre les défis liés aux à la qualité et au transfère des données transmises. Votre participation est très importante pour le succès de l’enquête. Nous serons en mesure d’identifier votre contribution afin d’assurer le suivi des problèmes ou des défis spécifiques que vous pourriez rencontrer lors du transfère des données.<br><br>Bien que l’enquête soit entièrement volontaire, votre participation nous aidera à mieux comprendre comment rendre la plateforme FairInsight facile à utiliser et bénéfique pour vous. Les données collectées seront traitées de façon confidentielle par le système Fairtrade et nous ne les utiliserons qu’à des fins d’évaluations de qualité en interne visant à éclairer le développement ultérieur de FairInsight. Aucune information personnelle ou sensible ne sera partagée en dehors de Fairtrade International et des réseaux de producteurs.",
+            pt: "<br>Fairtrade é um sistema voluntário de certificações que visa ter impactos positivos em organizações de produtores(as) através da certificação de seu produto certificado.<br><br>Nosso objetivo é fazer da FairInsight um local único para que as organizações de produtores(as) gerenciem suas informações e possivelmente compartilhem com o Fairtrade. Nos próximos anos, a FairInsight substituirá outras ferramentas de coleta de dados (como o questionário CODImpact realizado durante as auditorias).<br><br>Por meio deste questionário, o Fairtrade está coletando dados de membros de organizações certificadas para compreender melhor quaisquer desafios para compartilhar dados e a qualidade dos dados que estão sendo relatados. Sua participação é muito importante para o sucesso da pesquisa. Sua contribuição ajudará para que possamos acompanhar a resolução de questões ou desafios específicos que você possa ter que enfrentar ao compartilhar informações.<br><br>Embora a pesquisa seja totalmente voluntária, sua participação nos ajudará a entender melhor como tornar a plataforma FairInsight fácil de usar e útil para você. Os dados coletados serão tratados como confidenciais pelo sistema Fairtrade e só os utilizaremos para avaliações internas de qualidade que informem o desenvolvimento futuro da FairInsight. Não serão compartilhadas informações pessoais ou sensíveis fora do Fairtrade International e das Redes de Produtores(as).",
+          },
+        },
+      ],
+      title: {
+        default: "Thank you for completing the Fairtrade CODImpact survey!",
+        es: "Thank you for completing the Fairtrade CODImpact survey!",
+        fr: "Thank you for completing the Fairtrade CODImpact survey!",
+        pt: "Thank you for completing the Fairtrade CODImpact survey!",
+      },
+      navigationTitle: {
+        default: "Review and Submit",
+        es: "Review and Submit",
+        fr: "Review and Submit",
+        pt: "Review and Submit",
       },
     },
   ],
